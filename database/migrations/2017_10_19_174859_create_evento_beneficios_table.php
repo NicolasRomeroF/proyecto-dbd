@@ -20,7 +20,7 @@ class CreateEventoBeneficiosTable extends Migration
             $table->integer('id_medida');
             $table->timestamps();
             $table->foreign('id_ciudad')->references('id')->on('ciudads');
-            table->foreign('id_medida')->references('id')->on('medidas');
+            $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }
 

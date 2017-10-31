@@ -18,11 +18,11 @@ class CreateDonacionsTable extends Migration
             $table->integer('monto');
             $table->string('cuenta');
             $table->string('banco');
-            $table->string('id_user');
-            $table-string('id_fondos');
+            $table->integer('id_user');
+            $table->integer('id_fondos');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_user')->references('id')->on('fondos');
+            $table->foreign('id_fondos')->references('id')->on('fondos');
         });
     }
 

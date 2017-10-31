@@ -21,7 +21,7 @@ class CreateFondosTable extends Migration
             $table->date('fecha_termino');
             $table->integer('monto');
             $table->string('banco');
-            $tabla->string('cuenta');
+            $table->string('cuenta');
             $table->timestamps();
         });
     }

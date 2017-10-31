@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('id_organizacion');
-            $table->integer('id_rol')
+            $table->integer('id_rol');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('id_rol')->references('id')->on('rols');
