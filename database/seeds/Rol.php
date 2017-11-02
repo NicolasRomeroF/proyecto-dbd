@@ -12,8 +12,6 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        $datos = [
-        ['nombre'=>'organizacion','detalle'=>'ONG'],
-        ['nombre'=>'gob','detalle'=>]]
+        factory('App\Rol', 5)->create();
     }
 }

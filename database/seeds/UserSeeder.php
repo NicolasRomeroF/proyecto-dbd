@@ -11,13 +11,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-    	$id_rols = Rol::all()->select('id');
-    	Review::create([
-    		'name' => str_random(10),
-    		'email' => str_random(10).'@gmail.com',
-    		'password' => bcrypt('secret'),
-    		'id_rol' => array_random($id_rols),
-    	]);
+    	//factory('App\User', 'active', 5)->create();
         //
     }
 }
