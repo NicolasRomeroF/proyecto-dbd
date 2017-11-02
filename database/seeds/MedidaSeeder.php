@@ -11,6 +11,7 @@ class MedidaSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\Medida', 5)->create();
         //
     }
 }

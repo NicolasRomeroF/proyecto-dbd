@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+//use App\Rol;
 
-class RegionSeeder extends Seeder
+class RolSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,6 @@ class RegionSeeder extends Seeder
      */
     public function run()
     {
-    	factory('App\Region', 5)->create();
-        //
+        factory(App\Rol::class, 5)->create();
     }
 }

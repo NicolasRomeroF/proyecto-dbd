@@ -11,6 +11,7 @@ class HistorialSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\>Historial', 5)->create();
         //
     }
 }

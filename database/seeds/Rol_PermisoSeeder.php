@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Rol;
 
-class RolSeeder extends Seeder
+class Rol_PermisoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +11,7 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Rol', 5)->create();
+    	factory('App\Rol_Permiso', 5)->create();
+        //
     }
 }

@@ -11,6 +11,7 @@ class CiudadSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\Ciudad', 5)->create();
         //
     }
 }

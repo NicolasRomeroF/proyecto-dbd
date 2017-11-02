@@ -11,6 +11,7 @@ class OrganizacionSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\Organizacion', 5)->create();
         //
     }
 }

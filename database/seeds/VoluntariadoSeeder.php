@@ -11,6 +11,7 @@ class VoluntariadoSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\Voluntariado', 5)->create();
         //
     }
 }

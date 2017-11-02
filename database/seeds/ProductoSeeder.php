@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RegionSeeder extends Seeder
+class ProductoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class RegionSeeder extends Seeder
      */
     public function run()
     {
-    	factory('App\Region', 5)->create();
+    	factory('App\Producto', 5)->create();
         //
     }
 }

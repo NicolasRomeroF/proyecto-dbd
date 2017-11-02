@@ -11,6 +11,7 @@ class RNVSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\RNV', 5)->create();
         //
     }
 }

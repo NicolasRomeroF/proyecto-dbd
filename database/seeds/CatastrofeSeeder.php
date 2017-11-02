@@ -11,6 +11,7 @@ class CatastrofeSeeder extends Seeder
      */
     public function run()
     {
+    	factory('App\Catastrofe', 5)->create();
         //
     }
 }
