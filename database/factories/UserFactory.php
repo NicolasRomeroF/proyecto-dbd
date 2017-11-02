@@ -55,7 +55,7 @@ $factory->define(App\Region::class, function (Faker $faker) {
 
     return [
         'numero' => rand(1,13),
-        'nombre' => $faker->region,
+        'nombre' => $faker->state,
     ];
 });
 
@@ -64,7 +64,7 @@ $factory->define(App\Ciudad::class, function (Faker $faker) {
     $id_region = $ids_region->random()->id;
 
     return [
-        'nombre' => $faker->region,
+        'nombre' => $faker->state,
         'id_region' => $id_region,
     ];
 });
@@ -80,22 +80,23 @@ $factory->define(App\Permiso::class, function (Faker $faker) {
 $factory->define(App\Comuna::class, function (Faker $faker) {
     $ids_ciudad = \DB::table('ciudads')->select('id')->get();
     $id_ciudad = $ids_ciudad->random()->id;
+    $ids_medida = \DB::table('medidas')->select('id')->get();
+    $id_medida = $ids_comuna->random()->id;
+
 
     return [
-        'nombre' => $faker->region,
+        'nombre' => $faker->state,
         'id_ciudad' => $id_ciudad,
+        'id_medida' => $id_medida,
     ];
 });
 
 $factory->define(App\Medida::class, function (Faker $faker) {
 
-    $ids_comuna = \DB::table('comunas')->select('id')->get();
-    $id_comuna = $ids_comuna->random()->id;
     $ids_user = \DB::table('users')->select('id')->get();
     $id_user = $ids_user->random()->id;
 
     return [
-        'id_comuna' => $id_comuna,
         'id_user' => $id_user,
         'nombre' => $faker->name,
         'descripcion' => $faker->realText(200,2),
@@ -296,5 +297,18 @@ $factory->define(App\Usuario_medida::class, function (Faker $faker) {
     return [
         'id_user' => $id_user,
         'id_medida' => $id_medida,
+    ];
+});
+
+$factory->define(App\Comentario::class, function (Faker $faker) {
+    $ids_user = \DB::table('users')->select('id')->get();
+    $id_user = $ids_user->random()->id;
+
+    $ids_medida = \DB::table('medidas')->select('id')->get();
+    $id_medida = $ids_medida->random()->id;
+    return [
+        'id_user' => $id_user,
+        'id_medida' => $id_medida,
+        'comentario' => $faker->realText(200,2),
     ];
 });
