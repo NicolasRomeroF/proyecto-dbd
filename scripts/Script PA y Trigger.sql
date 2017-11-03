@@ -30,7 +30,7 @@ END
 
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER triggerdonacion ON donacion;
+DROP TRIGGER IF EXISTS triggerdonacion ON donacion;
 
 CREATE TRIGGER triggerdonacion
     AFTER INSERT 
