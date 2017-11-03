@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Catastrofe_Comuna extends Seeder
+class Catastrofe_ComunaSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -19,7 +19,7 @@ class CreateComentariosTable extends Migration
             $table->integer('id_user');
             $table->integer('id_medida');
             $table->timestamps();
-            $table->foreign('id_user')->references('id')->on('user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }

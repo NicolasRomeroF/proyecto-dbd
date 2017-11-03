@@ -13,7 +13,7 @@ class CreateRNVsTable extends Migration
      */
     public function up()
     {
-        Schema::create('r_n_vs', function (Blueprint $table) {
+        Schema::create('r_n_v_s', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rut');
             $table->boolean('disponible');

@@ -19,7 +19,7 @@ class CreateUsuarioRNVsTable extends Migration
             $table->integer('id_voluntario');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_voluntario')->references('id')->on('r_n_vs');
+            $table->foreign('id_voluntario')->references('id')->on('r_n_v_s');
         });
     }
 

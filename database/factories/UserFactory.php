@@ -81,7 +81,7 @@ $factory->define(App\Comuna::class, function (Faker $faker) {
     $ids_ciudad = \DB::table('ciudads')->select('id')->get();
     $id_ciudad = $ids_ciudad->random()->id;
     $ids_medida = \DB::table('medidas')->select('id')->get();
-    $id_medida = $ids_comuna->random()->id;
+    $id_medida = $ids_medida->random()->id;
 
 
     return [
@@ -100,7 +100,7 @@ $factory->define(App\Medida::class, function (Faker $faker) {
         'id_user' => $id_user,
         'nombre' => $faker->name,
         'descripcion' => $faker->realText(200,2),
-        'direccion' => $faker->addres,
+        'direccion' => $faker->address,
         'fecha_inicio' => $faker->dateTime(),
         'fecha_termino' => $faker->dateTime(),
 
@@ -120,9 +120,9 @@ $factory->define(App\Catastrofe::class, function (Faker $faker) {
 
 $factory->define(App\Voluntariado::class, function (Faker $faker) {
     $ids_ciudad = \DB::table('ciudads')->select('id')->get();
-    $id_ciudad = $ids_rol->randomElement()->id;
+    $id_ciudad = $ids_ciudad->random()->id;
     $ids_medida = \DB::table('medidas')->select('id')->get();
-    $id_medida = $ids_rol->random()->id;
+    $id_medida = $ids_medida->random()->id;
     $tipos = array("Salud","Rescate","Cocina");
 
     return [
@@ -136,7 +136,7 @@ $factory->define(App\Voluntariado::class, function (Faker $faker) {
 $factory->define(App\RNV::class, function (Faker $faker) {
 
     return [
-        'rut' => $faker->cpr,
+        'rut' => str_random(9),
         'disponible' => $faker->boolean,
     ];
 });
@@ -150,7 +150,6 @@ $factory->define(App\Historial_accion::class, function (Faker $faker) {
 
     return [
         'id_user' => $id_user,
-        'id_medida' =>$id_medida,
 
 
     ];
@@ -187,7 +186,7 @@ $factory->define(App\Producto::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Centro_Acopio::class, function (Faker $faker) {
+$factory->define(App\Centro_acopio::class, function (Faker $faker) {
     $ids_medida = \DB::table('medidas')->select('id')->get();
     $id_medida = $ids_medida->random()->id;
     $situacion = array("Critica","Grave","Media","Leve");
@@ -213,7 +212,7 @@ $factory->define(App\Articulo::class, function (Faker $faker) {
 });
 
 $factory->define(App\Fondo::class, function (Faker $faker) {
-    $situacion = array("Banco1","Banco2");
+    $banco = array("Banco1","Banco2");
     return [
         'nombre' => $faker->name,
         'fecha_inicio' => $faker->dateTime,
@@ -228,7 +227,7 @@ $factory->define(App\Fondo::class, function (Faker $faker) {
 $factory->define(App\Donacion::class, function (Faker $faker) {
     $ids_user = \DB::table('users')->select('id')->get();
     $id_user = $ids_user->random()->id;
-
+    $banco = array("Banco1","Banco2");
     $ids_fondos = \DB::table('fondos')->select('id')->get();//REVISAR PLURAL
     $id_fondos = $ids_fondos->random()->id;
     return [
@@ -245,38 +244,38 @@ $factory->define(App\Usuario_RNV::class, function (Faker $faker) {
     $id_user = $ids_user->random()->id;
 
     $ids_voluntario = \DB::table('voluntariados')->select('id')->get();
-    $id_voluntario = $ids_voluntarios->random()->id;
+    $id_voluntario = $ids_voluntario->random()->id;
     return [
         'id_user' => $id_user,
         'id_voluntario' => $id_voluntario,
     ];
 });
 
-$factory->define(App\RNV_medida::class, function (Faker $faker) {
+$factory->define(App\RNV_Medida::class, function (Faker $faker) {
     $ids_medida = \DB::table('medidas')->select('id')->get();
     $id_medida = $ids_medida->random()->id;
 
     $ids_voluntario = \DB::table('voluntariados')->select('id')->get();
-    $id_voluntario = $ids_voluntarios->random()->id;
+    $id_voluntario = $ids_voluntario->random()->id;
     return [
         'id_medida' => $id_medida,
         'id_voluntario' => $id_voluntario,
     ];
 });
 
-$factory->define(App\Catastrofe_comuna::class, function (Faker $faker) {
+$factory->define(App\Catastrofe_Comuna::class, function (Faker $faker) {
     $ids_catastrofe = \DB::table('catastroves')->select('id')->get();
     $id_catastrofe = $ids_catastrofe->random()->id;
 
     $ids_comuna = \DB::table('comunas')->select('id')->get();
     $id_comuna = $ids_comuna->random()->id;
     return [
-        'id_user' => $id_user,
-        'id_voluntario' => $id_voluntario,
+        'id_catastrofe' => $id_catastrofe,
+        'id_comuna' => $id_comuna,
     ];
 });
 
-$factory->define(App\Usuario_fondo::class, function (Faker $faker) {
+$factory->define(App\Usuario_Fondo::class, function (Faker $faker) {
     $ids_user = \DB::table('users')->select('id')->get();
     $id_user = $ids_user->random()->id;
 
@@ -288,7 +287,19 @@ $factory->define(App\Usuario_fondo::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Usuario_medida::class, function (Faker $faker) {
+$factory->define(App\Rol_Permiso::class, function (Faker $faker) {
+    $ids_rol = \DB::table('rols')->select('id')->get();
+    $id_rol = $ids_rol->random()->id;
+
+    $ids_permiso = \DB::table('permisos')->select('id')->get();
+    $id_permiso = $ids_permiso->random()->id;
+    return [
+        'id_rol' => $id_rol,
+        'id_permiso' => $id_permiso,
+    ];
+});
+
+$factory->define(App\Usuario_Medida::class, function (Faker $faker) {
     $ids_user = \DB::table('users')->select('id')->get();
     $id_user = $ids_user->random()->id;
 
@@ -299,6 +310,7 @@ $factory->define(App\Usuario_medida::class, function (Faker $faker) {
         'id_medida' => $id_medida,
     ];
 });
+
 
 $factory->define(App\Comentario::class, function (Faker $faker) {
     $ids_user = \DB::table('users')->select('id')->get();
@@ -312,3 +324,4 @@ $factory->define(App\Comentario::class, function (Faker $faker) {
         'comentario' => $faker->realText(200,2),
     ];
 });
+
