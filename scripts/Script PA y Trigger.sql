@@ -1,6 +1,5 @@
 CREATE OR REPLACE FUNCTION sumaDonaciones(id_fondo integer) RETURNS integer AS $$
     DECLARE suma INTEGER;
-    DECLARE test INTEGER
 
 BEGIN
     SELECT SUM(monto) INTO suma
@@ -31,10 +30,10 @@ END
 
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER triggerdonacion ON public.donacion;
+DROP TRIGGER triggerdonacion ON donacion;
 
 CREATE TRIGGER triggerdonacion
     AFTER INSERT 
-    ON public.donacion
+    ON donacion
     FOR EACH ROW
-    EXECUTE PROCEDURE public.actualizarfondo();
+    EXECUTE PROCEDURE actualizarfondo();
