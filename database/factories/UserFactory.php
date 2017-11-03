@@ -54,7 +54,6 @@ $factory->define(App\Rol::class, function (Faker $faker) {
 $factory->define(App\Region::class, function (Faker $faker) {
 
     return [
-        'numero' => rand(1,13),
         'nombre' => $faker->state,
     ];
 });
