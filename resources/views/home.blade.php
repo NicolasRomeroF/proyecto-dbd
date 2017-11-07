@@ -8,13 +8,20 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <table class="responsive">
+                        <tr>
+                            <td> ID</td>
+                            <td> Nombre</td>
+                            <td> Email</td>
+                        </tr>
+                        @foreach($usuarios as $user)
+                        <tr>
+                            <td> {{ $user->id }}</td>
+                            <td> {{ $user->name }}</td>
+                            <td> {{ $user->email }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>

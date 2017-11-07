@@ -11,6 +11,10 @@
 |
 */
 
+/*Get: Paso de datos por URL
+Post: 
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -42,3 +46,13 @@ Route::post('usuario/', function(Request $request){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
+Route::post('update_usuario', 'HomeController@update_usuario');
+
+Route::get('/auth/login', function(){
+	return view('/auth/login');
+});
+
+Route::get('/auth/register', function(){
+	return view('/auth/register');
+});

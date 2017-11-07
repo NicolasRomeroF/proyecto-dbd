@@ -23,6 +23,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usuarios = \App\User::all();
+        return view('home', compact('usuarios'));
+    }
+
+    public function perfil_user()
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        return view('perfil', compact('usuario'));
+    }
+
+    public function update_usuario(Request $request){
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->save();
+        return redirect()->route('home');
     }
 }
