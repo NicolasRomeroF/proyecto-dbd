@@ -15,8 +15,10 @@ class CreateCatastrovesTable extends Migration
     {
         Schema::create('catastroves', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->integer('id_user');
             $table->string('tipo');
+            $table->text('descripcion');
             $table->date('fecha');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');

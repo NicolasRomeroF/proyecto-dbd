@@ -46,7 +46,13 @@ Route::post('usuario/', function(Request $request){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
+
+Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
+
+Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+
 Route::post('update_usuario', 'HomeController@update_usuario');
 
 Route::get('/auth/login', function(){
@@ -56,3 +62,13 @@ Route::get('/auth/login', function(){
 Route::get('/auth/register', function(){
 	return view('/auth/register');
 });
+
+Route::get('/test/datepicker', function () {
+    return view('datepicker');
+});
+
+Route::post('/test/save', ['as' => 'save-date',
+                           'uses' => 'DateController@showDate', 
+                            function () {
+                                return '';
+                            }]);
