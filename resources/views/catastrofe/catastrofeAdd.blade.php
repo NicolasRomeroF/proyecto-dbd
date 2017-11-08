@@ -11,7 +11,7 @@
   </script>
    <script type="text/javascript">
   $(function() {
-          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd/mm/yy');
+          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
   });
   </script>
     @stop
@@ -28,30 +28,28 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Enviar mensaje</div>
+                <div class="panel-heading">Declarar catastrofe</div>
                 <form method="POST" action="{{ route('catastrofe.store') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
                         <div class="form-group"> 
-                            <label for="nombre" class="col-md-4 control-label">Nombre de la catastrofe</label>
-                            <input name="name" class="form-control"></inputt>
+                            <label class="col-md-4 control-label">Nombre de la catastrofe</label>
+                            <input name="nombre" class="form-control" placeholder="Nombre">
+                        </div>
                         <div class="form-group">
-                            <label>Fecha de la catastrofe</label>
-                            <input type="text" id="datepicker" class="form-control" placeholder="Choose">
+                            <label class="col-md-4 control-label">Fecha de la catastrofe</label>
+                            <input name="fecha" id="datepicker" class="form-control" placeholder="Elegir">
                         </div>
                         <div class="form-group"> 
-                            <label for="tipo" class="col-md-4 control-label">Tipo de catastrofe</label>
-                            <input name="tipo" class="form-control"></inputt>
+                            <label class="col-md-4 control-label">Tipo de catastrofe</label>
+                            <input name="tipo" class="form-control" placeholder="Tipo">
                         </div>
-                        <div class="form-group"> 
-                            <label for="nombre" class="col-md-4 control-label">Nombre de la catastrofe</label>
-                            <input name="name" class="form-control"></inputt>
-                        </div>
-                        <div class="form-group"> 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
                             <textarea name="descripcion" class="form-control" placeholder="Descripcion de la catastrofe"></textarea>
                         </div>
                         <div class="form-group"> 
-                            <button class="btn btn-primary btn-block">Enviar</button>  
+                            <button class="btn btn-primary btn-block">Declarar</button>  
                         </div>              
                     </div>
                 </form>

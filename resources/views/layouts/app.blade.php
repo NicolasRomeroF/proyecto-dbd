@@ -55,7 +55,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="/catastrofes/add">Añadir catastrofe</a></li>
+                            <li><a href="/catastrofes/add">Declarar catastrofe</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -82,9 +82,16 @@
                 </div>
             </div>
         </nav>
+        @if (session()->has('flash'))
+            <div class="container">
+                <div class="alert alert-success">{{ session('flash') }}</div>
+            </div>
+        @endif
+
+        @yield('content')
 
     </div>
-    @yield('content')
+    
 
     <!-- Scripts -->
     @section('scripts')
