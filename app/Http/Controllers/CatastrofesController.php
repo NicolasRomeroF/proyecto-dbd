@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Catastrofe;
+use Illuminate\Support\Facades\DB;
 
 class CatastrofesController extends Controller
 {
@@ -22,5 +23,12 @@ class CatastrofesController extends Controller
             'descripcion' => $request->descripcion,
         ]);
         return back()->with('flash','Catastrofe declarada correctamente');
+    }
+    public function historial()
+    {
+        $catastrofes =  DB::table('catastroves')
+                ->orderBy('fecha', 'desc')
+                ->get();
+        return view('catastrofe/historial',['catastrofes' => $catastrofes]);
     }
 }
