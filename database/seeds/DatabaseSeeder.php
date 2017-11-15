@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        $this->call(OrganizacionSeeder::class);
+        //$this->call(OrganizacionSeeder::class);
         $this->call(RolSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(RegionSeeder::class);
+        /*$this->call(RegionSeeder::class);
         $this->call(CiudadSeeder::class);
         $this->call(PermisoSeeder::class);
         $this->call(MedidaSeeder::class);
@@ -39,6 +39,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Usuario_MedidaSeeder::class);
         //$this->call(DireccionSeeder::class);
         //$this->call(Usuario_RolSeeder::class);
-        $this->call(ComentarioSeeder::class);
+        //$this->call(ComentarioSeeder::class);*/
     }
 }

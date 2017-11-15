@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComunasTable extends Migration
+class CreateProvinciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateComunasTable extends Migration
      */
     public function up()
     {
-        Schema::create('comunas', function (Blueprint $table) {
+        Schema::create('provincias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->integer('id_ciudad');
-            $table->integer('id_medida');
             $table->timestamps();
-            $table->foreign('id_ciudad')->references('id')->on('ciudads');
-            $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }
 
@@ -31,6 +26,6 @@ class CreateComunasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comunas');
+        Schema::dropIfExists('provincias');
     }
 }

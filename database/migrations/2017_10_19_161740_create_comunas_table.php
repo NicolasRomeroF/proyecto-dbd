@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolsTable extends Migration
+class CreateComunasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rols', function (Blueprint $table) {
+        Schema::create('comunas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('detalle')->nullable();
+            $table->integer('id_provincia');
             $table->timestamps();
+            $table->foreign('id_provincia')->references('id')->on('provincias');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateRolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rols');
+        Schema::dropIfExists('comunas');
     }
 }

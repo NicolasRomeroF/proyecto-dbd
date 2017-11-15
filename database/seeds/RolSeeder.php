@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-//use App\Rol;
+use App\Rol;
 
 class RolSeeder extends Seeder
 {
@@ -12,6 +12,10 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
+    	DB::table('rols')->insert([
+            'nombre' => 'Admin',
+        ]);
         factory(App\Rol::class, 5)->create();
+
     }
 }
