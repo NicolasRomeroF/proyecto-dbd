@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     $id_rol = $ids_rol->random()->id;
 
     return [
-        'nombre' => $faker->firstName,
+        'name' => $faker->firstName,
         'apellido' => $faker->lastName,
         'rut' => str_random(9),
         'fecha_nacimiento' => $faker->dateTime,
