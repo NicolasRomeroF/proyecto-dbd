@@ -18,11 +18,12 @@ class CreateMedidasTable extends Migration
             $table->integer('id_user');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->string('direccion');
+            $table->integer('id_comuna');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_comuna')->references('id')->on('comunas');
         });
     }
 

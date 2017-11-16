@@ -50,6 +50,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
 
 Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
+Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofw');
 
 Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
 
