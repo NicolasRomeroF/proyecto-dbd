@@ -42,7 +42,14 @@
                         </div>
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Tipo de catastrofe</label>
-                            <input name="tipo" class="form-control" placeholder="Tipo">
+                            <select name="tipo" class="form-control" placeholder="Elegir">
+                              <option value="Aluvion">Aluvion</option>
+                              <option value="Erupción volcanica">Erupcion volcanica</option>
+                              <option value="Incendio">Incendio</option>
+                              <option value="Inundación">Inundación</option>
+                              <option value="Terremoto">Terremoto</option>
+                              <option value="Tsunami">Tsunami</option>    
+                          </select>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
