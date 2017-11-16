@@ -49,7 +49,7 @@
                             <textarea name="descripcion" class="form-control" placeholder="Descripcion de la catastrofe"></textarea>
                         </div>
                         <div class="form-group"> 
-                            <button class="btn btn-primary btn-block">Declarar</button>  
+                            <center><button class="btn btn-primary" >Declarar</button>  </center>
                         </div>              
                     </div>
                 </form>

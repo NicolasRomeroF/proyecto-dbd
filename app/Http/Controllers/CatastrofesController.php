@@ -26,9 +26,7 @@ class CatastrofesController extends Controller
     }
     public function historial()
     {
-        $catastrofes =  DB::table('catastroves')
-                ->orderBy('fecha', 'desc')
-                ->get();
+        $catastrofes = Catastrofe::orderBy('fecha','desc')->get();
         return view('catastrofe/historial',['catastrofes' => $catastrofes]);
     }
 }
