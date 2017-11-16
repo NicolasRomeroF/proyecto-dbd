@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Mo
+use Illuminate\Database\Eloquent\Model;
 
 class Catastrofe extends Model
 {
