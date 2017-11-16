@@ -1,18 +1,20 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
+@extends('layouts.app')
+
+@section('styles')
+  @parent
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <style>
+          <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>MovidosXChile</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
-            html, body {
+  html, body {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
@@ -62,34 +64,30 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+            .thumbnail {
+                position: relative;
+            }
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            .caption {
+                position: absolute;
+                top: 45%;
+                left: 0;
+                width: 100%;
+                font-size: 250%;
+                color: #FFFFFF;
+            }
+            .caption-text {
+                color: #FFFFFF;
+            }
+</style>
+@stop
+@section('content')
+    <div class="row" id="box-search">
+        <div class="thumbnail text-center">
+            <img src="http://www.concierto.cl/wp-content/uploads/2017/01/gabe-the-dog.jpg" alt="" class="img-responsive">
+            <div class="caption">
+                <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
