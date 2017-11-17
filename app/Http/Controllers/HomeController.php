@@ -28,6 +28,11 @@ class HomeController extends Controller
         return view('home', compact('usuarios'));
     }
 
+    public function home() {
+        $catastrofes = \App\Catastrofe::orderBy('fecha', 'desc')->get();
+        return view('welcome', compact('catastrofes'));
+    }
+
     public function perfil_user()
     {
         $id = Auth::id();

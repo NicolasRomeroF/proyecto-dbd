@@ -14,80 +14,56 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-  html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .thumbnail {
-                position: relative;
-            }
-
-            .caption {
-                position: absolute;
-                top: 45%;
-                left: 0;
-                width: 100%;
-                font-size: 250%;
-                color: #FFFFFF;
-            }
-            .caption-text {
-                color: #FFFFFF;
-            }
 </style>
 @stop
 @section('content')
-    <div class="row" id="box-search">
-        <div class="thumbnail text-center">
-            <img src="http://www.concierto.cl/wp-content/uploads/2017/01/gabe-the-dog.jpg" alt="" class="img-responsive">
-            <div class="caption">
-                <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
+    <div class="wrapper home">
+    <header class="col-sm-12 col-md-12 col-lg-2">
+        <div class="sidebar-nav row">
+          <div class="brand-centered">
+              <a class="sidebar-brand" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Logo_Gobierno_de_Chile_2010-2014.svg/1200px-Logo_Gobierno_de_Chile_2010-2014.svg.png');">
+              </a>
+          </div>
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <span class="visible-xs navbar-brand">Sidebar menu</span>
             </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active current"><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/qgj99">Home</a></li>
+                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/1KXgV">Sobre nosotros</a></li>
+                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/rvOz6">Contacto</a></li>
+                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/mvlmN">Login</a></li>
+                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/mvlmN">Regístrate!</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
+    </header>
+    <section class="col-md-12 col-lg-10 grids">
+        <div class="row">
+            @foreach ($catastrofes as $catastrofe)
+            <div class="grid-item item1">
+                <div class="content">
+                    <div class="bg" style="background-image: url('https://scontent-scl1-1.xx.fbcdn.net/v/t34.0-12/23635400_1497082363741403_1974709921_n.png?oh=fc74592e06614292418ba55453aeca36&oe=5A0F8F07');"></div>
+                    <div class="caption">
+                        <div class="text">
+                            <h3>{{$catastrofe->nombre}}</h3>
+                            <p>{{$catastrofe->descripcion}} </p>
+                            <span class="calltoaction"><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/7NMOl">Ver</a></span>                        
+                        </div>                
+                    </div>                
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </section>
+    <footer></footer>
     </div>
 @endsection
