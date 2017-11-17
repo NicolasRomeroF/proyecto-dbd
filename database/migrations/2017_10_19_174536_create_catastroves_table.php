@@ -18,7 +18,7 @@ class CreateCatastrovesTable extends Migration
             $table->string('nombre');
             $table->integer('id_user');
             $table->string('tipo');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->date('fecha');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');

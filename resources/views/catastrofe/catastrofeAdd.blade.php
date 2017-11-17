@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
-                            <textarea name="descripcion" class="form-control" placeholder="Descripcion de la catastrofe" required></textarea>
+                            <textarea name="descripcion" class="form-control" placeholder="Descripcion de la catastrofe"></textarea>
                         </div>
                         <div class="form-group"> 
                             <center><button class="btn btn-primary" >Declarar</button>  </center>

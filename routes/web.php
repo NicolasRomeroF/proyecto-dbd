@@ -15,7 +15,7 @@
 Post: 
 */
 
-Route::get('/', 'HomeController@home');
+Route::get('/', 'WelcomeController@home');
 
 Auth::routes();
 
@@ -71,3 +71,5 @@ Route::post('/test/save', ['as' => 'save-date',
                             function () {
                                 return '';
                             }]);
+
+Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion');

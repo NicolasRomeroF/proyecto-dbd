@@ -37,10 +37,9 @@
             <div class="navbar-collapse collapse sidebar-navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="active current"><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/qgj99">Home</a></li>
-                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/1KXgV">Sobre nosotros</a></li>
-                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/rvOz6">Contacto</a></li>
-                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/mvlmN">Login</a></li>
-                <li><a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/mvlmN">Regístrate!</a></li>
+                <li><a href="/informacion">Conócenos!</a></li>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Regístrate!</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
