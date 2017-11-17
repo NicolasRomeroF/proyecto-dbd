@@ -1,22 +1,22 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovidosXCHile</title>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('styles')
-  @parent
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <style>
-          <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>MovidosXChile</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-</style>
-@stop
-@section('content')
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+</head>
+<body>
     <div class="wrapper home">
     <header class="col-sm-12 col-md-12 col-lg-2">
         <div class="sidebar-nav row">
@@ -65,4 +65,6 @@
     </section>
     <footer></footer>
     </div>
-@endsection
+</body>
+</html>
+
