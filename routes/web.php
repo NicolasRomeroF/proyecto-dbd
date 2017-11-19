@@ -51,6 +51,8 @@ Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastro
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofw');
 
 Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
+Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
 
 Route::post('update_usuario', 'HomeController@update_usuario');
 
