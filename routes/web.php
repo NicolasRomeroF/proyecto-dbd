@@ -49,8 +49,10 @@ Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
 
 Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
+Route::get('/catastrofes/get/{$id}','CatastrofesController@get')->name('getCatastrofe');
 
 Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+
 Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
 Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');

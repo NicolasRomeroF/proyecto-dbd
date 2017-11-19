@@ -16,6 +16,7 @@ class CreateMedidasTable extends Migration
         Schema::create('medidas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user');
+            $table->integer('id_catastrofe');
             $table->string('nombre');
             $table->string('descripcion');
             $table->integer('id_comuna');
@@ -24,6 +25,7 @@ class CreateMedidasTable extends Migration
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_comuna')->references('id')->on('comunas');
+            $table->foreign('id_catastrofe')->references('id')->on('catastroves');
         });
     }
 

@@ -7,6 +7,7 @@
   <script>
   $(function() {
     $( "#datepicker" ).datepicker();
+    $( "#datepicker2" ).datepicker();
   });
   </script>
    <script type="text/javascript">

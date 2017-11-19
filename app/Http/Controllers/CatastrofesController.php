@@ -29,4 +29,9 @@ class CatastrofesController extends Controller
         $catastrofes = Catastrofe::orderBy('fecha','desc')->get();
         return view('catastrofe/historial',['catastrofes' => $catastrofes]);
     }
+    public function get(Request $request, $id){
+        $catastrofe = DB::select('select * from catastroves where id = ?', $id);
+        $declarador = DB::select('select name from users where id = ?', $catastrofe->id_user);
+        return view('catastrofe/catastrofeDetails', $catastrofe, $declarador);
+    }
 }

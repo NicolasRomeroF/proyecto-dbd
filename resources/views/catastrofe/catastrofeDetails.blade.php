@@ -8,23 +8,21 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Nombre de catastrofe</th>
+      <th scope="col">Declarada por</th>
       <th scope="col">Fecha</th>
       <th scope="col">Tipo</th>
       <th scope="col">Link</th>
     </tr>
   </thead>
   <tbody>
-  	@foreach($catastrofes as $catastrofe)
     <tr>
-      <td>{{ $catastrofe->id }}</td>
       <td>{{ $catastrofe->nombre }}</td>
+      <td>{{ $declarador }}</td>
       <td>{{ $catastrofe->fecha }}</td>
       <td>{{ $catastrofe->tipo }}</td>
-      <td><a href="get/{{$catastrofe->id}}">Ver detalles</a></td>
+      <td><a href="url">Generar medida</a></td>
     </tr>
-    @endforeach  
 </tbody>
 </table>
 </div>

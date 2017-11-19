@@ -94,6 +94,7 @@ $factory->define(App\Medida::class, function (Faker $faker) {
 
     $ids_user = \DB::table('users')->select('id')->get();
     $id_user = $ids_user->random()->id;
+    
 
     return [
         'id_user' => $id_user,
