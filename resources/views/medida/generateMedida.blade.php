@@ -12,6 +12,7 @@
    <script type="text/javascript">
   $(function() {
           $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
+          $( "#datepicker2" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
   });
   </script>
     @stop
@@ -42,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Fecha de Termino</label>
-                            <input name="fechaTermino" id="datepicker" class="form-control" placeholder="Elegir">
+                            <input name="fechaTermino" id="datepicker2" class="form-control" placeholder="Elegir">
                         </div>
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Direccion</label>
