@@ -50,7 +50,7 @@
             @foreach ($catastrofes as $catastrofe)
             <div class="grid-item item1">
                 <div class="content">
-                    <div class="bg" style="background-image: url('https://scontent-scl1-1.xx.fbcdn.net/v/t34.0-12/23635400_1497082363741403_1974709921_n.png?oh=fc74592e06614292418ba55453aeca36&oe=5A0F8F07');"></div>
+                    <div class="bg" style="background-image: url('https://misanimales.com/wp-content/uploads/2016/10/crecen-los-gatos.jpg');"></div>
                     <div class="caption">
                         <div class="text">
                             <h3>{{$catastrofe->nombre}}</h3>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Catastrofe;
 use Illuminate\Support\Facades\DB;
+use Twitter;
 
 class CatastrofesController extends Controller
 {
@@ -22,6 +23,8 @@ class CatastrofesController extends Controller
             'fecha' => date("m-d-Y", strtotime($request->fecha)),
             'descripcion' => $request->descripcion,
         ]);
+
+        Twitter::postTweet(array('status' => $request->nombre . ' ' . $request->fecha, 'format' => 'json'));
         return back()->with('flash','Catastrofe declarada correctamente');
     }
     public function historial()
