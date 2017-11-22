@@ -17,6 +17,8 @@ Post:
 
 Route::get('/', 'WelcomeController@home');
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -38,8 +40,10 @@ Route::post('usuario/', function(Request $request){
 */
 
 
+Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
 
 
+//Route::get('centrosdeacopio/asd', 'CentrosDeAcopioController@asd');
 
 Auth::routes();
 
