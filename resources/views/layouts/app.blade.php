@@ -62,12 +62,6 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="https://ianlunn.co.uk/plugins/jquery-parallax/" >
-	          <i class="fa fa-dot-circle-o"></i>
-	          <span>Historial</span>
-	        </a>
-	      </li>
-	      <li>
         	<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fa fa-dot-circle-o"></i>
             <span>Salir</span>
@@ -92,12 +86,14 @@
 	          <span>Historial</span>
 	        </a>
 	      </li>
+	      @if(Auth::user()->authorizeRoles(['admin','gobierno',]))
 	      <li>
 	        <a href="/catastrofes/add" >
 	          <i class="fa fa-question-circle"></i>
 	          <span>Añadir catastrofe</span>
 	        </a>
 	      </li>
+	      @endif
 	      <li>
 	        <a href="https://ianlunn.co.uk/" >
 	          <i class="fa fa-question-circle"></i>
@@ -125,12 +121,14 @@
 	      <span>Medidas</span>
 	    </a>
 	    <ul>
-	      
+	      @if(Auth::user()->authorizeRoles(['admin','gobierno',]))
 	      <li>
 	        <a href="/medidas/generate" >
 	          <i class="fa fa-plus"></i>
 	          <span>Añadir medidas</span>
 	        </a>
+	        </li>
+	        @endif
 	    </ul>
 	  </li>
 	  
