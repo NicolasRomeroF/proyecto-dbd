@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Fecha de Inicio</label>
-                            <input name="fechaInicio" id="datepicker" class="form-control" placeholder="Elegir">
+                            <input type="date" name="fechaInicio" class="form-control" placeholder="Elegir">
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Fecha de Termino</label>
-                            <input name="fechaTermino" id="datepicker2" class="form-control" placeholder="Elegir">
+                            <input type="date" name="fechaTermino" class="form-control" placeholder="Elegir">
                         </div>
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Direccion</label>

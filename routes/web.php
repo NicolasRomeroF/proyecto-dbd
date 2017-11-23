@@ -83,3 +83,7 @@ Route::post('/test/save', ['as' => 'save-date',
                             }]);
 
 Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion');
+
+Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
+
+Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);

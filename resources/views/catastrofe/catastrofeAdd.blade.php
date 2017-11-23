@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Fecha de la catastrofe</label>
-                            <input name="fecha" id="datepicker" class="form-control" placeholder="Elegir" required>
+                            <input type="date" name="fecha" class="form-control" placeholder="Elegir" required>
                         </div>
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Tipo de catastrofe</label>

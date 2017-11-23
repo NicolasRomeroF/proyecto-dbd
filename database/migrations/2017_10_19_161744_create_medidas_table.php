@@ -16,10 +16,11 @@ class CreateMedidasTable extends Migration
         Schema::create('medidas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user');
-            $table->integer('id_catastrofe');
+            $table->integer('id_catastrofe')->nullable();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('id_comuna');
+            $table->string('direccion');
+            $table->integer('id_comuna')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
             $table->timestamps();
