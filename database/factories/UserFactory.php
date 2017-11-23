@@ -24,7 +24,6 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->firstName,
         'apellido' => $faker->lastName,
-        'rut' => str_random(9),
         'fecha_nacimiento' => $faker->dateTime,
         'activo' => $faker->boolean,
         'email' => $faker->unique()->safeEmail,
@@ -136,8 +135,11 @@ $factory->define(App\Voluntariado::class, function (Faker $faker) {
 $factory->define(App\RNV::class, function (Faker $faker) {
 
     return [
-        'rut' => str_random(9),
+        'nombre' => $faker->firstName,
+        'apellido' => $faker->lastName,
+        'email' => $faker->unique()->safeEmail,
         'disponible' => $faker->boolean,
+        'numero_telefono' => $faker->phoneNumber,
     ];
 });
 
