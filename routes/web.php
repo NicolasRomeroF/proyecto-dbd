@@ -50,6 +50,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
+Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
 
 Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');

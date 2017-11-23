@@ -28,6 +28,14 @@ class HomeController extends Controller
         return view('home', compact('usuarios'));
     }
 
+     public function infoPerfil()
+    {
+          $id = Auth::id();
+        $usuario = \App\User::find($id);
+        
+        return view('infoPerfil', compact('usuario'));
+    }
+
     
 
     public function perfil_user()
