@@ -23,8 +23,8 @@ class CatastrofesController extends Controller
             'fecha' => date("m-d-Y", strtotime($request->fecha)),
             'descripcion' => $request->descripcion,
         ]);
-
-        Twitter::postTweet(array('status' => $request->nombre . ' ' . $request->fecha, 'format' => 'json'));
+        $tweet = '#AlertaCatastrofe' . $request->nombre . ' ' . $request->fecha;
+        Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
         return back()->with('flash','Catastrofe declarada correctamente');
     }
     public function historial()
