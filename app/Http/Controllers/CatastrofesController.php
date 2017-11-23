@@ -11,11 +11,18 @@ class CatastrofesController extends Controller
 {
 	public function index()
     {
+
     	return view('catastrofe/catastrofeAdd');
     }
 
     public function store(Request $request)
     {
+        $bool = $request->user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
+
     	Catastrofe::create([
     		'tipo' => $request->tipo,
             'id_user'=> auth()->id(),
@@ -25,6 +32,7 @@ class CatastrofesController extends Controller
         ]);
         $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
         Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
+        
         return back()->with('flash','Catastrofe declarada correctamente');
     }
     public function historial()
