@@ -29,20 +29,26 @@
 
 </head>
 <body>
-      
+<div class="drawer">
+      <img src="{{ asset('images/logo.jpg') }}">
+      </div>
 	    <ul class="drawer">
 	    <a href="/">
 	      <img src="{{ asset('images/logo.jpg') }}">
 	    </a>
 	    @guest
+	    <li>
 	    <a href="/auth/login">
 	      <i class="fa fa-user"></i>
 	      <span>Ingresar</span>
 	    </a>
+	    </li>
+	    <li>
 	    <a href="/auth/register">
 	      <i class="fa fa-user-plus"></i>
 	      <span>Registrarse</span>
 	    </a>
+	    </li>
 	    
 	    @else
 	  <li>
