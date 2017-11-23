@@ -18,6 +18,11 @@
     @section('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+
+
     
     @show
 
@@ -25,67 +30,103 @@
 </head>
 <body>
       
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+	    <ul class="drawer">
+	  <li>
+	   
+	    <a href="#">
+	      <i class="fa fa-folder"></i>
+	      <span>Perfil</span>
+	    </a>
+	    <ul>
+	      <li>
+	        <a href="https://ianlunn.github.io/Hover/" >
+	          <i class="fa fa-flash"></i>
+	          <span>Detalles</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="/perfil">
+	          <i class="fa fa-ellipsis-h"></i>
+	          <span>Configurar Perfil</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="https://ianlunn.co.uk/plugins/jquery-parallax/" >
+	          <i class="fa fa-dot-circle-o"></i>
+	          <span>Historial</span>
+	        </a>
+	      </li>
+	    </ul>
+	  </li>
+	  <li>
+	     <a href="#">
+	      <i class="fa fa-folder-open"></i>
+	    <span>Catástrofes</span>
+	    </a>
+	    <ul>
+	         <li>
+	        <a href="/catastrofes/historial" >
+	          <i class="fa fa-info-circle"></i>
+	          <span>Historial</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="/catastrofes/add" >
+	          <i class="fa fa-question-circle"></i>
+	          <span>Añadir catastrofe</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="https://ianlunn.co.uk/" >
+	          <i class="fa fa-question-circle"></i>
+	          <span>Centros de Acopio</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="https://ianlunn.co.uk/about/" >
+	          <i class="fa fa-question-circle"></i>
+	          <span>Eventos a Beneficio</span>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="https://ianlunn.co.uk/contact/" >
+	          <i class="fa fa-question-circle"></i>
+	          <span>Donaciones</span>
+	        </a>
+	      </li>
+	    </ul>
+	  </li>
+	  <li>
+	  	
+	    <a href="#">
+	      <i class="fa fa-thumbs-up"></i>
+	      <span>Medidas</span>
+	    </a>
+	    <ul>
+	      
+	      <li>
+	        <a href="/medidas/generate" >
+	          <i class="fa fa-plus"></i>
+	          <span>Añadir medidas</span>
+	        </a>
+	    </ul>
+	  </li>
+	  <li>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-</a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li><a href="/catastrofes/historial">Catastrofes</a></li>
-                            <li><a href="/catastrofes/add">Declarar catastrofe</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/perfil">Perfil</a></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+	    <a href="#">
+	      <i class="fa fa-share-alt"></i>
+	      <span>Social</span>
+	    </a>
+	    <ul>
+	      
+	      <li>
+	        <a href="https://twitter.com/IanLunn/" >
+	          <i class="fa fa-twitter"></i>
+	          <span>Twitter</span>
+	        </a>
+	    </ul>
+	  </li>
+	</ul>
         @if (session()->has('flash'))
             <div class="container">
                 <div class="alert alert-success">{{ session('flash') }}</div>
@@ -103,3 +144,7 @@
     @show
 </body>
 </html>
+
+
+
+
