@@ -29,12 +29,10 @@
 
 </head>
 <body>
-<div class="drawer">
-      <img src="{{ asset('images/logo.jpg') }}">
-      </div>
-	    <ul class="drawer">
+
+	    <ul class="drawer" >
 	    <a href="/">
-	      <img src="{{ asset('images/logo.jpg') }}">
+	      <img src="{{ asset('images/logo.jpg') }}" width="100%">
 	    </a>
 	    @guest
 	    <li>
