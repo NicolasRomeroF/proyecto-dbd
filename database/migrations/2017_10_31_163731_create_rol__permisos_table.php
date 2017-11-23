@@ -15,10 +15,10 @@ class CreateRolPermisosTable extends Migration
     {
         Schema::create('rol__permisos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_rol');
+            $table->integer('id_role');
             $table->integer('id_permiso');
             $table->timestamps();
-            $table->foreign('id_rol')->references('id')->on('rols');
+            $table->foreign('id_role')->references('id')->on('roles');
             $table->foreign('id_permiso')->references('id')->on('permisos');
         });
     }

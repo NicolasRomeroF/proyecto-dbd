@@ -18,8 +18,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     $ids_organizacion = \DB::table('organizacions')->select('id')->get();
     $id_organizacion = $ids_organizacion->random()->id;
-    $ids_rol = \DB::table('rols')->select('id')->get();
-    $id_rol = $ids_rol->random()->id;
+    $ids_role = \DB::table('roles')->select('id')->get();
+    $id_role = $ids_role->random()->id;
 
     return [
         'name' => $faker->firstName,
@@ -29,7 +29,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'id_organizacion' => $id_organizacion,
-        'id_rol' => $id_rol,
+        'id_role' => $id_role,
         'remember_token' => str_random(10),
     ];
 });
@@ -290,13 +290,13 @@ $factory->define(App\Usuario_Fondo::class, function (Faker $faker) {
 });
 
 $factory->define(App\Rol_Permiso::class, function (Faker $faker) {
-    $ids_rol = \DB::table('rols')->select('id')->get();
-    $id_rol = $ids_rol->random()->id;
+    $ids_role = \DB::table('roles')->select('id')->get();
+    $id_role = $ids_role->random()->id;
 
     $ids_permiso = \DB::table('permisos')->select('id')->get();
     $id_permiso = $ids_permiso->random()->id;
     return [
-        'id_rol' => $id_rol,
+        'id_role' => $id_role,
         'id_permiso' => $id_permiso,
     ];
 });

@@ -45,6 +45,8 @@ Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
 
 //Route::get('centrosdeacopio/asd', 'CentrosDeAcopioController@asd');
 
+Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
