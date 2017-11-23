@@ -15,7 +15,10 @@ class CreateRNVsTable extends Migration
     {
         Schema::create('r_n_v_s', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('rut');
+            $table->string('email')->unique();
+            $table->string('numero_telefono')->nullable();
+            $table->string('nombre');
+            $table->string('apellido');
             $table->boolean('disponible');
             $table->timestamps();
         });
@@ -28,6 +31,6 @@ class CreateRNVsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('r_n_vs');
+        Schema::dropIfExists('r_n_v_s');
     }
 }
