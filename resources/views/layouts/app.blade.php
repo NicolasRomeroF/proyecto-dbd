@@ -31,6 +31,17 @@
 <body>
       
 	    <ul class="drawer">
+	    @guest
+	    <a href="/auth/login">
+	      <i class="fa fa-user"></i>
+	      <span>Ingresar</span>
+	    </a>
+	    <a href="/auth/register">
+	      <i class="fa fa-user-plus"></i>
+	      <span>Registrarse</span>
+	    </a>
+	    
+	    @else
 	  <li>
 	   
 	    <a href="#">
@@ -56,6 +67,17 @@
 	          <span>Historial</span>
 	        </a>
 	      </li>
+	      <li>
+        	<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa fa-dot-circle-o"></i>
+            <span>Salir</span>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+            </form>
+            </a>
+          </li>
+            
+
 	    </ul>
 	  </li>
 	  <li>
@@ -111,6 +133,8 @@
 	        </a>
 	    </ul>
 	  </li>
+	  
+	  @endguest
 	  <li>
 
 	    <a href="#">
@@ -126,6 +150,12 @@
 	        </a>
 	    </ul>
 	  </li>
+	  <li>
+	  <a href="/informacion">
+	      <i class="fa fa-info"></i>
+	      <span>Conocenos</span>
+	    </a>
+	    </li>
 	</ul>
         @if (session()->has('flash'))
             <div class="container">
