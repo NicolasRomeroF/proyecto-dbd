@@ -31,6 +31,9 @@
 <body>
       
 	    <ul class="drawer">
+	    <a href="/">
+	      <img src="{{ asset('images/logo.jpg') }}">
+	    </a>
 	    @guest
 	    <a href="/auth/login">
 	      <i class="fa fa-user"></i>
