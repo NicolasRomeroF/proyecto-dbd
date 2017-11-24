@@ -56,7 +56,8 @@ Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
 
 Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
-Route::get('/catastrofes/get/{$id}','CatastrofesController@get')->name('getCatastrofe');
+
+
 
 Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
 
@@ -89,3 +90,6 @@ Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion')
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
+
+
+Route::get('/catastrofes/{id}', 'CatastrofesController@show');

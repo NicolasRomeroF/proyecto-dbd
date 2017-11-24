@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Catastrofe;
 use Illuminate\Support\Facades\DB;
 use Twitter;
+use App\User;
 
 class CatastrofesController extends Controller
 {
@@ -32,7 +33,7 @@ class CatastrofesController extends Controller
         ]);
         $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
         Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
-        
+
         return back()->with('flash','Catastrofe declarada correctamente');
     }
     public function historial()
@@ -40,9 +41,12 @@ class CatastrofesController extends Controller
         $catastrofes = Catastrofe::orderBy('fecha','desc')->get();
         return view('catastrofe/historial',['catastrofes' => $catastrofes]);
     }
-    public function get(Request $request, $id){
-        $catastrofe = DB::select('select * from catastroves where id = ?', $id);
-        $declarador = DB::select('select name from users where id = ?', $catastrofe->id_user);
-        return view('catastrofe/catastrofeDetails', $catastrofe, $declarador);
+    public function show($id)
+    {
+        $catastrofe = Catastrofe::find($id);
+        $declarador = User::find($catastrofe->id_user)->name;
+
+        return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador' ));
+
     }
 }
