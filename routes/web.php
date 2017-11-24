@@ -41,6 +41,7 @@ Route::post('usuario/', function(Request $request){
 
 
 Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
+Route::resource('centrosdeacopio.articulos', 'ArticulosController');
 
 
 //Route::get('centrosdeacopio/asd', 'CentrosDeAcopioController@asd');

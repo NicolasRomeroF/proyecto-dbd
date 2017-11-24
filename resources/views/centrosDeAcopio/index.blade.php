@@ -11,7 +11,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nombre del centro de acopio</th>
                             <th scope="col">Situación</th>
-                            <th scope="col">Link</th>
+                            <th scope="col">Registro de artículos</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -20,7 +20,7 @@
                                 <td>{{ $centroDeAcopio->id }}</td>
                                 <td>{{ $centroDeAcopio->nombre }}</td>
                                 <td>{{ $centroDeAcopio->situacion }}</td>
-                                <td><a href="get/{{$centroDeAcopio->id}}">Ver detalles</a></td>
+                                <td><a href="centrosdeacopio/{{$centroDeAcopio->id}}/articulos">Ver detalles</a></td>
                             </tr>
                         @endforeach
                         </tbody>
