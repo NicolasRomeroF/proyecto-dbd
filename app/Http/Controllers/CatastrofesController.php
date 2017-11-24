@@ -22,28 +22,23 @@ class CatastrofesController extends Controller
 
     public function store(Request $request)
     {
-        if (\Auth::check()) {
-            $bool = $request->user()->authorizeRoles(['admin',]);
-            if(!$bool)
-            {
-                return view('bloqueado');
-            }
+        $bool = $request->user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
 
-        	Catastrofe::create([
-        		'tipo' => $request->tipo,
-                'id_user'=> auth()->id(),
-                'nombre'=> $request->nombre,
-                'fecha' => date("m-d-Y", strtotime($request->fecha)),
-                'descripcion' => $request->descripcion,
-            ]);
-            $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
-            Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
-            
-            return back()->with('flash','Catastrofe declarada correctamente');
-        }
-        else {
-            return view('auth/login');
-        }
+    	Catastrofe::create([
+    		'tipo' => $request->tipo,
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'fecha' => date("m-d-Y", strtotime($request->fecha)),
+            'descripcion' => $request->descripcion,
+        ]);
+        $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
+        Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
+        
+        return back()->with('flash','Catastrofe declarada correctamente');
     }
     public function historial()
     {

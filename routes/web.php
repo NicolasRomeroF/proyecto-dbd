@@ -46,27 +46,33 @@ Route::resource('centrosdeacopio.articulos', 'ArticulosController');
 
 //Route::get('centrosdeacopio/asd', 'CentrosDeAcopioController@asd');
 
-Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
-Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
-
-Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
 
+Route::group(['middleware'=>['auth']], function(){
+	// Administración
 
+	Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
 
-Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+	// Perfil
 
-Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
-Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
+	Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
+	Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
+	Route::post('update_usuario', 'HomeController@update_usuario');
+
+	// Catastrofes
+
+	Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
+	Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+
+	// Medidas
+
+	Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
+	Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
+});
+
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');
-
-Route::post('update_usuario', 'HomeController@update_usuario');
 
 Route::get('/auth/login', function(){
 	return view('/auth/login');
