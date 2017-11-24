@@ -173,7 +173,7 @@
 							</div>
 							@endif
 					</div>
-				<div class="col-sm-9 col-sm-offset-0">
+				<div class="col-sm-11 col-sm-offset-1" >
 					@yield('content')
 				</div>
 			</div>

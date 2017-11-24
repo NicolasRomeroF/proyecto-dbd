@@ -8,7 +8,6 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Nombre de catastrofe</th>
       <th scope="col">Fecha</th>
       <th scope="col">Tipo</th>
@@ -18,11 +17,10 @@
   <tbody>
   	@foreach($catastrofes as $catastrofe)
     <tr>
-      <td>{{ $catastrofe->id }}</td>
       <td>{{ $catastrofe->nombre }}</td>
       <td>{{ $catastrofe->fecha }}</td>
       <td>{{ $catastrofe->tipo }}</td>
-      <td><a href="get/{{$catastrofe->id}}">Ver detalles</a></td>
+      <td><a href="/catastrofes/{{$catastrofe->id}}">Ver detalles</a></td>
     </tr>
     @endforeach  
 </tbody>
