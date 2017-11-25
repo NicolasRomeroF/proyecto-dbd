@@ -15,6 +15,8 @@ class CreateFondosTable extends Migration
     {
         Schema::create('fondos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_user');
+            $table->integer('id_catastrofe')->nullable();
             $table->string('nombre');
             $table->string('descripcion');
             $table->date('fecha_inicio');
@@ -23,6 +25,8 @@ class CreateFondosTable extends Migration
             $table->string('banco');
             $table->string('cuenta');
             $table->timestamps();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_catastrofe')->references('id')->on('catastroves');
         });
     }
 
