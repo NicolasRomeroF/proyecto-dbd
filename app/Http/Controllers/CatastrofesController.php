@@ -22,7 +22,7 @@ class CatastrofesController extends Controller
 
     public function store(Request $request)
     {
-        $bool = $request->user()->authorizeRoles(['admin',]);
+        $bool = $request->user()->authorizeRoles(['admin','gobierno',]);
         if(!$bool)
         {
             return view('bloqueado');

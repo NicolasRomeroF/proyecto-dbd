@@ -3,14 +3,14 @@
 @section('styles')
   @parent
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">-->
 @stop
 
 @section('content')
     <div class="wrapper home">
-    <div class="col-sm-12 col-xs-offset-1">
+    <div class="col-md-12 col-xs-offset-1">
     <section class="col-sm-12 col-lg-10 grids">
         <div class="row">
             @foreach ($catastrofes as $catastrofe)

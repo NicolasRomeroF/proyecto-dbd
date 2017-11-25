@@ -100,3 +100,13 @@ Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 
 
 Route::get('/catastrofes/{id}', 'CatastrofesController@show');
+
+Route::get('/test/map', function(){
+	return view('test/mapa');
+});
+
+Route::get('/test/map2', function(){
+	return view('test/mapa2');
+});
+
+
