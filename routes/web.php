@@ -74,6 +74,10 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('/catastrofes/medidas/{id}', 'MedidasController@verMedidasCatastrofe');
 	Route::get('/catastrofes/medidas/generatecentro/{id}', 'MedidasController@createCentro')->name('medida.createCentro');
 	Route::post('/catastrofes/medidas/generatecentro/post/', 'MedidasController@storeCentro')->name('medida.storeCentro');
+	Route::get('/catastrofes/medidas/generatebeneficio/{id}', 'MedidasController@createBeneficio')->name('medida.createBeneficio');
+	Route::post('/catastrofes/medidas/generatebeneficio/post/', 'MedidasController@storeBeneficio')->name('medida.storeBeneficio');
+	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'MedidasController@createDonacion')->name('medida.createDonacion');
+	Route::post('/catastrofes/medidas/generatedonacion/post/', 'MedidasController@storeDonacion')->name('medida.storeDonacion');
 	//Centros
 	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');
 });

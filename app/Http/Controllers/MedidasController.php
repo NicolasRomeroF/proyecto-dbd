@@ -43,6 +43,44 @@ class MedidasController extends Controller
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararCentro',compact('catastrofe'));
     }
+    public function storeBeneficio(Request $request){
+        $medida = new Medida();
+        $medida->id_user = auth()->id();
+        $medida->id_catastrofe=$request->catastrofe;
+        $medida->nombre = $request->nombre;
+        $medida->direccion = $request->direccion;
+        $medida->descripcion = $request->descripcion;
+        $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
+        $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
+        $medida->situacion='Disponible';
+        $medida->tipo='beneficio';
+        $medida->save();
+        return back()->with('flash','Medida generada correctamente');
+    }
+    public function createBeneficio($id)
+    {
+        $catastrofe=Catastrofe::find($id);
+        return view('medida/declararBeneficio',compact('catastrofe'));
+    }
+    public function storeDonacion(Request $request){
+        $medida = new Medida();
+        $medida->id_user = auth()->id();
+        $medida->id_catastrofe=$request->catastrofe;
+        $medida->nombre = $request->nombre;
+        $medida->direccion = $request->direccion;
+        $medida->descripcion = $request->descripcion;
+        $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
+        $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
+        $medida->situacion='Disponible';
+        $medida->tipo='donacion';
+        $medida->save();
+        return back()->with('flash','Medida generada correctamente');
+    }
+    public function createDonacion($id)
+    {
+        $catastrofe=Catastrofe::find($id);
+        return view('medida/declararDonacion',compact('catastrofe'));
+    }
 
     public function historial()
     {
