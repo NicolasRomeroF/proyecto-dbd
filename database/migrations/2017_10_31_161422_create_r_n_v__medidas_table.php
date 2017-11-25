@@ -18,7 +18,7 @@ class CreateRNVMedidasTable extends Migration
             $table->integer('id_voluntario');
             $table->integer('id_medida');
             $table->timestamps();
-            $table->foreign('id_voluntario')->references('id')->on('voluntariados');
+            $table->foreign('id_voluntario')->references('id')->on('r_n_v_s');
             $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }

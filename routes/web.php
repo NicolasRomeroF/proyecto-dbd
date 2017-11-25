@@ -71,9 +71,13 @@ Route::group(['middleware'=>['auth']], function(){
 
 	Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
 	Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
+	Route::get('/catastrofes/medidas/{id}', 'MedidasController@verMedidas');
+	//Centros
+	Route::get('/medidas/centrodeacopio/generate', 'MedidasController@createCentro')->name('createCentro');
+	Route::post('/medidas/centrodeacopio/generate/post', 'MedidasController@storeCentro')->name('medida.storeCentro');
+	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');
 });
-Route::get('/medidas/centrodeacopio/generate', 'MedidasController@createCentro')->name('createCentro');
-Route::post('/medidas/centrodeacopio/generate/post', 'MedidasController@storeCentro')->name('medida.storeCentro');
+
 
 
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');

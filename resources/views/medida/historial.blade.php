@@ -19,9 +19,9 @@
   	@foreach($medidas as $medida)
     <tr>
       <td>{{ $medida->nombre }}</td>
-      <td>{{ $catastrofe->fecha_inicio }}</td>
-      <td>{{ $catastrofe->fecha_termino }}</td>
-      <td>{{ $catastrofe->tipo }}</td>
+      <td>{{ $medida->fecha_inicio }}</td>
+      <td>{{ $medida->fecha_termino }}</td>
+      <td>{{ $medida->tipo }}</td>
       <td><a href="url">Ver detalles</a></td>
     </tr>
     @endforeach  

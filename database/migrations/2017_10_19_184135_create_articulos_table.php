@@ -19,9 +19,9 @@ class CreateArticulosTable extends Migration
             $table->string('tipo');
             $table->integer('cantidad');
             $table->string('descripcion');
-            $table->integer('id_centro');
+            $table->integer('id_medida');
             $table->timestamps();
-            $table->foreign('id_centro')->references('id')->on('centro_acopios');
+            $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }
 

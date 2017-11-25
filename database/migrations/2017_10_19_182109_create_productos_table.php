@@ -19,9 +19,9 @@ class CreateProductosTable extends Migration
             $table->integer('stock');
             $table->integer('precio');
             $table->string('descripcion');
-            $table->integer('id_evento');
+            $table->integer('id_medida');
             $table->timestamps();
-            $table->foreign('id_evento')->references('id')->on('evento_beneficios');
+            $table->foreign('id_medida')->references('id')->on('medidas');
         });
     }
 

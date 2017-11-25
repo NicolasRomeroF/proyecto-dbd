@@ -32,16 +32,9 @@ class MedidasController extends Controller
         $medida->descripcion = $request->descripcion;
         $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
+        $medida->situacion='Disponible';
+        $medida->tipo='centro';
         $medida->save();
-  
-        $centro = new Centro_acopio();
-        $centro->situacion='Disponible';
-        $centro->medida()->associate($medida);
-        $centro->save();
-
-
-
-
         return back()->with('flash','Medida generada correctamente');
     }
     public function createCentro()
@@ -53,5 +46,15 @@ class MedidasController extends Controller
     {
         $medidas = Medida::orderBy('fecha_inicio','desc')->get();
         return view('medida/historial',['medidas' => $medidas]);
+    }
+    public function verCentros()
+    {
+        $centros = Medida::where('tipo','centro')->get();
+        return view('medida/verCentros',['centros'=>$centros]);
+    }
+    public function verMedidas($id)
+    {
+        $medidas = Medida::find($id);
+        return view('medida/historial',['medidas'=>$medidas]);
     }
 }

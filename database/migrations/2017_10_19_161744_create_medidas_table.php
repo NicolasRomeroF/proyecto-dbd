@@ -23,6 +23,10 @@ class CreateMedidasTable extends Migration
             $table->integer('id_comuna')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
+            $table->integer('cantidad_voluntarios')->nullable();
+            $table->string('labor')->nullable();
+            $table->string('tipo');
+            $table->string('situacion')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_comuna')->references('id')->on('comunas');
