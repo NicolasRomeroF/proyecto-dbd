@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Medida;
 use Illuminate\Support\Facades\DB;
-use App\Centro_acopio;
+use App\Catastrofe;
 
 class MedidasController extends Controller
 {
@@ -27,6 +27,7 @@ class MedidasController extends Controller
     public function storeCentro(Request $request){
         $medida = new Medida();
         $medida->id_user = auth()->id();
+        $medida->id_catastrofe=$request->catastrofe;
         $medida->nombre = $request->nombre;
         $medida->direccion = $request->direccion;
         $medida->descripcion = $request->descripcion;
@@ -37,9 +38,10 @@ class MedidasController extends Controller
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
-    public function createCentro()
+    public function createCentro($id)
     {
-        return view('medida/declararCentro');
+        $catastrofe=Catastrofe::find($id);
+        return view('medida/declararCentro',compact('catastrofe'));
     }
 
     public function historial()
@@ -52,9 +54,9 @@ class MedidasController extends Controller
         $centros = Medida::where('tipo','centro')->get();
         return view('medida/verCentros',['centros'=>$centros]);
     }
-    public function verMedidas($id)
+    public function verMedidasCatastrofe($id)
     {
-        $medidas = Medida::find($id);
-        return view('medida/historial',['medidas'=>$medidas]);
+        $medidas = Medida::where('id_catastrofe',$id)->get();
+        return view('medida/historial',compact('medidas'));
     }
 }

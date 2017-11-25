@@ -50,7 +50,7 @@ class CatastrofesController extends Controller
         $catastrofe = Catastrofe::find($id);
         $declarador = User::find($catastrofe->id_user)->name;
 
-        return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador' ));
+        return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador'));
 
     }
 }

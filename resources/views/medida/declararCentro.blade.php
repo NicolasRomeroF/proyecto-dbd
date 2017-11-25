@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Declarar centro de acopio</div>
+                <div class="panel-heading">Declarar centro de acopio para catastrofe: {{ $catastrofe->nombre }}</div>
                 <form method="POST" action="{{ route('medida.storeCentro') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
@@ -30,6 +30,7 @@
                             <label class="col-md-4 control-label">Descripcion</label>
                             <textarea name="descripcion" class="form-control" placeholder="Descripcion de la medida"></textarea>
                         </div>
+                        <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
                         <div class="form-group"> 
                             <center><button class="btn btn-primary" >Declarar</button>  </center>
                         </div>              

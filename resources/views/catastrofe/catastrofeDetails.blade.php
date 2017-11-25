@@ -16,6 +16,7 @@
               <p class="col-sm-4 control-label">{{ $catastrofe->tipo }}</p><br>
               <label class="col-md-12 control-label">Descripcion:</label>
               <p class="col-md-12 control-label">{{ $catastrofe->descripcion }}</p>
+              <a class="btn btn-primary" href="/catastrofes/medidas/generatecentro/{{ $catastrofe->id }}">Generar centro de acopio</a>
 
               
 
