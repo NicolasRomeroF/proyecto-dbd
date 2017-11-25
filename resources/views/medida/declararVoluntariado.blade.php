@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Declarar evento a beneficio para catastrofe: {{ $catastrofe->nombre }}</div>
-                <form method="POST" action="{{ route('medida.storeBeneficio') }}">
+                <div class="panel-heading">Declarar voluntariado para catastrofe: {{ $catastrofe->nombre }}</div>
+                <form method="POST" action="{{ route('medida.storeVoluntariado') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
                         <div class="form-group"> 
-                            <label class="col-md-4 control-label">Nombre del evento a beneficio</label>
+                            <label class="col-md-4 control-label">Nombre del voluntariado</label>
                             <input name="nombre" class="form-control" placeholder="Nombre">
                         </div>
                         <div class="form-group">
@@ -27,8 +27,8 @@
                             <input name="direccion" class="form-control" placeholder="Ingrese direccion">
                         </div>
                         <div class="form-group"> 
-                            <label class="col-md-4 control-label">Tipo</label>
-                            <input name="tipo" class="form-control" placeholder="Ingrese direccion">
+                            <label class="col-md-4 control-label">Labor</label>
+                            <input name="labor" class="form-control" placeholder="Ingrese direccion">
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Descripcion</label>

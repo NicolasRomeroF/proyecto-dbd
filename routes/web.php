@@ -78,6 +78,8 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::post('/catastrofes/medidas/generatebeneficio/post/', 'MedidasController@storeBeneficio')->name('medida.storeBeneficio');
 	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'MedidasController@createDonacion')->name('medida.createDonacion');
 	Route::post('/catastrofes/medidas/generatedonacion/post/', 'MedidasController@storeDonacion')->name('medida.storeDonacion');
+	Route::get('/catastrofes/medidas/generatvoluntariado/{id}', 'MedidasController@createVoluntariado')->name('medida.createvoluntariado');
+	Route::post('/catastrofes/medidas/generatevoluntariado/post/', 'MedidasController@storeVoluntariado')->name('medida.storeVoluntariado');
 	//Centros
 	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');
 });

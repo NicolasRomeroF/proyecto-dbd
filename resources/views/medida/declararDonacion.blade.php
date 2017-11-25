@@ -6,33 +6,25 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Declarar donacion para catastrofe: {{ $catastrofe->nombre }}</div>
+                <div class="panel-heading">Generar donacion para catastrofe: {{ $catastrofe->nombre }}</div>
                 <form method="POST" action="{{ route('medida.storeDonacion') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
                         <div class="form-group"> 
-                            <label class="col-md-4 control-label">Nombre del vento de donaciones</label>
-                            <input name="nombre" class="form-control" placeholder="Nombre">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Fecha de Inicio</label>
-                            <input type="date" name="fechaInicio" class="form-control" placeholder="Elegir">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Fecha de Termino</label>
-                            <input type="date" name="fechaTermino" class="form-control" placeholder="Elegir">
+                            <label class="col-md-4 control-label">Banco de origen</label>
+                            <input name="banco" class="form-control" placeholder="Ingrese banco">
                         </div>
                         <div class="form-group"> 
-                            <label class="col-md-4 control-label">Direccion</label>
-                            <input name="direccion" class="form-control" placeholder="Ingrese direccion">
+                            <label class="col-md-4 control-label">Cuenta</label>
+                            <input name="cuenta" class="form-control" placeholder="Ingrese cuenta">
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Descripcion</label>
-                            <textarea name="descripcion" class="form-control" placeholder="Descripcion de la medida"></textarea>
+                        <div class="form-group"> 
+                            <label class="col-md-4 control-label">Monto a donar</label>
+                            <input name="monto" class="form-control" placeholder="Ingrese monto">
                         </div>
                         <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
                         <div class="form-group"> 
-                            <center><button class="btn btn-primary" >Declarar</button>  </center>
+                            <center><button class="btn btn-primary" >Donar</button>  </center>
                         </div>              
                     </div>
                 </form>
