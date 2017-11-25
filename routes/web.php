@@ -39,7 +39,7 @@ Route::post('usuario/', function(Request $request){
 }
 */
 
-
+Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
 Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
 Route::resource('centrosdeacopio.articulos', 'ArticulosController');
 

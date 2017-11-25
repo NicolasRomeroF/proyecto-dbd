@@ -28,24 +28,28 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Ingresar información de centro de acopio</div>
-                    <form method="POST" action="{{ route('centrosdeacopio.store') }}" data-toggle="validator">
+                    <div class="panel-heading">Añadir artículo</div>
+                    <form method="POST" action="{{ route('centrosdeacopio.articulos.store', $id_centro) }}" data-toggle="validator">
                         {{ csrf_field() }}
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Nombre del centro de acopio</label>
-                                <input type="text" maxlength="40" name="nombre" class="form-control" placeholder="Nombre"  required>
+                                <label class="col-md-4 control-label">Tipo de articulo</label>
+                                <input type="text" maxlength="40" name="tipo" class="form-control" placeholder="Tipo"  required>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Situación del centro de acopio</label>
-                                <input name="situacion"  class="form-control" placeholder="Situación" required>
+                                <label class="col-md-4 control-label">Nombre del artículo</label>
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Descripcion del centro de acopio</label>
-                                <textarea name="descripcion" class="form-control" placeholder="Descripción"></textarea>
+                                <label class="col-md-4 control-label">Cantidad</label>
+                                <textarea name="cantidad" class="form-control" placeholder="Cantidad"></textarea>
                             </div>
                             <div class="form-group">
-                                <center><button class="btn btn-primary" >Declarar</button>  </center>
+                                <label class="col-md-4 control-label">Descripcion</label>
+                                <textarea name="descripcion" class="form-control" placeholder="Descripcion"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <center><button class="btn btn-primary" >Añadir</button>  </center>
                             </div>
                         </div>
                     </form>
@@ -54,9 +58,6 @@
         </div>
     </div>
 @endsection
-
-
-
 
 
 

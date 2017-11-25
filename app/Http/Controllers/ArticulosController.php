@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Medida;
 use App\Articulo;
 use Illuminate\Http\Request;
 
-use DB;
-class CentrosDeAcopioController extends Controller
+class ArticulosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,21 +14,25 @@ class CentrosDeAcopioController extends Controller
      */
     public function index()
     {
-        $centrosDeAcopio = Medida::orderBy('nombre','desc')->where('tipo', 'centro')->get();
-        return view('centrosDeAcopio.index', ['centrosDeAcopio' => $centrosDeAcopio]);
+
+     //   $articulos = Articulo::orderBy('tipo','desc')->get();;
+       // return view('articulos.index', ['articulos' => $articulos]);
     }
 
+    public function ingresarEnCentro($id_centro)
+    {
 
+        return view ('articulos.create', ['id_centro' => $id_centro]);
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_centro)
     {
 
-        return view ('centrosDeAcopio.create');
-
+        return view ('articulos.create');
     }
 
     /**
@@ -39,11 +41,21 @@ class CentrosDeAcopioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id_centro)
     {
 
+        Articulo::create([
+            'tipo' => $request->tipo,
+            'nombre'=> $request->nombre,
+            'cantidad' => $request->cantidad,
+            'descripcion' => $request->descripcion,
+            'id_medida' => $id_centro
+        ]);
+
+        return back()->with('flash','Artículo añadido correctamente');
 
 
+        //return ("caca $id_centro");
     }
 
     /**
@@ -54,8 +66,7 @@ class CentrosDeAcopioController extends Controller
      */
     public function show($id)
     {
-        $articulos = DB::table('articulos')->where('id_medida', $id)->get();;
-        return view('articulos.index', ['articulos' => $articulos, 'id_medida' => $id ]);
+
     }
 
     /**

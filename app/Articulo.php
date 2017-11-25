@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articulo extends Model
 {
-    protected $fillable = ['tipo','nombre','cantidad', 'descripcion'];
+    protected $fillable = ['tipo','nombre','cantidad', 'descripcion','id_medida'];
 
-    protected $hidden = ['id_centro'];
+
 }

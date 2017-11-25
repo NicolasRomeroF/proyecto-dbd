@@ -105,7 +105,7 @@
 									</li>
 									@endif
 									<li>
-										<a href="https://ianlunn.co.uk/" >
+										<a href="/centrosdeacopio" >
 											<i class="fa fa-question-circle"></i>
 											<span>Centros de Acopio</span>
 										</a>
