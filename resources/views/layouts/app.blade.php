@@ -104,12 +104,7 @@
 										</a>
 									</li>
 									@endif
-									<li>
-										<a href="/centrosdeacopio" >
-											<i class="fa fa-question-circle"></i>
-											<span>Centros de Acopio</span>
-										</a>
-									</li>
+
 									<li>
 										<a href="https://ianlunn.co.uk/about/" >
 											<i class="fa fa-question-circle"></i>
@@ -131,14 +126,13 @@
 									<span>Medidas</span>
 								</a>
 								<ul>
-									@if(Auth::user()->authorizeRoles(['admin','gobierno',]))
 									<li>
-										<a href="/medidas/generate" >
-											<i class="fa fa-plus"></i>
-											<span>Añadir medidas</span>
+										<a href="/centrosdeacopio" >
+											<i class="fa fa-question-circle"></i>
+											<span>Centros de Acopio</span>
 										</a>
 									</li>
-									@endif
+									
 								</ul>
 							</li>
 
