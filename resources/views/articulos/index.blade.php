@@ -19,6 +19,12 @@
                                 <td>{{ $articulo->tipo }}</td>
                                 <td>{{ $articulo->nombre }}</td>
                                 <td>{{ $articulo->cantidad }}</td>
+                                <a href= {{$id_medida}}/articulos/crear >
+                                    <button class="btn" type="button" >Añadir Artículo</button
+                                    ></a>
+
+
+
                             </tr>
                         @endforeach
                         </tbody>

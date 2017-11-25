@@ -26,6 +26,9 @@
 </div>
               <div class="form-group">
               <a class="btn btn-primary" href="/catastrofes/medidas/generatecentro/{{ $catastrofe->id }}">Generar centro de acopio</a>
+              <a class="btn btn-primary" href="/catastrofes/medidas/generatebeneficio/{{ $catastrofe->id }}">Generar evento a beneficio</a>
+              <a class="btn btn-primary" href="/catastrofes/medidas/generatedonacion/{{ $catastrofe->id }}">Generar donación</a>
+              <a class="btn btn-primary" href="/catastrofes/medidas/generatevoluntariado/{{ $catastrofe->id }}">Generar voluntariado</a>
             </div>
               
 

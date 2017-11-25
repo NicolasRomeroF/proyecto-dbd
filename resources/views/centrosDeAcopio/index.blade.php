@@ -20,7 +20,7 @@
                                 <td>{{ $centroDeAcopio->id }}</td>
                                 <td>{{ $centroDeAcopio->nombre }}</td>
                                 <td>{{ $centroDeAcopio->situacion }}</td>
-                                <td><a href="centrosdeacopio/{{$centroDeAcopio->id}}/articulos">Ver detalles</a></td>
+                                <td><a href="centrosdeacopio/{{$centroDeAcopio->id}}">Ver detalles</a></td>
                             </tr>
                         @endforeach
                         </tbody>
