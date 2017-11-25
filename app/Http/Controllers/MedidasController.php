@@ -62,21 +62,6 @@ class MedidasController extends Controller
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararBeneficio',compact('catastrofe'));
     }
-    public function storeDonacion(Request $request){
-        $medida = new Donacion();
-        $medida->id_user = auth()->id();
-        $medida->id_catastrofe=$request->catastrofe;
-        $medida->monto = $request->monto;
-        $medida->cuenta = $request->cuenta;
-        $medida->banco = $request->banco;
-        $medida->save();
-        return back()->with('flash','Donacion generada correctamente');
-    }
-    public function createDonacion($id)
-    {
-        $catastrofe=Catastrofe::find($id);
-        return view('medida/declararDonacion',compact('catastrofe'));
-    }
     public function storeVoluntariado(Request $request){
         $medida = new Medida();
         $medida->id_user = auth()->id();

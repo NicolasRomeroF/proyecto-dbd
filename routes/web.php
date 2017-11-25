@@ -76,12 +76,17 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::post('/catastrofes/medidas/generatecentro/post/', 'MedidasController@storeCentro')->name('medida.storeCentro');
 	Route::get('/catastrofes/medidas/generatebeneficio/{id}', 'MedidasController@createBeneficio')->name('medida.createBeneficio');
 	Route::post('/catastrofes/medidas/generatebeneficio/post/', 'MedidasController@storeBeneficio')->name('medida.storeBeneficio');
-	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'MedidasController@createDonacion')->name('medida.createDonacion');
-	Route::post('/catastrofes/medidas/generatedonacion/post/', 'MedidasController@storeDonacion')->name('medida.storeDonacion');
 	Route::get('/catastrofes/medidas/generatvoluntariado/{id}', 'MedidasController@createVoluntariado')->name('medida.createvoluntariado');
 	Route::post('/catastrofes/medidas/generatevoluntariado/post/', 'MedidasController@storeVoluntariado')->name('medida.storeVoluntariado');
 	//Centros
 	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');
+
+	//Donaciones
+	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('medida.createDonacion');
+	Route::post('/catastrofes/medidas/generatedonacion/post/', 'DonacionesController@storeDonacion')->name('medida.storeDonacion');
+	//Fondo
+	Route::get('/catastrofes/medidas/generatefondo/{id}', 'FondosController@createFondo')->name('medida.createFondo');
+	Route::post('/catastrofes/medidas/generatefondo/post/', 'FondosController@storeFondo')->name('medida.storeFondo');
 });
 
 
