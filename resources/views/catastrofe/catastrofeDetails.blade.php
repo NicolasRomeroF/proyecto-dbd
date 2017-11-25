@@ -14,11 +14,11 @@
 </div>
               <div class="form-group">
               <label class="col-md-12 control-label">Fecha de la catastrofe</label>
-              <p class="col-sm-4 control-label">{{ $catastrofe->fecha }}</p>
+              <p class="col-sm-12 control-label">{{ $catastrofe->fecha }}</p>
 </div>
               <div class="form-group">
               <label class="col-md-12 control-label">Tipo</label>
-              <p class="col-sm-4 control-label">{{ $catastrofe->tipo }}</p><br>
+              <p class="col-sm-12 control-label">{{ $catastrofe->tipo }}</p><br>
 </div>
               <div class="form-group">
               <label class="col-md-12 control-label">Descripcion:</label>
