@@ -167,13 +167,13 @@
 							</ul>
 
 
-							@if (session()->has('flash'))
+					</div>
+				<div class="col-sm-11 col-sm-offset-1" >
+					@if (session()->has('flash'))
 							<div class="container">
 								<div class="alert alert-success">{{ session('flash') }}</div>
 							</div>
 							@endif
-					</div>
-				<div class="col-sm-11 col-sm-offset-1" >
 					@yield('content')
 				</div>
 			</div>
