@@ -65,27 +65,31 @@ Route::group(['middleware'=>['auth']], function(){
 
 	Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 	Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
+	Route::get('/catastrofes/{id}', 'CatastrofesController@show');
 
 	// Medidas
 
 	Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
 	Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
 });
+Route::get('/medidas/centrodeacopio/generate', 'MedidasController@createCentro')->name('createCentro');
+Route::post('/medidas/centrodeacopio/generate/post', 'MedidasController@storeCentro')->name('medida.storeCentro');
+
 
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');
 
+//Auth
 Route::get('/auth/login', function(){
 	return view('/auth/login');
 });
-
 Route::get('/auth/register', function(){
 	return view('/auth/register');
 });
 
+//Test
 Route::get('/test/datepicker', function () {
     return view('datepicker');
 });
-
 Route::post('/test/save', ['as' => 'save-date',
                            'uses' => 'DateController@showDate', 
                             function () {
@@ -94,12 +98,13 @@ Route::post('/test/save', ['as' => 'save-date',
 
 Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion');
 
+//Twitter
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 
 
-Route::get('/catastrofes/{id}', 'CatastrofesController@show');
+
 
 Route::get('/test/map', function(){
 	return view('test/mapa');

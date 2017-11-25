@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Medida;
 use Illuminate\Support\Facades\DB;
+use App\Centro_acopio;
 
 class MedidasController extends Controller
 {
@@ -23,6 +24,31 @@ class MedidasController extends Controller
         ]);
         return back()->with('flash','Medida generada correctamente');
     }
+    public function storeCentro(Request $request){
+        $medida = new Medida();
+        $medida->id_user = auth()->id();
+        $medida->nombre = $request->nombre;
+        $medida->direccion = $request->direccion;
+        $medida->descripcion = $request->descripcion;
+        $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
+        $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
+        $medida->save();
+  
+        $centro = new Centro_acopio();
+        $centro->situacion='Disponible';
+        $centro->medida()->associate($medida);
+        $centro->save();
+
+
+
+
+        return back()->with('flash','Medida generada correctamente');
+    }
+    public function createCentro()
+    {
+        return view('medida/declararCentro');
+    }
+
     public function historial()
     {
         $medidas = Medida::orderBy('fecha_inicio','desc')->get();

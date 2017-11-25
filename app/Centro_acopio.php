@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Centro_acopio extends Model
 {
     protected $fillable = ['nombre','descripcion','situacion'];
+    public function medida()
+    {
+        return $this->belongsTo('App\Medida');
+    }
+
 }

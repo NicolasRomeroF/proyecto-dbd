@@ -15,12 +15,10 @@ class CreateCentroAcopiosTable extends Migration
     {
         Schema::create('centro_acopios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('descripcion');
             $table->string('situacion');
-            $table->integer('id_medida');
+            $table->integer('medida_id')->nullable();
             $table->timestamps();
-            $table->foreign('id_medida')->references('id')->on('medidas');
+            $table->foreign('medida_id')->references('id')->on('medidas');
         });
     }
 
