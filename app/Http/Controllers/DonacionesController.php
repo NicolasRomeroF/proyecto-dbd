@@ -18,7 +18,7 @@ class DonacionesController extends Controller
         $medida->save();
         $fondo = Fondo::find($request->id_fondo);
         $fondo->montoActual=$fondo->montoActual+$request->monto;
-        if($fondo->montoActual==$fondo->monto){
+        if($fondo->montoActual>$fondo->monto){
             $fondo->activo=False;
         }
         $fondo->save();

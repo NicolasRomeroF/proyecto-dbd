@@ -76,7 +76,7 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::post('/catastrofes/medidas/generatecentro/post/', 'MedidasController@storeCentro')->name('medida.storeCentro');
 	Route::get('/catastrofes/medidas/generatebeneficio/{id}', 'MedidasController@createBeneficio')->name('medida.createBeneficio');
 	Route::post('/catastrofes/medidas/generatebeneficio/post/', 'MedidasController@storeBeneficio')->name('medida.storeBeneficio');
-	Route::get('/catastrofes/medidas/generatvoluntariado/{id}', 'MedidasController@createVoluntariado')->name('medida.createvoluntariado');
+	Route::get('/catastrofes/medidas/generatevoluntariado/{id}', 'MedidasController@createVoluntariado')->name('medida.createvoluntariado');
 	Route::post('/catastrofes/medidas/generatevoluntariado/post/', 'MedidasController@storeVoluntariado')->name('medida.storeVoluntariado');
 	//Centros
 	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');

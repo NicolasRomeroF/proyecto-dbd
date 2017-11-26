@@ -77,7 +77,7 @@ class MedidasController extends Controller
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
-    public function createVoluntatiado($id)
+    public function createVoluntariado($id)
     {
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararVoluntariado',compact('catastrofe'));
