@@ -9,9 +9,9 @@
 @stop
 
 @section('content')
-    <div class="wrapper home">
-    <div class="col-md-12 col-xs-offset-1">
-    <section class="col-sm-12 col-lg-10 grids">
+    
+    
+    <section class="col-lg-12 col-lg-10 grids" color="#7E8BA9">
         <div class="row">
             @foreach ($catastrofes as $catastrofe)
             <div class="grid-item item1">
@@ -29,9 +29,8 @@
             @endforeach
         </div>
     </section>
-    <footer></footer>
-    </div>
-    </div>
+
+    
     
 @endsection
 

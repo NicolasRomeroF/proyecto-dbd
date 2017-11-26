@@ -28,13 +28,13 @@
                 <table class="table table-sm">
                   <tbody>
                     <tr>
-                      <th scope="col"><a class="btn btn-primary" href="/catastrofes/medidas/generatecentro/{{ $catastrofe->id }}">Centro de acopio</a></th>
-                      <th scope="col"><a class="btn btn-primary" href="/catastrofes/medidas/generatebeneficio/{{ $catastrofe->id }}">Evento a beneficio</a></th>
-                      <th scope="col"><a class="btn btn-primary" href="/catastrofes/medidas/generatefondo/{{ $catastrofe->id }}">Fondo</a>
+                      <th scope="col"><a class="btn btn-outline-primary btn-sm" href="/catastrofes/medidas/generatecentro/{{ $catastrofe->id }}">Centro de acopio</a></th>
+                      <th scope="col"><a class="btn btn-outline-primary btn-sm" href="/catastrofes/medidas/generatebeneficio/{{ $catastrofe->id }}">Evento a beneficio</a></th>
+                      <th scope="col"><a class="btn btn-outline-primary btn-sm" href="/catastrofes/medidas/generatefondo/{{ $catastrofe->id }}">Fondo</a>
                       </th>
-                      <th scope="col"><a class="btn btn-primary" href="/catastrofes/medidas/generatedonacion/{{ $catastrofe->id }}">Donación</a>
+                      <th scope="col"><a class="btn btn-outline-primary btn-sm" href="/catastrofes/medidas/generatedonacion/{{ $catastrofe->id }}">Donación</a>
                       </th>
-                      <th scope="col"><a class="btn btn-primary" href="/catastrofes/medidas/generatevoluntariado/{{ $catastrofe->id }}">Voluntariado</a>
+                      <th scope="col"><a class="btn btn-outline-primary btn-sm" href="/catastrofes/medidas/generatevoluntariado/{{ $catastrofe->id }}">Voluntariado</a>
                       </th>
 
                     </tr>
