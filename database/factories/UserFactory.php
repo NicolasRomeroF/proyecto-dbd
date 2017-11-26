@@ -50,42 +50,11 @@ $factory->define(App\Rol::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Region::class, function (Faker $faker) {
-
-    return [
-        'nombre' => $faker->state,
-    ];
-});
-
-$factory->define(App\Ciudad::class, function (Faker $faker) {
-    $ids_region = \DB::table('regions')->select('id')->get();
-    $id_region = $ids_region->random()->id;
-
-    return [
-        'nombre' => $faker->state,
-        'id_region' => $id_region,
-    ];
-});
-
 
 $factory->define(App\Permiso::class, function (Faker $faker) {
 
     return [
         'nombre' => $faker->name,
-    ];
-});
-
-$factory->define(App\Comuna::class, function (Faker $faker) {
-    $ids_ciudad = \DB::table('ciudads')->select('id')->get();
-    $id_ciudad = $ids_ciudad->random()->id;
-    $ids_medida = \DB::table('medidas')->select('id')->get();
-    $id_medida = $ids_medida->random()->id;
-
-
-    return [
-        'nombre' => $faker->state,
-        'id_ciudad' => $id_ciudad,
-        'id_medida' => $id_medida,
     ];
 });
 
