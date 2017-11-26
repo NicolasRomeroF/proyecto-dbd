@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Medida;
 use Illuminate\Support\Facades\DB;
 use App\Catastrofe;
+use App\Fondo;
 
 class MedidasController extends Controller
 {
@@ -96,6 +97,7 @@ class MedidasController extends Controller
     public function verMedidasCatastrofe($id)
     {
         $medidas = Medida::where('id_catastrofe',$id)->get();
-        return view('medida/historial',compact('medidas'));
+        $fondos = Fondo::where('id_catastrofe',$id)->get();
+        return view('medida/historial',compact('medidas','fondos'));
     }
 }

@@ -17,10 +17,12 @@ class FondosController extends Controller
         $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->monto = $request->monto;
+        $medida->montoActual=0;
         $medida->cuenta = $request->cuenta;
         $medida->banco = $request->banco;
+        $medida->activo= True;
         $medida->save();
-        return back()->with('flash','Donacion generada correctamente');
+        return back()->with('flash','Fondo generada correctamente');
     }
     public function createFondo($id)
     {

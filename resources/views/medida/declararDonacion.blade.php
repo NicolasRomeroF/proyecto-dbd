@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Generar donacion para catastrofe: {{ $catastrofe->nombre }}</div>
+                <div class="panel-heading">Generar donacion para fondo: {{ $fondo->nombre }}</div>
                 <form method="POST" action="{{ route('medida.storeDonacion') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
@@ -22,7 +22,7 @@
                             <label class="col-md-4 control-label">Monto a donar</label>
                             <input name="monto" class="form-control" placeholder="Ingrese monto">
                         </div>
-                        <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
+                        <input name="id_fondo" type="hidden" value="{{ $fondo->id }}">
                         <div class="form-group"> 
                             <center><button class="btn btn-primary" >Donar</button>  </center>
                         </div>              

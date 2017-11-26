@@ -27,6 +27,30 @@
     @endforeach  
 </tbody>
 </table>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Nombre de fondo</th>
+      <th scope="col">Fecha Inicio</th>
+      <th scope="col">Fecha Termino</th>
+      <th scope="col">Monto actual</th>
+      <th scope="col">Monto final</th>
+      <th scope="col">Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($fondos as $fondo)
+    <tr>
+      <td>{{ $fondo->nombre }}</td>
+      <td>{{ $fondo->fecha_inicio }}</td>
+      <td>{{ $fondo->fecha_termino }}</td>
+      <td>{{ $fondo->montoActual }}</td>
+      <td>{{ $fondo->monto }}</td>
+      <td><a href="/catastrofes/medidas/generatedonacion/{{$fondo->id}}">Donar</a></td>
+    </tr>
+    @endforeach  
+</tbody>
+</table>
 </div>
 </div>
 </div>
