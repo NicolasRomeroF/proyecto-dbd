@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         //$this->call(OrganizacionSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        /*$this->call(RegionSeeder::class);
-        $this->call(CiudadSeeder::class);
-        $this->call(PermisoSeeder::class);
-        $this->call(MedidaSeeder::class);
+        $this->call(RegionSeeder::class);
+        $this->call(ProvinciaSeeder::class);
+        /*$this->call(PermisoSeeder::class);
+        $this->call(MedidaSeeder::class);*/
         $this->call(ComunaSeeder::class);
-        $this->call(CatastrofeSeeder::class);
+        /*$this->call(CatastrofeSeeder::class);
         $this->call(VoluntariadoSeeder::class);
         $this->call(RNVSeeder::class);
         //$this->call(HistorialSeeder::class);
