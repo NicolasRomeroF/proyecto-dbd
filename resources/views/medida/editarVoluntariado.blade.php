@@ -41,17 +41,17 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"> {{ $centro->nombre }}</div>
+                <div class="panel-heading"> Voluntariado</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('medidas.update_centro') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('medidas.update_voluntariado') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="nombre" value="{{ $centro->nombre }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="nombre" value="{{ $voluntariado->nombre }}" required autofocus>
 
                             </div>
                         </div>
@@ -60,21 +60,21 @@
                             <label for="fecha" class="col-md-4 control-label">Fecha de inicio</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="fecha_inicio" value="{{ $centro->fecha_inicio }}" required>
+                                <input id="date" type="date" class="form-control" name="fecha_inicio" value="{{ $voluntariado->fecha_inicio }}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fecha" class="col-md-4 control-label">Fecha de termino</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="fecha_termino" value="{{ $centro->fecha_termino }}" required>
+                                <input id="date" type="date" class="form-control" name="fecha_termino" value="{{ $voluntariado->fecha_termino }}" required>
                             </div>
                         </div>
                          <div class="form-group"> 
                             <label class="col-md-4 control-label">Region</label>
                             <div class="col-md-6">
                             <select id="region" name="region" class="form-control" placeholder="Elegir" required>
-                              <option value=" {{$centro->comuna->provincia->region->id}}">{{$centro->comuna->provincia->region->nombre}}</option>
+                              <option value=" {{$voluntariado->comuna->provincia->region->id}}">{{$voluntariado->comuna->provincia->region->nombre}}</option>
                               @foreach($regiones as $region)
                               <option value=" {{$region->id}}">{{$region->nombre}}</option>
                               @endforeach 
@@ -85,7 +85,7 @@
                             <label class="col-md-4 control-label">Provincia</label>
                             <div class="col-md-6">
                             <select id="provincia" name="provincia" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$centro->comuna->provincia->id}}">{{$centro->comuna->provincia->nombre}}</option>
+                              <option value="{{$voluntariado->comuna->provincia->id}}">{{$voluntariado->comuna->provincia->nombre}}</option>
                               <option value="">Provincia</option>
                           </select>
                           </div>
@@ -95,7 +95,7 @@
                             <label class="col-md-4 control-label">Comuna</label>
                             <div class="col-md-6">
                             <select id="comuna" name="comuna" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$centro->comuna->id}}">{{$centro->comuna->nombre}}</option>
+                              <option value="{{$voluntariado->comuna->id}}">{{$voluntariado->comuna->nombre}}</option>
                               <option value="">Comuna</option>
                           </select>
                           </div>
@@ -104,18 +104,26 @@
                             <label for="name" class="col-md-4 control-label">Direccion</label>
 
                             <div class="col-md-6">
-                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $centro->direccion }}" required>
+                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $voluntariado->direccion }}" required>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Labor</label>
+
+                            <div class="col-md-6">
+                                <input id="labor" type="text" class="form-control" name="labor" value="{{ $voluntariado->labor }}" required>
 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Descripcion</label>
                             <div class="col-md-6">
-                            <textarea name="descripcion" class="form-control" value="{{ $centro->descripcion }}" required>{{ $centro->descripcion }}</textarea>
+                            <textarea name="descripcion" class="form-control" value="{{ $voluntariado->descripcion }}" required>{{ $voluntariado->descripcion }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                        <input name="centro" type="hidden" value="{{ $centro->id }}">
+                        <input name="voluntariado" type="hidden" value="{{ $voluntariado->id }}">
                         </div>
 
                         <div class="form-group">

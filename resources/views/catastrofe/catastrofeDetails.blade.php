@@ -44,8 +44,6 @@
                       <th scope="col"><a class="btn btn-primary btn-sm" href="/catastrofes/medidas/generatebeneficio/{{ $catastrofe->id }}">Evento a beneficio</a></th>
                       <th scope="col"><a class="btn btn-primary btn-sm" href="/catastrofes/medidas/generatefondo/{{ $catastrofe->id }}">Fondo</a>
                       </th>
-                      <th scope="col"><a class="btn btn-primary btn-sm" href="/catastrofes/medidas/generatedonacion/{{ $catastrofe->id }}">Donación</a>
-                      </th>
                       <th scope="col"><a class="btn btn-primary btn-sm" href="/catastrofes/medidas/generatevoluntariado/{{ $catastrofe->id }}">Voluntariado</a>
                       </th>
 

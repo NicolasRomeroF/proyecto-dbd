@@ -17,7 +17,7 @@ class CreateCatastrovesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('id_user');
-            $table->integer('id_comuna');
+            $table->integer('id_comuna')->nullable();
             $table->string('tipo');
             $table->text('descripcion')->nullable();
             $table->date('fecha');

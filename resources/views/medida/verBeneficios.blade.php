@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th scope="col">Nombre</th>
+      <th scope="col">Catastrofe</th>
       <th scope="col">Fecha de inicio</th>
       <th scope="col">Fecha de termino</th>
       <th scope="col">Comuna</th>
@@ -20,6 +21,7 @@
     @foreach($beneficios as $beneficio)
     <tr>
       <td>{{ $beneficio->nombre }}</td>
+      <td>{{ $beneficio->catastrofe->nombre }}</td>
       <td>{{ $beneficio->fecha_inicio }}</td>
       <td>{{ $beneficio->fecha_termino }}</td>
       <td>{{ $beneficio->comuna->nombre }}</td>

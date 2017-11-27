@@ -12,5 +12,17 @@ class Medida extends Model
     {
     	return $this->belongsTo('App\Comuna','id_comuna');
     }
-
+    public function catastrofe()
+    {
+    	return $this->belongsTo('App\Catastrofe','id_catastrofe');
+    }
+	
+    public function getFechaInicio()
+    {
+        return date("m-d-Y", strtotime($this->fecha_inicio));
+    }
+    public function getFechaTermino()
+    {
+        return date("m-d-Y", strtotime($this->fecha_termino));
+    }
 }

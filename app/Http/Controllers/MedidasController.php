@@ -85,6 +85,7 @@ class MedidasController extends Controller
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
         $medida->tipo='voluntariado';
+        $medida->labor=$request->labor;
         $medida->id_comuna = $request->comuna;
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
@@ -153,7 +154,7 @@ class MedidasController extends Controller
     }
 
     public function update_centro(Request $request){
-        $id = $request->beneficio;
+        $id = $request->centro;
         $centro = Medida::find($id);
         $centro->nombre=$request->nombre;
         $centro->fecha_inicio=$request->fecha_inicio;
@@ -169,11 +170,11 @@ class MedidasController extends Controller
     public function show_centro($id)
     {
         $centro = Medida::find($id);
-        $comuna = Comuna::find($beneficio->id_comuna);
-        $provincia = Provincia::find($beneficio->id_provincia);
-        $region = Region::find($beneficio->id_region);
+        $comuna = Comuna::find($centro->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
 
-        return view('medida/centroDetails', compact('centro','declarador','comuna','provincia','region'));
+        return view('medida/centroDetails', compact('centro','comuna','provincia','region'));
 
     }
 
@@ -183,5 +184,40 @@ class MedidasController extends Controller
         $regiones = Region::all();
         //return $catastrofe;
         return view('medida/editarCentro', compact('centro','regiones'));
+    }
+
+    //Voluntariados
+    public function update_voluntariado(Request $request){
+        $id = $request->voluntariado;
+        $voluntariado = Medida::find($id);
+        $voluntariado->nombre=$request->nombre;
+        $voluntariado->fecha_inicio=$request->fecha_inicio;
+        $voluntariado->fecha_termino=$request->fecha_termino;
+        $voluntariado->direccion=$request->direccion;
+        $voluntariado->descripcion=$request->descripcion;
+        $voluntariado->id_comuna = $request->comuna;
+        $voluntariado->labor=$request->labor;
+        
+        $voluntariado->save();
+        return $this->show_voluntariado($id);
+    }
+
+    public function show_voluntariado($id)
+    {
+        $voluntariado = Medida::find($id);
+        $comuna = Comuna::find($voluntariado->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
+
+
+        return view('medida/voluntariadoDetails', compact('voluntariado','comuna','provincia','region'));
+
+    }
+
+    public function edit_voluntariado($id)
+    {
+        $voluntariado = Medida::find($id);
+        $regiones = Region::all();
+        return view('medida/editarVoluntariado', compact('voluntariado','regiones'));
     }
 }

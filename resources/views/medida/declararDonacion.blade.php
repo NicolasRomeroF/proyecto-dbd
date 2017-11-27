@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Generar donacion para fondo: {{ $fondo->nombre }}</div>
-                <form method="POST" action="{{ route('medida.storeDonacion') }}" data-toggle="validator">
+                <form method="POST" action="{{ route('donaciones.storeDonacion') }}" data-toggle="validator">
                     {{ csrf_field() }}
                     <div class="panel-body">
                         <div class="form-group"> 

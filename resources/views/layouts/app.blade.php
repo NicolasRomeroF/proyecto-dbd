@@ -131,6 +131,12 @@
 											<span>Voluntariados</span>
 										</a>
 									</li>
+									<li>
+										<a href="/medidas/fondo/" >
+											<i class="fa fa-list"></i>
+											<span>Fondos</span>
+										</a>
+									</li>
 									
 								</ul>
 							</li>
@@ -186,7 +192,7 @@
 								<ul>
 
 									<li>
-										<a href="https://twitter.com/IanLunn/" >
+										<a href="https://twitter.com/proyecto_dbd/" >
 											<i class="fa fa-twitter"></i>
 											<span>Twitter</span>
 										</a>

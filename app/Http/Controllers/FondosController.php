@@ -29,4 +29,9 @@ class FondosController extends Controller
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararFondo',compact('catastrofe'));
     }
+    public function verFondos()
+    {
+        $fondos = Fondo::all();
+        return view('medida/verFondos',['fondos'=>$fondos]);
+    }
 }
