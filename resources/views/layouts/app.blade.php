@@ -131,6 +131,12 @@
 											<span>Voluntariados</span>
 										</a>
 									</li>
+									<li>
+										<a href="/medidas/fondo/" >
+											<i class="fa fa-list"></i>
+											<span>Fondos</span>
+										</a>
+									</li>
 									
 								</ul>
 							</li>
