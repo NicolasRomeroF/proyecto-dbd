@@ -26,7 +26,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('administracion.crear') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -97,6 +97,17 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group"> 
+                            <label class="col-md-4 control-label">Rol del usuario</label>
+                            <div class="col-md-6">
+                                <select name="roles" class="form-control" placeholder="Elegir" required>
+                                  <option value="gobierno">gobierno</option>
+                                  <option value="organizacion">organizacion</option>
+                                  <option value="natural">natural</option> 
+                                </select>
                             </div>
                         </div>
 
