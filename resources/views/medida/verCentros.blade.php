@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th scope="col">Nombre del centro</th>
+      <th scope="col">Catastrofe</th>
       <th scope="col">Fecha de inicio</th>
       <th scope="col">Fecha de termino</th>
       <th scope="col">Situacion</th>
@@ -20,6 +21,7 @@
   	@foreach($centros as $centro)
     <tr>
       <td>{{ $centro->nombre }}</td>
+      <td>{{ $centro->catastrofe->nombre }}</td>
       <td>{{ $centro->fecha_inicio }}</td>
       <td>{{ $centro->fecha_termino }}</td>
       <td>{{ $centro->situacion }}</td>

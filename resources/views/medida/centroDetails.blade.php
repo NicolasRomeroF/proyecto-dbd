@@ -13,6 +13,10 @@
                   <p class="col-sm-12 control-label">{{ $centro->nombre }}</p>
                 </div>
                 <div class="form-group">
+                  <label class="col-md-12 control-label">Catastrofe</label>
+                  <p class="col-sm-12 control-label">{{ $centro->catastrofe->nombre }}</p>
+                </div>
+                <div class="form-group">
                   <label class="col-md-12 control-label">Fecha de inicio</label>
                   <p class="col-sm-12 control-label">{{ $centro->fecha_inicio }}</p>
                 </div>

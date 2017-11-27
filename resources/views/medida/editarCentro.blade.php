@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                        <input name="beneficio" type="hidden" value="{{ $centro->id }}">
+                        <input name="centro" type="hidden" value="{{ $centro->id }}">
                         </div>
 
                         <div class="form-group">

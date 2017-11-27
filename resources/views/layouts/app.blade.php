@@ -161,7 +161,7 @@
 								<ul>
 
 									<li>
-										<a href="https://twitter.com/IanLunn/" >
+										<a href="https://twitter.com/proyecto_dbd/" >
 											<i class="fa fa-twitter"></i>
 											<span>Twitter</span>
 										</a>

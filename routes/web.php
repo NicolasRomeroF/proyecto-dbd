@@ -1,4 +1,9 @@
 <?php
+
+use Illuminate\Support\Facades\Input;
+use App\Region;
+use App\Provincia;
+use App\Comuna;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +90,12 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/medidas/eventobeneficio/{id}', 'MedidasController@show_evento');
     Route::get('/medidas/eventobeneficio/{id}/edit', 'MedidasController@edit_evento');
     Route::post('/medidas/eventobeneficio/update', 'MedidasController@update_evento')->name('medidas.update_evento');
+
+    //Voluntariado
+    Route::get('/medidas/voluntariado/{id}', 'MedidasController@show_voluntariado');
+    Route::get('/medidas/voluntariado/{id}/edit', 'MedidasController@edit_voluntariado');
+    Route::post('/medidas/voluntariado/update', 'MedidasController@update_voluntariado')->name('medidas.update_voluntariado');
+
     //Donaciones
     Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('medida.createDonacion');
     Route::post('/catastrofes/medidas/generatedonacion/post/', 'DonacionesController@storeDonacion')->name('medida.storeDonacion');
@@ -118,4 +129,16 @@ Route::get('/test/map', function(){
 });
 Route::get('/test/map2', function(){
     return view('test/mapa2');
+});
+
+Route::get('/provincias',function(){
+   $id =  Input::get('id_region');
+   $provincias = Provincia::where('id_region','=',$id)->get();
+   return $provincias->pluck('nombre','id')->all();
+});
+
+Route::get('/comunas',function(){
+   $id =  Input::get('id_provincia');
+   $comunas = Comuna::where('id_provincia','=',$id)->get();
+   return $comunas->pluck('nombre','id')->all();
 });
