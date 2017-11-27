@@ -65,8 +65,9 @@ class CatastrofesController extends Controller
     public function edit($id)
     {
         $catastrofe = Catastrofe::find($id);
+        $regiones = Region::all();
         //return $catastrofe;
-        return view('catastrofe/editarCatastrofe', compact('catastrofe'));
+        return view('catastrofe/editarCatastrofe', compact('catastrofe','regiones'));
     }
 
     public function update(Request $request){
@@ -76,6 +77,7 @@ class CatastrofesController extends Controller
         $catastrofe->fecha=$request->fecha;
         $catastrofe->tipo=$request->tipo;
         $catastrofe->descripcion=$request->descripcion;
+        $catastrofe->id_comuna = $request->comuna;
         
         $catastrofe->save();
         return back()->with('flash','Datos editados correctamente');

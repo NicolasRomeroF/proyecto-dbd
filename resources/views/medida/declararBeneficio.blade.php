@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('scripts')
+@parents
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -26,7 +29,7 @@
     var id_provincia = e.target.value;
     id_provincia=Math.abs(id_provincia);
 
-    $.get("{{url('/regiones')}}",{id_provincia: id_provincia},function(data){
+    $.get("{{url('/comunas')}}",{id_provincia: id_provincia},function(data){
       $('#comuna').empty();
       console.log(data);
       $.each(data, function(key, element) {
@@ -35,6 +38,7 @@
     });
   });   
   </script>
+  @stop
 
 @section('content')
 <div class="container">

@@ -109,7 +109,7 @@ Route::get('/provincias',function(){
 	return $provincias->pluck('nombre','id')->all();
 });
 
-Route::get('/regiones',function(){
+Route::get('/comunas',function(){
 	$id =  Input::get('id_provincia');
 	$comunas = Comuna::where('id_provincia','=',$id)->get();
 	return $comunas->pluck('nombre','id')->all();

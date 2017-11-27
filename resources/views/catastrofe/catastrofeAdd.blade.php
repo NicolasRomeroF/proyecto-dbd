@@ -39,7 +39,7 @@
     var id_provincia = e.target.value;
     id_provincia=Math.abs(id_provincia);
 
-    $.get("{{url('/regiones')}}",{id_provincia: id_provincia},function(data){
+    $.get("{{url('/comunas')}}",{id_provincia: id_provincia},function(data){
       $('#comuna').empty();
       console.log(data);
       $.each(data, function(key, element) {
