@@ -1,5 +1,41 @@
 @extends('layouts.app')
+@section('scripts')
+@parents
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+  $("#region").on('change',function(e){
+    console.log(e);
+    var id_region = e.target.value;
+    id_region=Math.abs(id_region);
 
+    $.get("{{url('/provincias')}}",{id_region: id_region},function(data){
+      $('#provincia').empty();
+      console.log(data);
+      $.each(data, function(key, element) {
+          $('#provincia').append('<option value="' + key + '">' + element + '</option>');
+        });
+    });
+  });   
+  </script>
+  <script>
+  $("#provincia").on('change',function(e){
+    console.log(e);
+    var id_provincia = e.target.value;
+    id_provincia=Math.abs(id_provincia);
+
+    $.get("{{url('/comunas')}}",{id_provincia: id_provincia},function(data){
+      $('#comuna').empty();
+      console.log(data);
+      $.each(data, function(key, element) {
+          $('#comuna').append('<option value="' + key + '">' + element + '</option>');
+        });
+    });
+  });   
+  </script>
+  @stop
 @section('content')
 <div class="container">
     <div class="row">

@@ -22,7 +22,7 @@
       <td>{{ $beneficio->nombre }}</td>
       <td>{{ $beneficio->fecha_inicio }}</td>
       <td>{{ $beneficio->fecha_termino }}</td>
-      <td>{{ $comuna->nombre }}</td>
+      <td>{{ $beneficio->comuna->nombre }}</td>
       <td><a class="btn btn-success" href="/medidas/eventobeneficio/{{$beneficio->id}}">Ver</a>
       <a class="btn btn-primary" href="/medidas/eventobeneficio/{{ $beneficio->id }}/edit">Editar</a>
       <a class="btn btn-danger" href="/medidas/eventobeneficio/{{$beneficio->id}}/delete">Eliminar</a></td>

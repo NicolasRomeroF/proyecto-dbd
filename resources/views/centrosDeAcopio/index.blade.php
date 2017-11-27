@@ -12,6 +12,7 @@
                             <th scope="col">Fecha de inicio</th>
                             <th scope="col">Fecha de termino</th>
                             <th scope="col">Situacion</th>
+                            <th scope="col">Comuna</th>
                             <th scope="col">Accion</th>
                         </tr>
                     </thead>
@@ -22,6 +23,7 @@
                             <td>{{ $centroDeAcopio->fecha_inicio }}</td>
                             <td>{{ $centroDeAcopio->fecha_termino }}</td>
                             <td>{{ $centroDeAcopio->situacion }}</td>
+                            <td>{{ $centroDeAcopio->comuna->nombre }}</td>
 
                             <td>
                             <a class="btn btn-success " href="centrosdeacopio/{{$centroDeAcopio->id}}">Ver</a>

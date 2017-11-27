@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Medida;
 use App\Articulo;
+use App\Comuna;
+use App\Provincia;
+use App\Region;
 use Illuminate\Http\Request;
 
 use DB;
@@ -16,7 +19,7 @@ class CentrosDeAcopioController extends Controller
      */
     public function index()
     {
-        $centrosDeAcopio = Medida::orderBy('nombre','desc')->where('tipo', 'centro')->get();
+        $centrosDeAcopio = Medida::where('tipo','centro')->get();
         return view('centrosDeAcopio.index', ['centrosDeAcopio' => $centrosDeAcopio]);
     }
 
@@ -54,8 +57,13 @@ class CentrosDeAcopioController extends Controller
      */
     public function show($id)
     {
-        $articulos = DB::table('articulos')->where('id_medida', $id)->get();;
-        return view('articulos.index', ['articulos' => $articulos, 'id_medida' => $id ]);
+        $articulos = DB::table('articulos')->where('id_medida', $id)->get();
+        $centro = Medida::find($id);
+        $comuna = Comuna::find($centro->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
+
+        return view('medida.centroDetails', compact('articulos', 'centro','comuna','provincia','region'));
     }
 
     /**

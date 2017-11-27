@@ -36,55 +36,45 @@
   });   
   </script>
   @stop
-
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Catastrofe {{ $catastrofe->nombre }}</div>
+                <div class="panel-heading"> {{ $centro->nombre }}</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('catastrofe.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('medidas.update_centro') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="nombre" value="{{ $catastrofe->nombre }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="nombre" value="{{ $centro->nombre }}" required autofocus>
 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="fecha" class="col-md-4 control-label">Fecha de la catastrofe</label>
+                            <label for="fecha" class="col-md-4 control-label">Fecha de inicio</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="fecha" value="{{ $catastrofe->fecha }}" required>
+                                <input id="date" type="date" class="form-control" name="fecha_inicio" value="{{ $centro->fecha_inicio }}" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tipo" class="col-md-4 control-label">Tipo de catastrofe</label>
+                            <label for="fecha" class="col-md-4 control-label">Fecha de termino</label>
 
                             <div class="col-md-6">
-                                 <select name="tipo" class="form-control" value="{{ $catastrofe->tipo }}" required>
-                                  <option value=" {{$catastrofe->tipo}}">{{$catastrofe->tipo}}</option>
-                              <option value="Aluvion">Aluvion</option>
-                              <option value="Erupción volcanica">Erupcion volcanica</option>
-                              <option value="Incendio">Incendio</option>
-                              <option value="Inundación">Inundación</option>
-                              <option value="Terremoto">Terremoto</option>
-                              <option value="Tsunami">Tsunami</option>   
-                              <option value="Tsunami">Otro</option>     
-                          </select>
+                                <input id="date" type="date" class="form-control" name="fecha_termino" value="{{ $centro->fecha_termino }}" required>
                             </div>
                         </div>
-                        <div class="form-group"> 
+                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Region</label>
                             <div class="col-md-6">
                             <select id="region" name="region" class="form-control" placeholder="Elegir" required>
-                              <option value=" {{$catastrofe->comuna->provincia->region->id}}">{{$catastrofe->comuna->provincia->region->nombre}}</option>
+                              <option value=" {{$centro->comuna->provincia->region->id}}">{{$centro->comuna->provincia->region->nombre}}</option>
                               @foreach($regiones as $region)
                               <option value=" {{$region->id}}">{{$region->nombre}}</option>
                               @endforeach 
@@ -95,7 +85,7 @@
                             <label class="col-md-4 control-label">Provincia</label>
                             <div class="col-md-6">
                             <select id="provincia" name="provincia" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$catastrofe->comuna->provincia->id}}">{{$catastrofe->comuna->provincia->nombre}}</option>
+                              <option value="{{$centro->comuna->provincia->id}}">{{$centro->comuna->provincia->nombre}}</option>
                               <option value="">Provincia</option>
                           </select>
                           </div>
@@ -105,19 +95,27 @@
                             <label class="col-md-4 control-label">Comuna</label>
                             <div class="col-md-6">
                             <select id="comuna" name="comuna" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$catastrofe->comuna->id}}">{{$catastrofe->comuna->nombre}}</option>
+                              <option value="{{$centro->comuna->id}}">{{$centro->comuna->nombre}}</option>
                               <option value="">Comuna</option>
                           </select>
                           </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
+                            <label for="name" class="col-md-4 control-label">Direccion</label>
+
                             <div class="col-md-6">
-                            <textarea name="descripcion" class="form-control" value="{{ $catastrofe->descripcion }}" required>{{ $catastrofe->descripcion }}</textarea>
+                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $centro->direccion }}" required>
+
                             </div>
                         </div>
                         <div class="form-group">
-                        <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
+                            <label class="col-md-4 control-label">Descripcion</label>
+                            <div class="col-md-6">
+                            <textarea name="descripcion" class="form-control" value="{{ $centro->descripcion }}" required>{{ $centro->descripcion }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <input name="beneficio" type="hidden" value="{{ $centro->id }}">
                         </div>
 
                         <div class="form-group">

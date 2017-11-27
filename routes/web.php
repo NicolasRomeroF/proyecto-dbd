@@ -90,6 +90,9 @@ Route::group(['middleware'=>['auth']], function(){
 Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
 Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
 Route::resource('centrosdeacopio.articulos', 'ArticulosController');
+Route::get('centrosdeacopio/{id}', 'MedidasController@show_centro');
+Route::get('/medidas/centrosdeacopio/{id}/edit', 'MedidasController@edit_centro');
+	Route::post('/medidas/centrosdeacopio/update', 'MedidasController@update_centro')->name('medidas.update_centro');
 	//Eventos
 	Route::get('/medidas/eventobeneficio/{id}', 'MedidasController@show_evento');
 	Route::get('/medidas/eventobeneficio/{id}/edit', 'MedidasController@edit_evento');

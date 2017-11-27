@@ -42,6 +42,8 @@ class MedidasController extends Controller
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
         $medida->tipo='centro';
+        $medida->id_comuna = $request->comuna;
+        
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -62,6 +64,7 @@ class MedidasController extends Controller
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
         $medida->tipo='beneficio';
+        $medida->id_comuna = $request->comuna;
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -82,6 +85,7 @@ class MedidasController extends Controller
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
         $medida->tipo='voluntariado';
+        $medida->id_comuna = $request->comuna;
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -131,6 +135,7 @@ class MedidasController extends Controller
         $beneficio->fecha_termino=$request->fecha_termino;
         $beneficio->direccion=$request->direccion;
         $beneficio->descripcion=$request->descripcion;
+        $beneficio->id_comuna = $request->comuna;
         
         $beneficio->save();
         return back()->with('flash','Datos editados correctamente');
@@ -140,10 +145,43 @@ class MedidasController extends Controller
     {
         $beneficio = Medida::find($id);
         $comuna = Comuna::find($beneficio->id_comuna);
-        $provincia = Provincia::find($beneficio->id_provincia);
-        $region = Region::find($beneficio->id_region);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
 
         return view('medida/beneficioDetails', compact('beneficio','declarador','comuna','provincia','region'));
 
+    }
+
+    public function update_centro(Request $request){
+        $id = $request->beneficio;
+        $centro = Medida::find($id);
+        $centro->nombre=$request->nombre;
+        $centro->fecha_inicio=$request->fecha_inicio;
+        $centro->fecha_termino=$request->fecha_termino;
+        $centro->direccion=$request->direccion;
+        $centro->descripcion=$request->descripcion;
+        $centro->id_comuna = $request->comuna;
+        
+        $centro->save();
+        return back()->with('flash','Datos editados correctamente');
+    }
+
+    public function show_centro($id)
+    {
+        $centro = Medida::find($id);
+        $comuna = Comuna::find($beneficio->id_comuna);
+        $provincia = Provincia::find($beneficio->id_provincia);
+        $region = Region::find($beneficio->id_region);
+
+        return view('medida/centroDetails', compact('centro','declarador','comuna','provincia','region'));
+
+    }
+
+    public function edit_centro($id)
+    {
+        $centro = Medida::find($id);
+        $regiones = Region::all();
+        //return $catastrofe;
+        return view('medida/editarCentro', compact('centro','regiones'));
     }
 }
