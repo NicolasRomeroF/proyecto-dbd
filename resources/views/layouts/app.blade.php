@@ -115,25 +115,25 @@
 								<ul>
 									<li>
 										<a href="/centrosdeacopio" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-archive"></i>
 											<span>Centros de Acopio</span>
 										</a>
 									</li>
 									<li>
 										<a href="/medidas/eventobeneficio/" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-cutlery"></i>
 											<span>Eventos a beneficio</span>
 										</a>
 									</li>
 									<li>
 										<a href="/medidas/voluntariado/" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-bullhorn"></i>
 											<span>Voluntariados</span>
 										</a>
 									</li>
 									<li>
 										<a href="/medidas/fondo/" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-money"></i>
 											<span>Fondos</span>
 										</a>
 									</li>
@@ -161,19 +161,19 @@
 							<li>
 
 								<a href="#">
-									<i class="fa fa-thumbs-up"></i>
+									<i class="fa fa-code"></i>
 									<span>Administración</span>
 								</a>
 								<ul>
 									<li>
 										<a href="/administracion/listarUsuarios" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-eye"></i>
 											<span>Ver usuarios</span>
 										</a>
 									</li>
 									<li>
 										<a href="/administracion/crearUsuario" >
-											<i class="fa fa-list"></i>
+											<i class="fa fa-user-plus"></i>
 											<span>Crear usuario</span>
 										</a>
 									</li>
