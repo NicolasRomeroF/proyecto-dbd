@@ -97,13 +97,13 @@
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Provincia</label>
                             <select id="provincia" name="provincia" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$provincia->id}}">Provincia</option>
+                              <option value="">Provincia</option>
                           </select>
                         </div>
                         <div class="form-group"> 
                             <label class="col-md-4 control-label">Comuna</label>
                             <select id="comuna" name="comuna" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$comuna->id}}">Comuna</option>
+                              <option value="">Comuna</option>
                           </select>
                         </div>
                         <div class="form-group">
