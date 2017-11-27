@@ -181,6 +181,16 @@ class MedidasController extends Controller
         return view('medida/centroDetails', compact('centro','comuna','provincia','region'));
 
     }
+     public function show_evento($id)
+    {
+        $evento = Medida::find($id);
+        $comuna = Comuna::find($centro->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
+
+        return view('medida/benficioDetails', compact('beneficio','comuna','provincia','region'));
+
+    }
 
     public function edit_centro($id)
     {
