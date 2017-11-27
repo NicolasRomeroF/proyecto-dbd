@@ -15,11 +15,6 @@
 Post: 
 */
 
-use Illuminate\Support\Facades\Input;
-use App\Region;
-use App\Provincia;
-use App\Comuna;
-
 Route::get('/', 'WelcomeController@home');
 
 
@@ -50,6 +45,10 @@ Route::post('usuario/', function(Request $request){
 
 Auth::routes();
 
+Route::get('/RNV/listado', 'RNVController@listado')->name('listadoVoluntarios');
+Route::get('/RNV/voluntariosDisponibles', 'RNVController@disponibles')->name('listadoVoluntariosDisponibles');
+Route::get('/RNV/voluntario/{id}', 'RNVController@mostrarDetalle');
+
 Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
 
 Route::group(['middleware'=>['auth']], function(){
@@ -63,13 +62,16 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
 	Route::post('update_usuario', 'HomeController@update_usuario');
 
+	//RNV
+
+	Route::post('/RNV/voluntario/{id}/post', 'RNVController@cambiarEstadoVoluntario')->name('RNV.cambiar');
+
 	// Catastrofes
 
 	Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 	Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
 	Route::get('/catastrofes/{id}', 'CatastrofesController@show');
-	Route::get('/catastrofes/{id}/edit', 'CatastrofesController@edit');
-	Route::post('/catastrofes/update', 'CatastrofesController@update')->name('catastrofe.update');
+
 	// Medidas
 
 	Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
@@ -84,8 +86,12 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('/medidas/centrodeacopio/', 'MedidasController@verCentros')->name('medida.verCentro');
 	Route::get('/medidas/eventobeneficio/', 'MedidasController@verBeneficios')->name('medida.verBeneficios');
 	Route::get('/medidas/voluntariado/', 'MedidasController@verVoluntariados')->name('medida.verVoluntariados');
+
 	//Centros
 	
+	Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
+	Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
+	Route::resource('centrosdeacopio.articulos', 'ArticulosController');
 
 Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
 Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
@@ -98,24 +104,13 @@ Route::get('/medidas/centrosdeacopio/{id}/edit', 'MedidasController@edit_centro'
 	Route::get('/medidas/eventobeneficio/{id}/edit', 'MedidasController@edit_evento');
 	Route::post('/medidas/eventobeneficio/update', 'MedidasController@update_evento')->name('medidas.update_evento');
 	//Donaciones
+
 	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('medida.createDonacion');
 	Route::post('/catastrofes/medidas/generatedonacion/post/', 'DonacionesController@storeDonacion')->name('medida.storeDonacion');
+
 	//Fondo
 	Route::get('/catastrofes/medidas/generatefondo/{id}', 'FondosController@createFondo')->name('medida.createFondo');
 	Route::post('/catastrofes/medidas/generatefondo/post/', 'FondosController@storeFondo')->name('medida.storeFondo');
-});
-
-
-Route::get('/provincias',function(){
-	$id =  Input::get('id_region');
-	$provincias = Provincia::where('id_region','=',$id)->get();
-	return $provincias->pluck('nombre','id')->all();
-});
-
-Route::get('/comunas',function(){
-	$id =  Input::get('id_provincia');
-	$comunas = Comuna::where('id_provincia','=',$id)->get();
-	return $comunas->pluck('nombre','id')->all();
 });
 
 

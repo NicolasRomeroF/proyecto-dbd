@@ -135,6 +135,22 @@
 								</ul>
 							</li>
 
+							<li>
+
+								<a href="#">
+									<i class="fa fa-child"></i>
+									<span>RNV</span>
+								</a>
+								<ul>
+									<li>
+										<a href="/RNV/listado" >
+											<i class="fa fa-list"></i>
+											<span>Voluntarios</span>
+										</a>
+									</li>									
+								</ul>
+							</li>
+
 							@endguest
 							<li>
 
@@ -145,7 +161,7 @@
 								<ul>
 
 									<li>
-										<a href="https://twitter.com/proyecto_dbd" >
+										<a href="https://twitter.com/IanLunn/" >
 											<i class="fa fa-twitter"></i>
 											<span>Twitter</span>
 										</a>
