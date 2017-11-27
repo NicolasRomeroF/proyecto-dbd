@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Catastrofe extends Model
 {
     protected $fillable = ['id_user','nombre','tipo','fecha','descripcion'];
-    public function getFechaAttribute($value)
+
+    public function getFecha()
     {
-    	return date("m-d-Y", strtotime($value));
+        return date("m-d-Y", strtotime($this->fecha));
     }
     public function comuna()
     {

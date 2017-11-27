@@ -16,12 +16,13 @@ class Medida extends Model
     {
     	return $this->belongsTo('App\Catastrofe','id_catastrofe');
     }
-	public function getFechaInicioAttribute($value)
+	
+    public function getFechaInicio()
     {
-    	return date("m-d-Y", strtotime($value));
+        return date("m-d-Y", strtotime($this->fecha_inicio));
     }
-    public function getFechaTerminoAttribute($value)
+    public function getFechaTermino()
     {
-    	return date("m-d-Y", strtotime($value));
+        return date("m-d-Y", strtotime($this->fecha_termino));
     }
 }

@@ -196,9 +196,10 @@ class MedidasController extends Controller
         $voluntariado->direccion=$request->direccion;
         $voluntariado->descripcion=$request->descripcion;
         $voluntariado->id_comuna = $request->comuna;
+        $voluntariado->labor=$request->labor;
         
-        $centro->save();
-        return back()->with('flash','Datos editados correctamente');
+        $voluntariado->save();
+        return $this->show_voluntariado($id);
     }
 
     public function show_voluntariado($id)
@@ -217,7 +218,6 @@ class MedidasController extends Controller
     {
         $voluntariado = Medida::find($id);
         $regiones = Region::all();
-        //return $catastrofe;
-        return view('medida/editarCentro', compact('voluntariado','regiones'));
+        return view('medida/editarVoluntariado', compact('voluntariado','regiones'));
     }
 }
