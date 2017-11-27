@@ -22,16 +22,56 @@ class FondosController extends Controller
         $medida->banco = $request->banco;
         $medida->activo= True;
         $medida->save();
-        return back()->with('flash','Fondo generada correctamente');
+        
+        return $this->show_fondo($medida->id);
     }
     public function createFondo($id)
     {
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararFondo',compact('catastrofe'));
     }
+    public function delete_fondo($id){
+        Fondo::destroy($id);
+        return $this->verFondos();
+    }
     public function verFondos()
     {
         $fondos = Fondo::all();
         return view('medida/verFondos',['fondos'=>$fondos]);
     }
+     public function update_fondo(Request $request){
+        $id = $request->fondo;
+        $fondo = Fondo::find($id);
+        $fondo->nombre=$request->nombre;
+        $fondo->fecha_inicio=$request->fecha_inicio;
+        $fondo->fecha_termino=$request->fecha_termino;
+        $fondo->cuenta=$request->cuenta;
+        $fondo->banco=$request->banco;
+        $fondo->descripcion = $request->descripcion;
+        $fondo->monto = $request->monto;
+
+        if($fondo->montoActual<$fondo->monto){
+            $fondo->activo=True;
+        }
+        else{
+            $fondo->activo=False;
+        }
+        
+        $fondo->save();
+        return $this->show_fondo($fondo->id);
+    }
+    public function edit_fondo($id)
+    {
+        $fondo = Fondo::find($id);
+        //return $catastrofe;
+        return view('medida/editarFondo', compact('fondo'));
+    }
+    public function show_fondo($id)
+    {
+        $fondo = Fondo::find($id);
+
+        return view('medida/fondoDetails', compact('fondo'));
+
+    }
+
 }

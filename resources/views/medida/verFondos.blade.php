@@ -34,9 +34,9 @@
       <td>{{ $fondo->monto }}</td>
       <td>{{ $fondo->banco }}</td>
       <td>{{ $fondo->cuenta }}</td>
-      <td><a class="btn btn-success" href="/medidas/eventobeneficio/{{$fondo->id}}">Ver</a>
-      <a class="btn btn-primary" href="/medidas/eventobeneficio/{{ $fondo->id }}/edit">Editar</a>
-      <a class="btn btn-danger" href="/medidas/eventobeneficio/{{$fondo->id}}/delete">Eliminar</a></td>
+      <td><a class="btn btn-success" href="/medidas/fondo/{{$fondo->id}}">Ver</a>
+      <a class="btn btn-primary" href="/medidas/fondo/{{ $fondo->id }}/edit">Editar</a>
+      <a class="btn btn-danger" href="/medidas/fondo/{{$fondo->id}}/delete">Eliminar</a></td>
       <a class="btn btn-info" href="/catastrofes/medidas/generatedonacion/{{$fondo->id}}">Donar</a>
     </tr>
     @endforeach  

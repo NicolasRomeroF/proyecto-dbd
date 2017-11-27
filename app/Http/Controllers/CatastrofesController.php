@@ -82,4 +82,8 @@ class CatastrofesController extends Controller
         $catastrofe->save();
         return back()->with('flash','Datos editados correctamente');
     }
+    public function delete($id){
+        Catastrofe::destroy($id);
+        return $this->historial();
+    }
 }

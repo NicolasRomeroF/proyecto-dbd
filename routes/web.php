@@ -53,6 +53,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
     Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
     Route::get('/catastrofes/{id}', 'CatastrofesController@show');
+    Route::get('/catastrofes/{id}/delete','CatastrofesController@delete')->name('catastrofe.delete');
     // Medidas
     Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
     Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
@@ -96,6 +97,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/medidas/voluntariado/{id}', 'MedidasController@show_voluntariado');
     Route::get('/medidas/voluntariado/{id}/edit', 'MedidasController@edit_voluntariado');
     Route::post('/medidas/voluntariado/update', 'MedidasController@update_voluntariado')->name('medidas.update_voluntariado');
+    Route::get('/medidas/voluntariado/{id}/delete', 'MedidasController@delete_voluntariado');
 
     //Donaciones
     Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('donaciones.createDonacion');
@@ -103,6 +105,10 @@ Route::group(['middleware'=>['auth']], function(){
     //Fondo
     Route::get('/catastrofes/medidas/generatefondo/{id}', 'FondosController@createFondo')->name('medida.createFondo');
     Route::post('/catastrofes/medidas/generatefondo/post/', 'FondosController@storeFondo')->name('medida.storeFondo');
+    Route::get('/medidas/fondo/{id}', 'FondosController@show_fondo');
+    Route::get('/medidas/fondo/{id}/edit', 'FondosController@edit_fondo');
+    Route::post('/medidas/fondo/update', 'FondosController@update_fondo')->name('fondos.update');
+
 });
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');
 //Auth
