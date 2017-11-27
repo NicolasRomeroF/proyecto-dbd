@@ -22,7 +22,7 @@
       <td>{{ $voluntariado->nombre }}</td>
       <td>{{ $voluntariado->fecha_inicio }}</td>
       <td>{{ $voluntariado->fecha_termino }}</td>
-      <td>{{ $voluntariado->comuna()->get() }}</td>
+      <td>{{ $voluntariado->comuna->nombre }}</td>
       <td><a href="/voluntariado/{{$voluntariado->id}}">Ver detalles</a></td>
     </tr>
     @endforeach  

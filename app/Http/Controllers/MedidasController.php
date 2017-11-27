@@ -96,6 +96,7 @@ class MedidasController extends Controller
     public function historial()
     {
         $medidas = Medida::orderBy('fecha_inicio','desc')->get();
+        //$comunas = Comuna::find($medidas->id_comuna)->get;
         return view('medida/historial',['medidas' => $medidas]);
     }
     public function verCentros()
@@ -121,20 +122,6 @@ class MedidasController extends Controller
         return view('medida/historial',compact('medidas','fondos'));
     }
 
-    public function show_evento($id)
-    {
-        $beneficio = Medida::find($id);
-
-        return view('medida/beneficioDetails', compact('beneficio'));
-
-    }
-
-    public function edit_evento($id)
-    {
-        $beneficio = Medida::find($id);
-        //return $catastrofe;
-        return view('medida/editarBeneficio', compact('beneficio'));
-    }
 
     public function update_evento(Request $request){
         $id = $request->beneficio;
@@ -147,5 +134,16 @@ class MedidasController extends Controller
         
         $beneficio->save();
         return back()->with('flash','Datos editados correctamente');
+    }
+
+    public function show_evento($id)
+    {
+        $beneficio = Medida::find($id);
+        $comuna = Comuna::find($beneficio->id_comuna);
+        $provincia = Provincia::find($beneficio->id_provincia);
+        $region = Region::find($beneficio->id_region);
+
+        return view('medida/beneficioDetails', compact('beneficio','declarador','comuna','provincia','region'));
+
     }
 }
