@@ -8,17 +8,19 @@
                     <table class="table table-sm">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Nombre del centro de acopio</th>
-                            <th scope="col">Situación</th>
+                                  <th scope="col">Fecha de inicio</th>
+      <th scope="col">Fecha de termino</th>
+      <th scope="col">Situacion</th>
                             <th scope="col">Registro de artículos</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($centrosDeAcopio as $centroDeAcopio)
                             <tr>
-                                <td>{{ $centroDeAcopio->id }}</td>
                                 <td>{{ $centroDeAcopio->nombre }}</td>
+                                <td>{{ $centroDeAcopio->fecha_inicio }}</td>
+                                <td>{{ $centroDeAcopio->fecha_termino }}</td>
                                 <td>{{ $centroDeAcopio->situacion }}</td>
                                 <td><a href="centrosdeacopio/{{$centroDeAcopio->id}}">Ver detalles</a></td>
                             </tr>

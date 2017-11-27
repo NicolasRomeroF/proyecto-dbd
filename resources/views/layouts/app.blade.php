@@ -86,37 +86,24 @@
 							</li>
 							<li>
 								<a href="#">
-									<i class="fa fa-folder-open"></i>
+									<i class="fa fa-exclamation "></i>
 									<span>Catástrofes</span>
 								</a>
 								<ul>
 									<li>
 										<a href="/catastrofes/historial" >
-											<i class="fa fa-info-circle"></i>
+											<i class="fa fa-list"></i>
 											<span>Historial</span>
 										</a>
 									</li>
 									@if(Auth::user()->authorizeRoles(['admin','gobierno',]))
 									<li>
 										<a href="/catastrofes/add" >
-											<i class="fa fa-question-circle"></i>
+											<i class="fa fa-plus-circle"></i>
 											<span>Añadir catastrofe</span>
 										</a>
 									</li>
 									@endif
-
-									<li>
-										<a href="https://ianlunn.co.uk/about/" >
-											<i class="fa fa-question-circle"></i>
-											<span>Eventos a Beneficio</span>
-										</a>
-									</li>
-									<li>
-										<a href="https://ianlunn.co.uk/contact/" >
-											<i class="fa fa-question-circle"></i>
-											<span>Donaciones</span>
-										</a>
-									</li>
 								</ul>
 							</li>
 							<li>
@@ -128,8 +115,20 @@
 								<ul>
 									<li>
 										<a href="/centrosdeacopio" >
-											<i class="fa fa-question-circle"></i>
+											<i class="fa fa-list"></i>
 											<span>Centros de Acopio</span>
+										</a>
+									</li>
+									<li>
+										<a href="/medidas/eventobeneficio/" >
+											<i class="fa fa-list"></i>
+											<span>Eventos a beneficio</span>
+										</a>
+									</li>
+									<li>
+										<a href="/medidas/voluntariado/" >
+											<i class="fa fa-list"></i>
+											<span>Voluntariados</span>
 										</a>
 									</li>
 									

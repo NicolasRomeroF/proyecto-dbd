@@ -38,7 +38,7 @@ class MedidasController extends Controller
         $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
-        $medida->tipo='Centro de acopio';
+        $medida->tipo='centro';
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -58,7 +58,7 @@ class MedidasController extends Controller
         $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
-        $medida->tipo='Beneficio';
+        $medida->tipo='beneficio';
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -78,7 +78,7 @@ class MedidasController extends Controller
         $medida->fecha_inicio = date("m-d-Y", strtotime($request->fechaInicio));
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
-        $medida->tipo='Voluntariado';
+        $medida->tipo='voluntariado';
         $medida->save();
         return back()->with('flash','Medida generada correctamente');
     }
@@ -100,6 +100,17 @@ class MedidasController extends Controller
         $centros = Medida::where('tipo','centro')->get();
         return view('medida/verCentros',['centros'=>$centros]);
     }
+    public function verBeneficios()
+    {
+        $beneficios = Medida::where('tipo','beneficio')->get();
+        return view('medida/verBeneficios',['beneficios'=>$beneficios]);
+    }
+    public function verVoluntariados()
+    {
+        $voluntariados = Medida::where('tipo','voluntariado')->get();
+        return view('medida/verVoluntariados',['voluntariados'=>$voluntariados]);
+    }
+
     public function verMedidasCatastrofe($id)
     {
         $medidas = Medida::where('id_catastrofe',$id)->get();
