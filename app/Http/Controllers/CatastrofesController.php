@@ -56,4 +56,22 @@ class CatastrofesController extends Controller
         return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador'));
 
     }
+    public function edit($id)
+    {
+        $catastrofe = Catastrofe::find($id);
+        //return $catastrofe;
+        return view('catastrofe/editarCatastrofe', compact('catastrofe'));
+    }
+
+    public function update(Request $request){
+        $id = $request->catastrofe;
+        $catastrofe = Catastrofe::find($id);
+        $catastrofe->nombre=$request->nombre;
+        $catastrofe->fecha=$request->fecha;
+        $catastrofe->tipo=$request->tipo;
+        $catastrofe->descripcion=$request->descripcion;
+        
+        $catastrofe->save();
+        return back()->with('flash','Datos editados correctamente');
+    }
 }

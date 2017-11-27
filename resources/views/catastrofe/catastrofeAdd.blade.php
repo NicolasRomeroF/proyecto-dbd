@@ -83,7 +83,8 @@
                               <option value="Incendio">Incendio</option>
                               <option value="Inundación">Inundación</option>
                               <option value="Terremoto">Terremoto</option>
-                              <option value="Tsunami">Tsunami</option>    
+                              <option value="Tsunami">Tsunami</option>   
+                              <option value="Tsunami">Otro</option>     
                           </select>
                         </div>
                         <div class="form-group"> 

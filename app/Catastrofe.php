@@ -13,4 +13,8 @@ class Catastrofe extends Model
     	$str = $arr[2] +$arr[1] +$arr[0];
         return $str;
     }*/
+    public function comuna()
+    {
+    	return $this->belongsTo('App\Comuna','id_comuna');
+    }
 }

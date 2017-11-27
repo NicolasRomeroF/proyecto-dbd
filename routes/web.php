@@ -68,7 +68,8 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 	Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
 	Route::get('/catastrofes/{id}', 'CatastrofesController@show');
-
+	Route::get('/catastrofes/{id}/edit', 'CatastrofesController@edit');
+	Route::post('/catastrofes/update', 'CatastrofesController@update')->name('catastrofe.update');
 	// Medidas
 
 	Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
@@ -89,8 +90,10 @@ Route::group(['middleware'=>['auth']], function(){
 Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
 Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
 Route::resource('centrosdeacopio.articulos', 'ArticulosController');
-
-
+	//Eventos
+	Route::get('/medidas/eventobeneficio/{id}', 'MedidasController@show_evento');
+	Route::get('/medidas/eventobeneficio/{id}/edit', 'MedidasController@edit_evento');
+	Route::post('/medidas/eventobeneficio/update', 'MedidasController@update_evento')->name('medidas.update_evento');
 	//Donaciones
 	Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('medida.createDonacion');
 	Route::post('/catastrofes/medidas/generatedonacion/post/', 'DonacionesController@storeDonacion')->name('medida.storeDonacion');
