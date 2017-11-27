@@ -9,7 +9,7 @@
               <div class="panel-heading">Detalles del evento</div>
               <div class="panel-body">
                 <div class="form-group">
-                  <label class="col-md-12 control-label">Nombre del eventoe</label>
+                  <label class="col-md-12 control-label">Nombre del evento</label>
                   <p class="col-sm-12 control-label">{{ $beneficio->nombre }}</p>
                 </div>
                 <div class="form-group">

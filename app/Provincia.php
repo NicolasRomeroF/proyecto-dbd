@@ -11,6 +11,6 @@ class Provincia extends Model
     	return $this->belongsTo('App\Region','id_region');
     }
     public function comunas(){
-    	return $this->hasMany('Comuna');
+    	return $this->hasMany('App\Comuna');
     }
 }
