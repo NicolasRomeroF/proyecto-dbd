@@ -7,6 +7,9 @@ use App\Medida;
 use Illuminate\Support\Facades\DB;
 use App\Catastrofe;
 use App\Fondo;
+use App\Region;
+use App\Provincia;
+use App\Comuna;
 
 class MedidasController extends Controller
 {

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Twitter;
 use App\User;
 use App\Region;
+use App\Comuna;
+use App\Provincia;
 
 class CatastrofesController extends Controller
 {
@@ -29,15 +31,16 @@ class CatastrofesController extends Controller
         {
             return view('bloqueado');
         }
-
-    	Catastrofe::create([
-    		'tipo' => $request->tipo,
-            'id_user'=> auth()->id(),
-            'nombre'=> $request->nombre,
-            'fecha' => date("m-d-Y", strtotime($request->fecha)),
-            'id_comuna' => $request->comuna,
-            'descripcion' => $request->descripcion,
-        ]);
+        
+        $catastrofe= new Catastrofe();
+        $catastrofe->tipo=$request->tipo;
+        $catastrofe->id_user=auth()->id();
+        $catastrofe->nombre=$request->nombre;
+        $catastrofe->fecha=date("m-d-Y", strtotime($request->fecha));
+        $catastrofe->id_comuna=$request->comuna;
+        $catastrofe->descripcion=$request->descripcion;
+        $catastrofe->save();
+    	
         $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
         Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
         
@@ -52,8 +55,11 @@ class CatastrofesController extends Controller
     {
         $catastrofe = Catastrofe::find($id);
         $declarador = User::find($catastrofe->id_user)->name;
+        $comuna = Comuna::find($catastrofe->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
 
-        return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador'));
+        return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador','comuna','provincia','region'));
 
     }
     public function edit($id)
