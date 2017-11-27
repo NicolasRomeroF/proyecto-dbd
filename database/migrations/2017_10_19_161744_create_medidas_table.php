@@ -20,7 +20,9 @@ class CreateMedidasTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('direccion');
-            $table->integer('id_comuna')->nullable();
+            $table->integer('id_region');
+            $table->integer('id_provincia');
+            $table->integer('id_comuna');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
             $table->integer('cantidad_voluntarios')->nullable();
@@ -29,6 +31,8 @@ class CreateMedidasTable extends Migration
             $table->string('situacion')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_region')->references('id')->on('regions');
+            $table->foreign('id_provincia')->references('id')->on('provincias');
             $table->foreign('id_comuna')->references('id')->on('comunas');
             $table->foreign('id_catastrofe')->references('id')->on('catastroves');
         });

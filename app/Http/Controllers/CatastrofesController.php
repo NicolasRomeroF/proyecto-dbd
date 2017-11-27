@@ -7,13 +7,15 @@ use App\Catastrofe;
 use Illuminate\Support\Facades\DB;
 use Twitter;
 use App\User;
+use App\Region;
 
 class CatastrofesController extends Controller
 {
 	public function index()
     {
+        $regiones = Region::all();
         if (\Auth::check()) {
-            return view('catastrofe/catastrofeAdd');
+            return view('catastrofe/catastrofeAdd',['regiones' => $regiones]);
         }
         else {
             return view('auth/login');
@@ -33,6 +35,7 @@ class CatastrofesController extends Controller
             'id_user'=> auth()->id(),
             'nombre'=> $request->nombre,
             'fecha' => date("m-d-Y", strtotime($request->fecha)),
+            'id_comuna' => $request->comuna,
             'descripcion' => $request->descripcion,
         ]);
         $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;

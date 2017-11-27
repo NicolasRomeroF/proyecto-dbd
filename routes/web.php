@@ -15,6 +15,11 @@
 Post: 
 */
 
+use Illuminate\Support\Facades\Input;
+use App\Region;
+use App\Provincia;
+use App\Comuna;
+
 Route::get('/', 'WelcomeController@home');
 
 
@@ -87,6 +92,19 @@ Route::group(['middleware'=>['auth']], function(){
 	//Fondo
 	Route::get('/catastrofes/medidas/generatefondo/{id}', 'FondosController@createFondo')->name('medida.createFondo');
 	Route::post('/catastrofes/medidas/generatefondo/post/', 'FondosController@storeFondo')->name('medida.storeFondo');
+});
+
+
+Route::get('/provincias',function(){
+	$id =  Input::get('id_region');
+	$provincias = Provincia::where('id_region','=',$id)->get();
+	return $provincias->pluck('nombre','id')->all();
+});
+
+Route::get('/regiones',function(){
+	$id =  Input::get('id_provincia');
+	$comunas = Comuna::where('id_provincia','=',$id)->get();
+	return $comunas->pluck('nombre','id')->all();
 });
 
 

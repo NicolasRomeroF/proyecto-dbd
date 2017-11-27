@@ -21,6 +21,9 @@ class MedidasController extends Controller
             'direccion' => $request->direccion,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fechaInicio)),
             'fecha_termino' => date("m-d-Y", strtotime($request->fechaTermino)),
+            'id_region' => $request->region,
+            'id_provincia' => $request->provincia,
+            'id_comuna' => $request->comuna,
             'descripcion' => $request->descripcion,
         ]);
         return back()->with('flash','Medida generada correctamente');
@@ -41,8 +44,9 @@ class MedidasController extends Controller
     }
     public function createCentro($id)
     {
+        $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
-        return view('medida/declararCentro',compact('catastrofe'));
+        return view('medida/declararCentro',compact('catastrofe','regiones'));
     }
     public function storeBeneficio(Request $request){
         $medida = new Medida();
@@ -60,8 +64,9 @@ class MedidasController extends Controller
     }
     public function createBeneficio($id)
     {
+        $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
-        return view('medida/declararBeneficio',compact('catastrofe'));
+        return view('medida/declararBeneficio',compact('catastrofe','regiones'));
     }
     public function storeVoluntariado(Request $request){
         $medida = new Medida();
@@ -79,8 +84,9 @@ class MedidasController extends Controller
     }
     public function createVoluntariado($id)
     {
+        $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
-        return view('medida/declararVoluntariado',compact('catastrofe'));
+        return view('medida/declararVoluntariado',compact('catastrofe','regiones'));
     }
 
 
