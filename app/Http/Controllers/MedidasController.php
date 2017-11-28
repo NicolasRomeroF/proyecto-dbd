@@ -18,6 +18,11 @@ class MedidasController extends Controller
     	return view('medida/generateMedida');
     }
     public function store(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         Medida::create([
             'id_user'=> auth()->id(),
             'nombre'=> $request->nombre,
@@ -32,6 +37,11 @@ class MedidasController extends Controller
         return back()->with('flash','Medida generada correctamente');
     }
     public function storeCentro(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = new Medida();
         $medida->id_user = auth()->id();
         $medida->id_catastrofe=$request->catastrofe;
@@ -50,15 +60,30 @@ class MedidasController extends Controller
     }
     public function createCentro($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararCentro',compact('catastrofe','regiones'));
     }
     public function delete_centro($id){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         Medida::destroy($id);
         return $this->verCentros();
     }
     public function storeBeneficio(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = new Medida();
         $medida->id_user = auth()->id();
         $medida->id_catastrofe=$request->catastrofe;
@@ -76,15 +101,30 @@ class MedidasController extends Controller
     }
     public function createBeneficio($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararBeneficio',compact('catastrofe','regiones'));
     }
     public function delete_beneficio($id){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         Medida::destroy($id);
         return $this->verBeneficios();
     }
     public function storeVoluntariado(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = new Medida();
         $medida->id_user = auth()->id();
         $medida->id_catastrofe=$request->catastrofe;
@@ -104,11 +144,21 @@ class MedidasController extends Controller
     }
     public function createVoluntariado($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararVoluntariado',compact('catastrofe','regiones'));
     }
     public function delete_voluntariado($id){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         Medida::destroy($id);
         return $this->verVoluntariados();
     }
@@ -144,6 +194,11 @@ class MedidasController extends Controller
 
 
     public function update_evento(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $id = $request->beneficio;
         $beneficio = Medida::find($id);
         $beneficio->nombre=$request->nombre;
@@ -159,6 +214,11 @@ class MedidasController extends Controller
 
     public function edit_evento($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $beneficio = Medida::find($id);
         $regiones = Region::all();
         //return $catastrofe;
@@ -168,6 +228,11 @@ class MedidasController extends Controller
     
 
     public function update_centro(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $id = $request->centro;
         $centro = Medida::find($id);
         $centro->nombre=$request->nombre;
@@ -183,6 +248,7 @@ class MedidasController extends Controller
 
     public function show_centro($id)
     {
+
         $centro = Medida::find($id);
         $articulos = DB::table('articulos')->where('id_medida', $id)->get();
         $comuna = Comuna::find($centro->id_comuna);
@@ -206,6 +272,11 @@ class MedidasController extends Controller
 
     public function edit_centro($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $centro = Medida::find($id);
         $regiones = Region::all();
         //return $catastrofe;
@@ -214,6 +285,11 @@ class MedidasController extends Controller
 
     //Voluntariados
     public function update_voluntariado(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $id = $request->voluntariado;
         $voluntariado = Medida::find($id);
         $voluntariado->nombre=$request->nombre;
@@ -242,6 +318,11 @@ class MedidasController extends Controller
 
     public function edit_voluntariado($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $voluntariado = Medida::find($id);
         $regiones = Region::all();
         return view('medida/editarVoluntariado', compact('voluntariado','regiones'));
@@ -252,24 +333,44 @@ class MedidasController extends Controller
             return view('medida/validarMedidas',compact('medidas','fondos'));
     }
     public function aceptarMedida($id){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = Medida::find($id);
         $medida->valido = 1;
         $medida->save();
         return $this->showMedidas();
     }
     public function rechazarMedida($id){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = Medida::find($id);
         $medida->valido = 2;
         $medida->save();
         return $this->showMedidas();
     }
     public function aceptarFondo($id){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = Fondo::find($id);
         $medida->valido = 1;
         $medida->save();
         return $this->showMedidas();
     }
     public function rechazarFondo($id){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $medida = Fondo::find($id);
         $medida->valido = 2;
         $medida->save();

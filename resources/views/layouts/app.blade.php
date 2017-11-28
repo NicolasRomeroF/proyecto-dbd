@@ -113,6 +113,14 @@
 									<span>Medidas</span>
 								</a>
 								<ul>
+								<li>
+									@if(Auth::user()->authorizeRoles(['admin','gobierno',]))
+										<a href="/medidas/validarMedidas" >
+											<i class="fa fa-check"></i>
+											<span>Validar medidas</span>
+										</a>
+									</li>
+									@endif
 									<li>
 										<a href="/centrosdeacopio" >
 											<i class="fa fa-archive"></i>

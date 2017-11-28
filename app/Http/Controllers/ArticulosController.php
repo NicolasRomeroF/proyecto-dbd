@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 class ArticulosController extends Controller
 {
@@ -21,6 +22,11 @@ class ArticulosController extends Controller
 
     public function ingresarEnCentro($id_centro)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
 
         return view ('articulos.create', ['id_centro' => $id_centro]);
     }
@@ -31,7 +37,11 @@ class ArticulosController extends Controller
      */
     public function create($id_centro)
     {
-
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         return view ('articulos.create');
     }
 
@@ -43,6 +53,11 @@ class ArticulosController extends Controller
      */
     public function store(Request $request, $id_centro)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','organizacion']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
 
         Articulo::create([
             'tipo' => $request->tipo,

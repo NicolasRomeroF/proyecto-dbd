@@ -8,6 +8,7 @@ use App\Comuna;
 use App\Provincia;
 use App\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 use DB;
 class CentrosDeAcopioController extends Controller
@@ -19,7 +20,7 @@ class CentrosDeAcopioController extends Controller
      */
     public function index()
     {
-        $centrosDeAcopio = Medida::where('tipo','centro')->get();
+        $centrosDeAcopio = Medida::where('tipo','centro')->where('valido',1)->get();
         return view('centrosDeAcopio.index', ['centrosDeAcopio' => $centrosDeAcopio]);
     }
 
@@ -31,7 +32,11 @@ class CentrosDeAcopioController extends Controller
      */
     public function create()
     {
-
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         return view ('centrosDeAcopio.create');
 
     }

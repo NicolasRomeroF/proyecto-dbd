@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Catastrofe;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth; 
 use Twitter;
 use App\User;
 use App\Region;
@@ -15,6 +16,11 @@ class CatastrofesController extends Controller
 {
 	public function index()
     {
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $regiones = Region::all();
         if (\Auth::check()) {
             return view('catastrofe/añadirCatastrofe',['regiones' => $regiones]);
@@ -43,7 +49,7 @@ class CatastrofesController extends Controller
         $catastrofe->descripcion=$request->descripcion;
         $catastrofe->save();
     	
-        $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
+        $tweet = '#AlertaCatastrofe ' . $request->nombre . ' en ' . $request->lugar. ' ' . $request->fecha;
         Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
         
         return back()->with('flash','Catastrofe declarada correctamente');
@@ -63,6 +69,11 @@ class CatastrofesController extends Controller
     }
     public function edit($id)
     {
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $catastrofe = Catastrofe::find($id);
         $regiones = Region::all();
         //return $catastrofe;
@@ -70,6 +81,11 @@ class CatastrofesController extends Controller
     }
 
     public function update(Request $request){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         $id = $request->catastrofe;
         $catastrofe = Catastrofe::find($id);
         $catastrofe->nombre=$request->nombre;
@@ -85,6 +101,11 @@ class CatastrofesController extends Controller
         return back()->with('flash','Datos editados correctamente');
     }
     public function delete($id){
+        $bool = Auth::user()->authorizeRoles(['admin','gobierno']);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
         Catastrofe::destroy($id);
         return $this->historial();
     }

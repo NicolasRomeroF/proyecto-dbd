@@ -11,7 +11,7 @@ class AdministracionController extends Controller
 { 
     public function listar() 
     { 
-      $bool = Auth::user()->authorizeRoles(['admin','gobierno',]);
+      $bool = Auth::user()->authorizeRoles(['admin',]);
         if(!$bool)
         {
             return view('bloqueado');
@@ -21,15 +21,30 @@ class AdministracionController extends Controller
     } 
  
     public function mostrarCrearUser() { 
+      $bool = Auth::user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
       return view('administracion/crearUsuario'); 
     } 
  
-    public function mostrarDetalle($id) { 
+    public function mostrarDetalle($id) {
+    $bool = Auth::user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        } 
       $usuario = User::find($id); 
         return view('administracion/detalle', compact('usuario')); 
     } 
  
     public function banearUsuario(Request $request) { 
+      $bool = Auth::user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
       $usuario = User::find($request->id); 
       $usuario->activo = !$usuario->activo; 
       $usuario->save(); 
@@ -37,6 +52,11 @@ class AdministracionController extends Controller
     } 
  
     public function crearUser(Request $request) { 
+      $bool = Auth::user()->authorizeRoles(['admin',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
  
         $usuario = new User(); 
         $usuario->name = $request->name; 
