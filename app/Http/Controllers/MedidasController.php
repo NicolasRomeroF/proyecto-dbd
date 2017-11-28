@@ -43,7 +43,7 @@ class MedidasController extends Controller
         $medida->situacion='Disponible';
         $medida->tipo='centro';
         $medida->id_comuna = $request->comuna;
-        
+        $medida->valido=0;
         $medida->save();
         
         return $this->show_centro($medida->id);;
@@ -69,6 +69,7 @@ class MedidasController extends Controller
         $medida->fecha_termino = date("m-d-Y", strtotime($request->fechaTermino));
         $medida->situacion='Disponible';
         $medida->tipo='beneficio';
+        $medida->valido=0;
         $medida->id_comuna = $request->comuna;
         $medida->save();
         return $this->show_evento($medida->id);
@@ -95,6 +96,7 @@ class MedidasController extends Controller
         $medida->situacion='Disponible';
         $medida->tipo='voluntariado';
         $medida->labor=$request->labor;
+        $medida->valido=0;
         $medida->id_comuna = $request->comuna;
         $medida->save();
         
@@ -119,25 +121,24 @@ class MedidasController extends Controller
     }
     public function verCentros()
     {
-        $centros = Medida::where('tipo','centro')->get();
+        $centros = Medida::where('tipo','centro')->where('valido',1)->get();
         return view('medida/verCentros',['centros'=>$centros]);
     }
     public function verBeneficios()
     {
-        $beneficios = Medida::where('tipo','beneficio')->get();
-        
+        $beneficios = Medida::where('tipo','beneficio')->where('valido',1)->get();
         return view('medida/verBeneficios',compact('beneficios'));
     }
     public function verVoluntariados()
     {
-        $voluntariados = Medida::where('tipo','voluntariado')->get();
+        $voluntariados = Medida::where('tipo','voluntariado')->where('valido',1)->get();
         return view('medida/verVoluntariados',['voluntariados'=>$voluntariados]);
     }
 
     public function verMedidasCatastrofe($id)
     {
-        $medidas = Medida::where('id_catastrofe',$id)->get();
-        $fondos = Fondo::where('id_catastrofe',$id)->get();
+        $medidas = Medida::where('id_catastrofe',$id)->where('valido',1)->get();
+        $fondos = Fondo::where('id_catastrofe',$id)->where('valido',1)->get();
         return view('medida/historial',compact('medidas','fondos'));
     }
 
@@ -244,5 +245,34 @@ class MedidasController extends Controller
         $voluntariado = Medida::find($id);
         $regiones = Region::all();
         return view('medida/editarVoluntariado', compact('voluntariado','regiones'));
+    }
+    public function showMedidas(){
+            $medidas = Medida::where('valido',0)->get();
+            $fondos = Fondo::where('valido',0)->get();
+            return view('medida/validarMedidas',compact('medidas','fondos'));
+    }
+    public function aceptarMedida($id){
+        $medida = Medida::find($id);
+        $medida->valido = 1;
+        $medida->save();
+        return $this->showMedidas();
+    }
+    public function rechazarMedida($id){
+        $medida = Medida::find($id);
+        $medida->valido = 2;
+        $medida->save();
+        return $this->showMedidas();
+    }
+    public function aceptarFondo($id){
+        $medida = Fondo::find($id);
+        $medida->valido = 1;
+        $medida->save();
+        return $this->showMedidas();
+    }
+    public function rechazarFondo($id){
+        $medida = Fondo::find($id);
+        $medida->valido = 2;
+        $medida->save();
+        return $this->showMedidas();
     }
 }

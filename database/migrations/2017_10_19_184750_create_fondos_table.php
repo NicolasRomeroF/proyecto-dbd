@@ -22,6 +22,7 @@ class CreateFondosTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
             $table->boolean('activo');
+            $table->integer('valido');
             $table->integer('montoActual');
             $table->integer('monto');
             $table->string('banco');

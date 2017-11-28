@@ -132,6 +132,13 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/medidas/fondo/{id}/edit', 'FondosController@edit_fondo');
     Route::post('/medidas/fondo/update', 'FondosController@update_fondo')->name('fondos.update');
 
+    //Validar medidas
+    Route::get('/medidas/validarMedidas','MedidasController@showMedidas');
+    Route::get('/medidas/aceptarMedida/{id}','MedidasController@aceptarMedida');
+    Route::get('/medidas/rechazarMedida/{id}','MedidasController@rechazarMedida');
+    Route::get('/medidas/aceptarFondo/{id}','MedidasController@aceptarFondo');
+    Route::get('/medidas/rechazarFondo/{id}','MedidasController@rechazarFondo');
+
 });
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');
 //Auth
