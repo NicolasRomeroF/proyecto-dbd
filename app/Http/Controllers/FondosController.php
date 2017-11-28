@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Catastrofe;
 use App\Fondo;
+use Illuminate\Support\Facades\Auth; 
 
 class FondosController extends Controller
 {
@@ -20,6 +21,7 @@ class FondosController extends Controller
         $medida->montoActual=0;
         $medida->cuenta = $request->cuenta;
         $medida->banco = $request->banco;
+        $medida->valido = 0;
         $medida->activo= True;
         $medida->save();
         
@@ -68,7 +70,7 @@ class FondosController extends Controller
     }
     public function show_fondo($id)
     {
-        $fondo = Fondo::find($id)->where('valido',1);
+        $fondo = Fondo::find($id)->where('valido',1)->first();
 
         return view('medida/fondoDetails', compact('fondo'));
 

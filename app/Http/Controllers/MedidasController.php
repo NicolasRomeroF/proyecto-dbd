@@ -10,6 +10,7 @@ use App\Fondo;
 use App\Region;
 use App\Provincia;
 use App\Comuna;
+use Illuminate\Support\Facades\Auth;
 
 class MedidasController extends Controller
 {
