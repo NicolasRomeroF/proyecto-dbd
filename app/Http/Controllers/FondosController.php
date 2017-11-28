@@ -68,7 +68,7 @@ class FondosController extends Controller
     }
     public function show_fondo($id)
     {
-        $fondo = Fondo::find($id);
+        $fondo = Fondo::find($id)->where('valido',1);
 
         return view('medida/fondoDetails', compact('fondo'));
 

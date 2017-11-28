@@ -20,6 +20,7 @@ class CreateMedidasTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('direccion');
+            $table->integer('valido');
 
             $table->integer('id_comuna')->nullable();
             $table->date('fecha_inicio');
