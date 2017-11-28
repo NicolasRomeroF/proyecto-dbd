@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Integración con Facebook 
+        Laravel\Socialite\SocialiteServiceProvider::class, 
+
     ],
 
     /*
@@ -226,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class, 
     ],
 
 ];

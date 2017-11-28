@@ -20,6 +20,11 @@ Post:
 Route::get('/', 'WelcomeController@home');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+// Facebook 
+Route::get('/auth/redirect', 'SocialAuthFacebookController@redirect'); 
+Route::get('/auth/callback', 'SocialAuthFacebookController@callback'); 
+
+
 Route::get('/ejemplo', function(){
     $titulo = 'CHAO';
     $variable = false;
@@ -43,6 +48,11 @@ Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('h
 Route::group(['middleware'=>['auth']], function(){
     // Administración
     Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
+    Route::get('/administracion/usuario/{id}', 'AdministracionController@mostrarDetalle'); 
+    Route::get('/administracion/crearUsuario', 'AdministracionController@mostrarCrearUser'); 
+    Route::post('/administracion/crearUsuario/post', 'AdministracionController@crearUser')->name('administracion.crear'); 
+    Route::post('/administracion/usuario/{id}/post', 'AdministracionController@banearUsuario')->name('administracion.banear'); 
+    // Perfil 
     // Perfil
     Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
     Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
