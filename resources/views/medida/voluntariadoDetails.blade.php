@@ -48,7 +48,10 @@
                   <label class="col-md-12 control-label">Descripcion:</label>
                   <p class="col-md-12 control-label">{{ $voluntariado->descripcion }}</p>
                 </div>
-                
+
+                <a href= {{$voluntariado->id}}/comentarios/mostrar >
+                  <button class="btn" type="button" >Ver Comentarios</button
+                  ></a>
 
               </div>
             </div>

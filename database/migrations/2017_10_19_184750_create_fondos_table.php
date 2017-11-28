@@ -28,7 +28,7 @@ class CreateFondosTable extends Migration
             $table->string('cuenta');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_catastrofe')->references('id')->on('catastroves');
+            $table->foreign('id_catastrofe')->references('id')->on('catastroves')->onDelete('cascade');
         });
     }
 

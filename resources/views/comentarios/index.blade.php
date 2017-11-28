@@ -21,15 +21,37 @@
                                 <td>{{ $user->name }}</td>
                                 @endforeach
                                 <td>{{ $comentario->comentario }}</td>
-
-
-
-
                             </tr>
                         @endforeach
-                        <a href= /medidas/eventobeneficio/{{$id_medida}}/comentarios/comentar>
-                            <button class="btn" type="button" >Escribir comentario</button
-                            ></a>
+
+
+                        @foreach($medidas as $medida)
+
+                            @if($medida->tipo == 'beneficio')
+
+
+                                <a href= /medidas/eventobeneficio/{{$id_medida}}/comentarios/comentar>
+                                    <button class="btn" type="button" >Escribir comentario</button
+                                    ></a>
+
+                            @elseif ($medida->tipo == 'centro')
+
+                                <a href= /medidas/centrosdeacopio/{{$id_medida}}/comentarios/comentar>
+                                    <button class="btn" type="button" >Escribir comentario</button
+                                    ></a>
+
+                            @elseif ($medida->tipo == 'voluntariado')
+
+                                <a href= /medidas/voluntariado/{{$id_medida}}/comentarios/comentar>
+                                    <button class="btn" type="button" >Escribir comentario</button
+                                    ></a>
+
+                            @endif
+                        @endforeach
+
+
+
+
                         </tbody>
                     </table>
                 </div>

@@ -44,7 +44,10 @@
                   <label class="col-md-12 control-label">Descripcion:</label>
                   <p class="col-md-12 control-label">{{ $centro->descripcion }}</p>
                 </div>
-                
+
+                  <a href= '/medidas/centrosdeacopio/{{$centro->id}}/comentarios/mostrar' >
+                      <button class="btn" type="button" >Ver Comentarios</button
+                      ></a>
 
               </div>
             </div>

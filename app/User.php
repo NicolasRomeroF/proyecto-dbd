@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'apellido', 'email', 'password', 'fecha_nacimiento', 'activo',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -26,6 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rol(){
+        return $this->belongsTo(Rol::class,'id_rol','id');
+    }
 
     public function getFechaAttribute($value)
     {

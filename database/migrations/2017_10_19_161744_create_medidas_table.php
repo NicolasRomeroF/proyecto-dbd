@@ -32,7 +32,7 @@ class CreateMedidasTable extends Migration
             $table->foreign('id_user')->references('id')->on('users');
 
             $table->foreign('id_comuna')->references('id')->on('comunas');
-            $table->foreign('id_catastrofe')->references('id')->on('catastroves');
+            $table->foreign('id_catastrofe')->references('id')->on('catastroves')->onDelete('cascade');
         });
     }
 
