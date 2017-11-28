@@ -11,6 +11,11 @@ class AdministracionController extends Controller
 { 
     public function listar() 
     { 
+      $bool = Auth::user()->authorizeRoles(['admin','gobierno',]);
+        if(!$bool)
+        {
+            return view('bloqueado');
+        }
       $usuarios = User::all(); 
         return view('administracion/listarUsuarios', compact('usuarios')); 
     } 
