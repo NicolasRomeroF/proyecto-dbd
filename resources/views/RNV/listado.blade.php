@@ -22,9 +22,9 @@
   	@foreach($voluntarios as $voluntario)
     <tr>
       @if($voluntario->disponible)
-      <td>Disponible</td>
+        <td><span class="label label-success">Disponible</span></td>
       @else
-      <td>Ocupado</td>
+        <td><span class="label label-danger">Ocupado</span></td>
       @endif
       <td>{{ $voluntario->nombre }}</td>
       <td>{{ $voluntario->apellido }}</td>
