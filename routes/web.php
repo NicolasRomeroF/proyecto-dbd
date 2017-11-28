@@ -121,7 +121,18 @@ Route::post('/test/save', ['as' => 'save-date',
     function () {
         return '';
     }]);
+Route::get('/test/mapa2', function () {
+    return view('test/mapa2');
+});
+Route::get('/test/mapa', function () {
+    return view('test/mapa');
+});
+Route::get('/test/mapa3', function () {
+    return view('test/mapa3');
+});
 Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion');
+
+
 //Twitter
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);

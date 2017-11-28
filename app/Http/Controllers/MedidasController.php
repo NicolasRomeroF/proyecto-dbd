@@ -148,6 +148,7 @@ class MedidasController extends Controller
         $comuna = Comuna::find($beneficio->id_comuna);
         $provincia = Provincia::find($comuna->id_provincia);
         $region = Region::find($provincia->id_region);
+        //sdfsdfhsdfdsf
 
         return view('medida/beneficioDetails', compact('beneficio','declarador','comuna','provincia','region'));
 
