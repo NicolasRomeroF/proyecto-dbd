@@ -82,7 +82,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/medidas/fondo/', 'FondosController@verFondos')->name('fondo.verFondos');
     //Centros
 
-    Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
+    Route::get('/centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');
     Route::resource('centrosdeacopio', 'CentrosDeAcopioController');
     Route::resource('centrosdeacopio.articulos', 'ArticulosController');
     Route::get('centrosdeacopio/{id_centro}/articulos/crear', 'ArticulosController@ingresarEnCentro');

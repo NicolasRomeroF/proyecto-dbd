@@ -86,7 +86,7 @@
 
                             </tr>
                         @endforeach
-                        <a href= {{$centro->id}}/articulos/crear >
+                        <a href= '/centrosdeacopio/{{$centro->id}}/articulos/crear' >
                                     <button class="btn" type="button" >Añadir Artículo</button
                                     ></a>
                         </tbody>

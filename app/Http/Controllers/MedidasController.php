@@ -174,11 +174,12 @@ class MedidasController extends Controller
     public function show_centro($id)
     {
         $centro = Medida::find($id);
+        $articulos = DB::table('articulos')->where('id_medida', $id)->get();
         $comuna = Comuna::find($centro->id_comuna);
         $provincia = Provincia::find($comuna->id_provincia);
         $region = Region::find($provincia->id_region);
 
-        return view('medida/centroDetails', compact('centro','comuna','provincia','region'));
+        return view('medida/centroDetails', compact('centro','comuna','provincia','region','articulos'));
 
     }
      public function show_evento($id)
