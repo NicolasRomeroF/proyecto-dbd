@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 		    <div class="row">
-		    		        <div class="col-md-10 col-md-offset-2">
+		    		        <div class="col-md-11 col-md-offset-1">
 		    		        	<div class="panel panel-default">
 <table class="table table-sm">
   <thead>
@@ -36,8 +36,9 @@
       <td>{{ $fondo->cuenta }}</td>
       <td><a class="btn btn-success" href="/medidas/fondo/{{$fondo->id}}">Ver</a>
       <a class="btn btn-primary" href="/medidas/fondo/{{ $fondo->id }}/edit">Editar</a>
-      <a class="btn btn-danger" href="/medidas/fondo/{{$fondo->id}}/delete">Eliminar</a></td>
-      <a class="btn btn-info" href="/catastrofes/medidas/generatedonacion/{{$fondo->id}}">Donar</a>
+      <a class="btn btn-danger" href="/medidas/fondo/{{$fondo->id}}/delete">Eliminar</a>
+    <a class="btn btn-info" href="/catastrofes/medidas/generatedonacion/{{$fondo->id}}">Donar</a></td>
+      
     </tr>
     @endforeach  
 </tbody>

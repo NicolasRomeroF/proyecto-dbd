@@ -125,6 +125,7 @@ class MedidasController extends Controller
     public function verBeneficios()
     {
         $beneficios = Medida::where('tipo','beneficio')->get();
+        
         return view('medida/verBeneficios',compact('beneficios'));
     }
     public function verVoluntariados()
@@ -155,6 +156,14 @@ class MedidasController extends Controller
         return $this->show_beneficio($beneficio->id);
     }
 
+    public function edit_evento($id)
+    {
+        $beneficio = Medida::find($id);
+        $regiones = Region::all();
+        //return $catastrofe;
+        return view('medida/editarBeneficio', compact('beneficio','regiones'));
+    }
+
     
 
     public function update_centro(Request $request){
@@ -182,7 +191,7 @@ class MedidasController extends Controller
         return view('medida/centroDetails', compact('centro','comuna','provincia','region','articulos'));
 
     }
-     public function show_evento($id)
+    public function show_evento($id)
     {
         $beneficio = Medida::find($id);
         $comuna = Comuna::find($beneficio->id_comuna);
@@ -192,16 +201,7 @@ class MedidasController extends Controller
         return view('medida/beneficioDetails', compact('beneficio','comuna','provincia','region'));
 
     }
-     public function show_evento($id)
-    {
-        $evento = Medida::find($id);
-        $comuna = Comuna::find($centro->id_comuna);
-        $provincia = Provincia::find($comuna->id_provincia);
-        $region = Region::find($provincia->id_region);
-
-        return view('medida/benficioDetails', compact('beneficio','comuna','provincia','region'));
-
-    }
+    
 
     public function edit_centro($id)
     {
