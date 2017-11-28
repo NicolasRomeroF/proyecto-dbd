@@ -38,6 +38,7 @@ class UserSeeder extends Seeder
         $organizacion->name = 'Organizacion';
         $organizacion->email = 'organizacion@example.com';
         $organizacion->password = bcrypt('secret');
+        $organizacion->activo=true;
         $organizacion->save();
         $organizacion->roles()->attach($role_organizacion);
 
@@ -45,6 +46,7 @@ class UserSeeder extends Seeder
         $natural->name = 'Natural';
         $natural->email = 'natural@example.com';
         $natural->password = bcrypt('secret');
+        $natural->activo=true;
         $natural->save();
         $natural->roles()->attach($role_natural);
         
