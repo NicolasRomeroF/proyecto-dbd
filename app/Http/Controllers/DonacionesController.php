@@ -23,6 +23,7 @@ class DonacionesController extends Controller
             $fondo->activo=False;
             $fondo->save();
         }
+        
         return back()->with('flash','Donacion generada correctamente');
     }
     public function createDonacion($id)
