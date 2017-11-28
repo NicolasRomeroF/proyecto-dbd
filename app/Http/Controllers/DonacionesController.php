@@ -16,13 +16,13 @@ class DonacionesController extends Controller
         $medida->cuenta = $request->cuenta;
         $medida->banco = $request->banco;
         $medida->save();
-        /* Innecesario con implementación del trigger
         $fondo = Fondo::find($request->id_fondo);
+        /* Innecesario con implementación del trigger
         $fondo->montoActual=$fondo->montoActual+$request->monto;*/
         if($fondo->montoActual>$fondo->monto){
             $fondo->activo=False;
+            $fondo->save();
         }
-        $fondo->save();
         return back()->with('flash','Donacion generada correctamente');
     }
     public function createDonacion($id)
