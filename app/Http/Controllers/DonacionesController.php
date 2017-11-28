@@ -16,8 +16,9 @@ class DonacionesController extends Controller
         $medida->cuenta = $request->cuenta;
         $medida->banco = $request->banco;
         $medida->save();
+        /* Innecesario con implementación del trigger
         $fondo = Fondo::find($request->id_fondo);
-        $fondo->montoActual=$fondo->montoActual+$request->monto;
+        $fondo->montoActual=$fondo->montoActual+$request->monto;*/
         if($fondo->montoActual>$fondo->monto){
             $fondo->activo=False;
         }
