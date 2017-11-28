@@ -20,14 +20,11 @@ Post:
 Route::get('/', 'WelcomeController@home');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/ejemplo', function(){
-    $titulo = 'CHAO';
-    $variable = false;
-    return view('ejemplos.hola_mundo', compact(['titulo','variable','arreglo']));
-});
-Route::get('/estructura', function(){
-    return view('ejemplos.estructura', compact(['titulo']));
-});
+
+// Facebook
+Route::get('/auth/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/auth/callback', 'SocialAuthFacebookController@callback');
+
 /*
 Route::post('usuario/', function(Request $request){
 	User::create($request->all());
@@ -43,6 +40,10 @@ Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('h
 Route::group(['middleware'=>['auth']], function(){
     // Administración
     Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
+    Route::get('/administracion/usuario/{id}', 'AdministracionController@mostrarDetalle');
+    Route::get('/administracion/crearUsuario', 'AdministracionController@mostrarCrearUser');
+    Route::post('/administracion/crearUsuario/post', 'AdministracionController@crearUser')->name('administracion.crear');
+    Route::post('/administracion/usuario/{id}/post', 'AdministracionController@banearUsuario')->name('administracion.banear');
     // Perfil
     Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
     Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');

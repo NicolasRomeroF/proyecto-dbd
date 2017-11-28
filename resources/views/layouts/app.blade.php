@@ -157,6 +157,31 @@
 								</ul>
 							</li>
 
+							@if(Auth::user()->authorizeRoles(['admin',]))
+							<li>
+
+								<a href="#">
+									<i class="fa fa-thumbs-up"></i>
+									<span>Administración</span>
+								</a>
+								<ul>
+									<li>
+										<a href="/administracion/listarUsuarios" >
+											<i class="fa fa-list"></i>
+											<span>Ver usuarios</span>
+										</a>
+									</li>
+									<li>
+										<a href="/administracion/crearUsuario" >
+											<i class="fa fa-list"></i>
+											<span>Crear usuario</span>
+										</a>
+									</li>
+									
+								</ul>
+							</li>
+							@endif
+
 							@endguest
 							<li>
 

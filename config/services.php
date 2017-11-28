@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1010440339103936',
+        'client_secret' => '8541fa9ecc3c40643d58e93fcb2d73fd',
+        'redirect' => 'http://dbd.app/auth/callback',
+    ],
+
 ];
