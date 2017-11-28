@@ -31,8 +31,10 @@
 
                                 <td>
                                 <a class="btn btn-success " href="centrosdeacopio/{{$centroDeAcopio->id}}">Ver</a>
+                                @if(Auth::user()->authorizeRoles(['admin','organizacion',]))
                                 <a class="btn btn-primary" href="/medidas/centrosdeacopio/{{ $centroDeAcopio->id }}/edit">Editar</a>
-                                <a class="btn btn-danger" href="/medidas/centrosdeacopio/{{$centroDeAcopio->id}}/delete">Eliminar</a></td>
+                                <a class="btn btn-danger" href="/medidas/centrosdeacopio/{{$centroDeAcopio->id}}/delete">Eliminar</a>
+                            @endif</td>
                             </tr>
                             @endforeach
                         </tbody>

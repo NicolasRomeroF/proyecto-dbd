@@ -26,8 +26,10 @@
       <td>{{ $beneficio->fecha_termino }}</td>
       <td>{{ $beneficio->comuna->nombre }}</td>
       <td><a class="btn btn-success" href="/medidas/eventobeneficio/{{$beneficio->id}}">Ver</a>
+        @if(Auth::user()->authorizeRoles(['admin','organizacion',]))
       <a class="btn btn-primary" href="/medidas/eventobeneficio/{{ $beneficio->id }}/edit">Editar</a>
-      <a class="btn btn-danger" href="/medidas/eventobeneficio/{{$beneficio->id}}/delete">Eliminar</a></td>
+      <a class="btn btn-danger" href="/medidas/eventobeneficio/{{$beneficio->id}}/delete">Eliminar</a>
+    @endif</td>
     </tr>
     @endforeach  
 </tbody>

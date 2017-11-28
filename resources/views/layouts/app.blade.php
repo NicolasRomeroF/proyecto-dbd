@@ -158,8 +158,7 @@
 							</li>
 							@endif
 
-<<<<<<< HEAD
-=======
+
 							@if(Auth::user()->authorizeRoles(['admin',]))
 							<li>
 
@@ -185,7 +184,7 @@
 							</li>
 							@endif
 
->>>>>>> master
+
 							@endguest
 							<li>
 

@@ -27,8 +27,10 @@
 
       <td><a href="/catastrofes/medidas/{{$catastrofe->id}}">Ver medidas asociadas</a></td>
       <td><a class="btn btn-success" href="/catastrofes/{{$catastrofe->id}}">Ver</a>
+        @if(Auth::user()->authorizeRoles(['admin','gobierno',]))
       <a class="btn btn-primary" href="/catastrofes/{{ $catastrofe->id }}/edit">Editar</a>
-      <a class="btn btn-danger" href="/catastrofes/{{$catastrofe->id}}/delete">Eliminar</a></td>
+      <a class="btn btn-danger" href="/catastrofes/{{$catastrofe->id}}/delete">Eliminar</a>
+    @endif</td>
     </tr>
     @endforeach  
 </tbody>

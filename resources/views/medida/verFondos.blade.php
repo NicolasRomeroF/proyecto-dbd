@@ -35,8 +35,10 @@
       <td>{{ $fondo->banco }}</td>
       <td>{{ $fondo->cuenta }}</td>
       <td><a class="btn btn-success" href="/medidas/fondo/{{$fondo->id}}">Ver</a>
+        @if(Auth::user()->authorizeRoles(['admin','organizacion',]))
       <a class="btn btn-primary" href="/medidas/fondo/{{ $fondo->id }}/edit">Editar</a>
       <a class="btn btn-danger" href="/medidas/fondo/{{$fondo->id}}/delete">Eliminar</a>
+      @endif
     <a class="btn btn-info" href="/catastrofes/medidas/generatedonacion/{{$fondo->id}}">Donar</a></td>
       
     </tr>
