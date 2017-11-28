@@ -44,7 +44,10 @@
                   <label class="col-md-12 control-label">Descripcion:</label>
                   <p class="col-md-12 control-label">{{ $centro->descripcion }}</p>
                 </div>
-                
+
+                  <a href= '/medidas/centrosdeacopio/{{$centro->id}}/comentarios/mostrar' >
+                      <button class="btn" type="button" >Ver Comentarios</button
+                      ></a>
 
               </div>
             </div>
@@ -83,7 +86,7 @@
 
                             </tr>
                         @endforeach
-                        <a href= {{$centro->id}}/articulos/crear >
+                        <a href= '/centrosdeacopio/{{$centro->id}}/articulos/crear' >
                                     <button class="btn" type="button" >Añadir Artículo</button
                                     ></a>
                         </tbody>

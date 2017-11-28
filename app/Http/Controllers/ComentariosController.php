@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Comentario;
+use App\Medida;
 use Illuminate\Http\Request;
 use DB;
 
@@ -24,7 +25,8 @@ class ComentariosController extends Controller
         $id_user =auth()->id();
         $user = DB::table('users')->where('id', $id_user)->get();
         $comentarios = DB::table('comentarios')->where('id_medida', $id)->get();
-        return view('comentarios.index', ['comentarios' => $comentarios, 'id_medida' => $id , 'users' => $user ]);
+        $medida = DB::table('medidas')->where('id', $id)->get();
+        return view('comentarios.index', ['comentarios' => $comentarios, 'id_medida' => $id , 'users' => $user, 'medidas' => $medida  ]);
     }
 
     /**
@@ -37,10 +39,11 @@ class ComentariosController extends Controller
 
     }
 
-    public function comentar($id_centro)
+    public function comentar($id_medida)
     {
+        $medida = DB::table('medidas')->where('id', $id_medida)->get();
 
-        return view ('comentarios.comentar', ['id_medida' => $id_centro]);
+        return view ('comentarios.comentar', ['id_medida' => $id_medida, 'medida' => $medida]);
     }
     /**
      * Store a newly created resource in storage.
@@ -57,15 +60,42 @@ class ComentariosController extends Controller
     {
 
         Comentario::create([
-        'comentario' => $request->tipo,
+        'comentario' => $request->comentario,
         'id_user'  => auth()->id(),
         'id_medida' => $id_medida
 ]);
 
-        return redirect(route('mostrarComentario', $id_medida))->with('flash','Comentario añadido correctamente');
+        return redirect(route('mostrarComentario', $id_medida))->with('flash', 'Comentario añadido correctamente');
 
 }
 
+
+    public function guardarCentro(Request $request, $id_medida)
+    {
+
+        Comentario::create([
+            'comentario' => $request->comentario,
+            'id_user'  => auth()->id(),
+            'id_medida' => $id_medida
+        ]);
+
+        return redirect(route('mostrarComentarioCentro', $id_medida))->with('flash', 'Comentario añadido correctamente');
+
+    }
+
+
+    public function guardarVoluntariado(Request $request, $id_medida)
+    {
+
+        Comentario::create([
+            'comentario' => $request->comentario,
+            'id_user'  => auth()->id(),
+            'id_medida' => $id_medida
+        ]);
+
+        return redirect(route('mostrarComentarioVoluntariado', $id_medida))->with('flash', 'Comentario añadido correctamente');
+
+    }
 
     /**
      * Display the specified resource.

@@ -140,7 +140,7 @@
 									
 								</ul>
 							</li>
-
+							@if(Auth::user()->authorizeRoles(['admin','gobierno','organizacion',]))
 							<li>
 
 								<a href="#">
@@ -156,6 +156,7 @@
 									</li>									
 								</ul>
 							</li>
+							@endif
 
 <<<<<<< HEAD
 =======
