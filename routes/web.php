@@ -20,11 +20,19 @@ Post:
 Route::get('/', 'WelcomeController@home');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+// Facebook 
+Route::get('/auth/redirect', 'SocialAuthFacebookController@redirect'); 
+Route::get('/auth/callback', 'SocialAuthFacebookController@callback'); 
 
-// Facebook
-Route::get('/auth/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/auth/callback', 'SocialAuthFacebookController@callback');
 
+Route::get('/ejemplo', function(){
+    $titulo = 'CHAO';
+    $variable = false;
+    return view('ejemplos.hola_mundo', compact(['titulo','variable','arreglo']));
+});
+Route::get('/estructura', function(){
+    return view('ejemplos.estructura', compact(['titulo']));
+});
 /*
 Route::post('usuario/', function(Request $request){
 	User::create($request->all());
@@ -40,10 +48,11 @@ Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('h
 Route::group(['middleware'=>['auth']], function(){
     // Administración
     Route::get('/administracion/listarUsuarios', 'AdministracionController@listar')->name('listarUsuarios');
-    Route::get('/administracion/usuario/{id}', 'AdministracionController@mostrarDetalle');
-    Route::get('/administracion/crearUsuario', 'AdministracionController@mostrarCrearUser');
-    Route::post('/administracion/crearUsuario/post', 'AdministracionController@crearUser')->name('administracion.crear');
-    Route::post('/administracion/usuario/{id}/post', 'AdministracionController@banearUsuario')->name('administracion.banear');
+    Route::get('/administracion/usuario/{id}', 'AdministracionController@mostrarDetalle'); 
+    Route::get('/administracion/crearUsuario', 'AdministracionController@mostrarCrearUser'); 
+    Route::post('/administracion/crearUsuario/post', 'AdministracionController@crearUser')->name('administracion.crear'); 
+    Route::post('/administracion/usuario/{id}/post', 'AdministracionController@banearUsuario')->name('administracion.banear'); 
+    // Perfil 
     // Perfil
     Route::get('/perfil', 'HomeController@perfil_user')->name('perfil');
     Route::get('/infoPerfil', 'HomeController@infoPerfil')->name('infoPerfil');
@@ -54,6 +63,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
     Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
     Route::get('/catastrofes/{id}', 'CatastrofesController@show');
+    Route::get('/catastrofes/{id}/delete','CatastrofesController@delete')->name('catastrofe.delete');
     // Medidas
     Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
     Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');
@@ -85,6 +95,17 @@ Route::group(['middleware'=>['auth']], function(){
     Route::post('/medidas/eventobeneficio/{id}/comentarios/guardar', 'ComentariosController@guardar')->name('guardarComentario');
     Route::get('/medidas/eventobeneficio/{id}/comentarios/comentar', 'ComentariosController@comentar');
     Route::get('/medidas/eventobeneficio/{id}/comentarios/mostrar', 'ComentariosController@mostrar')->name('mostrarComentario');
+
+    Route::post('/medidas/centrosdeacopio/{id}/comentarios/guardar', 'ComentariosController@guardarCentro')->name('guardarComentarioCentro');
+    Route::get('/medidas/centrosdeacopio/{id}/comentarios/comentar', 'ComentariosController@comentar');
+    Route::get('/medidas/centrosdeacopio/{id}/comentarios/mostrar', 'ComentariosController@mostrar')->name('mostrarComentarioCentro');
+
+    Route::post('/medidas/voluntariado/{id}/comentarios/guardar', 'ComentariosController@guardarVoluntariado')->name('guardarComentarioVoluntariado');
+    Route::get('/medidas/voluntariado/{id}/comentarios/comentar', 'ComentariosController@comentar');
+    Route::get('/medidas/voluntariado/{id}/comentarios/mostrar', 'ComentariosController@mostrar')->name('mostrarComentarioVoluntariado');
+
+
+
     Route::resource('medidas.comentarios', 'ComentariosController');
 
 
@@ -97,6 +118,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/medidas/voluntariado/{id}', 'MedidasController@show_voluntariado');
     Route::get('/medidas/voluntariado/{id}/edit', 'MedidasController@edit_voluntariado');
     Route::post('/medidas/voluntariado/update', 'MedidasController@update_voluntariado')->name('medidas.update_voluntariado');
+    Route::get('/medidas/voluntariado/{id}/delete', 'MedidasController@delete_voluntariado');
 
     //Donaciones
     Route::get('/catastrofes/medidas/generatedonacion/{id}', 'DonacionesController@createDonacion')->name('donaciones.createDonacion');
@@ -104,6 +126,10 @@ Route::group(['middleware'=>['auth']], function(){
     //Fondo
     Route::get('/catastrofes/medidas/generatefondo/{id}', 'FondosController@createFondo')->name('medida.createFondo');
     Route::post('/catastrofes/medidas/generatefondo/post/', 'FondosController@storeFondo')->name('medida.storeFondo');
+    Route::get('/medidas/fondo/{id}', 'FondosController@show_fondo');
+    Route::get('/medidas/fondo/{id}/edit', 'FondosController@edit_fondo');
+    Route::post('/medidas/fondo/update', 'FondosController@update_fondo')->name('fondos.update');
+
 });
 Route::get('/medidas/historial', 'MedidasController@historial')->name('historialMedida');
 //Auth
@@ -122,18 +148,7 @@ Route::post('/test/save', ['as' => 'save-date',
     function () {
         return '';
     }]);
-Route::get('/test/mapa2', function () {
-    return view('test/mapa2');
-});
-Route::get('/test/mapa', function () {
-    return view('test/mapa');
-});
-Route::get('/test/mapa3', function () {
-    return view('test/mapa3');
-});
 Route::get('/informacion', 'WelcomeController@infRedirect')->name('informacion');
-
-
 //Twitter
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);

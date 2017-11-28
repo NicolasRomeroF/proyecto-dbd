@@ -60,11 +60,11 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                              <a href="{{url('/auth/redirect')}}" class="btn btn-primary">Iniciar sesión con Facebook</a>
-                            </div>
-                        </div>
+                         <div class="form-group"> 
+                            <div class="col-md-8 col-md-offset-4"> 
+                              <a href="{{url('/auth/redirect')}}" class="btn btn-primary">Iniciar sesión con Facebook</a> 
+                            </div> 
+                        </div> 
                     </form>
                 </div>
             </div>

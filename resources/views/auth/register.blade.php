@@ -1,23 +1,22 @@
 @extends('layouts.app')
+@section('scripts') 
+@parent 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script> 
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+  <script> 
+  $(function() { 
+    $( "#datepicker" ).datepicker(); 
+  }); 
+  </script> 
+   <script type="text/javascript"> 
+  $(function() { 
+          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy'); 
+  }); 
+  </script> 
+@stop 
 
-
-@section('scripts')
-@parent
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-  </script>
-   <script type="text/javascript">
-  $(function() {
-          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
-  });
-  </script>
-@stop
 @section('content')
 <div class="container">
     <div class="row">
@@ -71,12 +70,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="fecha" class="col-md-4 control-label">Fecha de nacimiento</label>
-                            <div class="col-md-6">
-                                <input id="fecha" type="date" name="fecha" class="form-control" placeholder="Elegir" required>
-                            </div>
-                        </div>
+                         <div class="form-group"> 
+                            <label for="fecha" class="col-md-4 control-label">Fecha de nacimiento</label> 
+                            <div class="col-md-6"> 
+                                <input id="fecha" type="date" name="fecha" class="form-control" placeholder="Elegir" required> 
+                            </div> 
+                        </div> 
+ 
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>

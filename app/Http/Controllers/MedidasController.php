@@ -45,13 +45,18 @@ class MedidasController extends Controller
         $medida->id_comuna = $request->comuna;
         
         $medida->save();
-        return back()->with('flash','Medida generada correctamente');
+        
+        return $this->show_centro($medida->id);;
     }
     public function createCentro($id)
     {
         $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararCentro',compact('catastrofe','regiones'));
+    }
+    public function delete_centro($id){
+        Medida::destroy($id);
+        return $this->verCentros();
     }
     public function storeBeneficio(Request $request){
         $medida = new Medida();
@@ -66,13 +71,17 @@ class MedidasController extends Controller
         $medida->tipo='beneficio';
         $medida->id_comuna = $request->comuna;
         $medida->save();
-        return back()->with('flash','Medida generada correctamente');
+        return $this->show_evento($medida->id);
     }
     public function createBeneficio($id)
     {
         $regiones = Region::all();
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararBeneficio',compact('catastrofe','regiones'));
+    }
+    public function delete_beneficio($id){
+        Medida::destroy($id);
+        return $this->verBeneficios();
     }
     public function storeVoluntariado(Request $request){
         $medida = new Medida();
@@ -88,7 +97,8 @@ class MedidasController extends Controller
         $medida->labor=$request->labor;
         $medida->id_comuna = $request->comuna;
         $medida->save();
-        return back()->with('flash','Medida generada correctamente');
+        
+        return $this->show_voluntariado($medida->id);
     }
     public function createVoluntariado($id)
     {
@@ -96,7 +106,10 @@ class MedidasController extends Controller
         $catastrofe=Catastrofe::find($id);
         return view('medida/declararVoluntariado',compact('catastrofe','regiones'));
     }
-
+    public function delete_voluntariado($id){
+        Medida::destroy($id);
+        return $this->verVoluntariados();
+    }
 
     public function historial()
     {
@@ -139,20 +152,10 @@ class MedidasController extends Controller
         $beneficio->id_comuna = $request->comuna;
         
         $beneficio->save();
-        return back()->with('flash','Datos editados correctamente');
+        return $this->show_beneficio($beneficio->id);
     }
 
-    public function show_evento($id)
-    {
-        $beneficio = Medida::find($id);
-        $comuna = Comuna::find($beneficio->id_comuna);
-        $provincia = Provincia::find($comuna->id_provincia);
-        $region = Region::find($provincia->id_region);
-        //sdfsdfhsdfdsf
-
-        return view('medida/beneficioDetails', compact('beneficio','declarador','comuna','provincia','region'));
-
-    }
+    
 
     public function update_centro(Request $request){
         $id = $request->centro;
@@ -165,7 +168,7 @@ class MedidasController extends Controller
         $centro->id_comuna = $request->comuna;
         
         $centro->save();
-        return back()->with('flash','Datos editados correctamente');
+        return $this->show_centro($centro->id);
     }
 
     public function show_centro($id)
@@ -176,6 +179,16 @@ class MedidasController extends Controller
         $region = Region::find($provincia->id_region);
 
         return view('medida/centroDetails', compact('centro','comuna','provincia','region'));
+
+    }
+     public function show_evento($id)
+    {
+        $beneficio = Medida::find($id);
+        $comuna = Comuna::find($beneficio->id_comuna);
+        $provincia = Provincia::find($comuna->id_provincia);
+        $region = Region::find($provincia->id_region);
+
+        return view('medida/beneficioDetails', compact('beneficio','comuna','provincia','region'));
 
     }
 

@@ -22,8 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('id_organizacion')->nullable();
+            $table->integer('id_role')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_role')->references('id')->on('roles');
             $table->foreign('id_organizacion')->references('id')->on('organizacions');
         });
     }

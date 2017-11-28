@@ -40,7 +40,7 @@ class CatastrofesController extends Controller
         $catastrofe->id_comuna=$request->comuna;
         $catastrofe->descripcion=$request->descripcion;
         $catastrofe->save();
-    	return $request;
+    	
         $tweet = '#AlertaCatastrofe ' . $request->nombre . ' ' . $request->fecha;
         Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
         
@@ -81,5 +81,9 @@ class CatastrofesController extends Controller
         
         $catastrofe->save();
         return back()->with('flash','Datos editados correctamente');
+    }
+    public function delete($id){
+        Catastrofe::destroy($id);
+        return $this->historial();
     }
 }
