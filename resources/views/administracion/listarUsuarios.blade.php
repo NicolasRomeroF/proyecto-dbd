@@ -24,6 +24,7 @@
             <tr>  
               <td>{{ $usuario->name }} {{ $usuario->apellido }}</td>  
               <td>{{ $usuario->email }}</td>  
+              <td>{{ $usuario->roles->first()->name}}</td>  
              
               @if($usuario->activo)  
                 <td><span class="label label-success">Active</span>  
