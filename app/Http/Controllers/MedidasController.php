@@ -249,7 +249,7 @@ class MedidasController extends Controller
         $medida->save();
         return $this->showMedidas();
     }
-    public function rechazarMedia($id){
+    public function rechazarMedida($id){
         $medida = Medida::find($id);
         $medida->valido = 2;
         $medida->save();
