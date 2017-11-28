@@ -27,10 +27,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function rol(){
-        return $this->belongsTo(Rol::class,'id_rol','id');
-    }
-
     public function getFechaAttribute($value)
     {
         return date("d-m-Y", strtotime($value));

@@ -46,6 +46,7 @@ class UserSeeder extends Seeder
         $natural->name = 'Natural';
         $natural->email = 'natural@example.com';
         $natural->password = bcrypt('secret');
+        $natural->activo = true;
         $natural->save();
         $natural->roles()->attach($role_natural);
         
