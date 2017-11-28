@@ -63,7 +63,9 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
     Route::post('/catastrofes/add/post', 'CatastrofesController@store')->name('catastrofe.store');
     Route::get('/catastrofes/{id}', 'CatastrofesController@show');
+    Route::get('/catastrofes/{id}/edit', 'CatastrofesController@edit');
     Route::get('/catastrofes/{id}/delete','CatastrofesController@delete')->name('catastrofe.delete');
+    Route::post('/catastrofes/update', 'CatastrofesController@update')->name('catastrofe.update');
     // Medidas
     Route::get('/medidas/generate', 'MedidasController@index')->name('generateMedida');
     Route::post('/medidas/generate/post', 'MedidasController@store')->name('medida.store');

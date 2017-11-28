@@ -17,7 +17,7 @@ class CatastrofesController extends Controller
     {
         $regiones = Region::all();
         if (\Auth::check()) {
-            return view('catastrofe/catastrofeAdd',['regiones' => $regiones]);
+            return view('catastrofe/añadirCatastrofe',['regiones' => $regiones]);
         }
         else {
             return view('auth/login');
@@ -37,7 +37,9 @@ class CatastrofesController extends Controller
         $catastrofe->id_user=auth()->id();
         $catastrofe->nombre=$request->nombre;
         $catastrofe->fecha=date("m-d-Y", strtotime($request->fecha));
-        $catastrofe->id_comuna=$request->comuna;
+        $catastrofe->lugar=$request->lugar;
+        $catastrofe->latitud=$request->latitud;
+        $catastrofe->longitud=$request->longitud;
         $catastrofe->descripcion=$request->descripcion;
         $catastrofe->save();
     	
@@ -54,10 +56,7 @@ class CatastrofesController extends Controller
     public function show($id)
     {
         $catastrofe = Catastrofe::find($id);
-        $declarador = User::find($catastrofe->id_user)->name;
-        $comuna = Comuna::find($catastrofe->id_comuna);
-        $provincia = Provincia::find($comuna->id_provincia);
-        $region = Region::find($provincia->id_region);
+        
 
         return view('catastrofe/catastrofeDetails', compact('catastrofe', 'declarador','comuna','provincia','region'));
 
@@ -77,7 +76,10 @@ class CatastrofesController extends Controller
         $catastrofe->fecha=$request->fecha;
         $catastrofe->tipo=$request->tipo;
         $catastrofe->descripcion=$request->descripcion;
-        $catastrofe->id_comuna = $request->comuna;
+        $catastrofe->lugar = $request->lugar;
+        $catastrofe->longitud = $request->longitud;
+        $catastrofe->latitud = $request->latitud;
+
         
         $catastrofe->save();
         return back()->with('flash','Datos editados correctamente');

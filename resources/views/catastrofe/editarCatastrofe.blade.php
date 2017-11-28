@@ -2,7 +2,7 @@
 @section('scripts')
 @parents
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
@@ -15,12 +15,12 @@
       $('#provincia').empty();
       console.log(data);
       $.each(data, function(key, element) {
-          $('#provincia').append('<option value="' + key + '">' + element + '</option>');
-        });
+        $('#provincia').append('<option value="' + key + '">' + element + '</option>');
+      });
     });
   });   
-  </script>
-  <script>
+</script>
+<script>
   $("#provincia").on('change',function(e){
     console.log(e);
     var id_provincia = e.target.value;
@@ -30,107 +30,101 @@
       $('#comuna').empty();
       console.log(data);
       $.each(data, function(key, element) {
-          $('#comuna').append('<option value="' + key + '">' + element + '</option>');
-        });
+        $('#comuna').append('<option value="' + key + '">' + element + '</option>');
+      });
     });
   });   
-  </script>
-  @stop
+</script>
+@stop
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Catastrofe {{ $catastrofe->nombre }}</div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Catastrofe {{ $catastrofe->nombre }}</div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('catastrofe.update') }}">
-                        {{ csrf_field() }}
+        <div class="panel-body">
+          <form class="form-horizontal" method="POST" action="{{ route('catastrofe.update') }}">
+            {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
+            <div class="form-group">
+              <label for="name" class="col-md-4 control-label">Nombre</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="nombre" value="{{ $catastrofe->nombre }}" required autofocus>
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control" name="nombre" value="{{ $catastrofe->nombre }}" required autofocus>
 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fecha" class="col-md-4 control-label">Fecha de la catastrofe</label>
-
-                            <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="fecha" value="{{ $catastrofe->fecha }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipo" class="col-md-4 control-label">Tipo de catastrofe</label>
-
-                            <div class="col-md-6">
-                                 <select name="tipo" class="form-control" value="{{ $catastrofe->tipo }}" required>
-                                  <option value=" {{$catastrofe->tipo}}">{{$catastrofe->tipo}}</option>
-                              <option value="Aluvion">Aluvion</option>
-                              <option value="Erupción volcanica">Erupcion volcanica</option>
-                              <option value="Incendio">Incendio</option>
-                              <option value="Inundación">Inundación</option>
-                              <option value="Terremoto">Terremoto</option>
-                              <option value="Tsunami">Tsunami</option>   
-                              <option value="Tsunami">Otro</option>     
-                          </select>
-                            </div>
-                        </div>
-                        <div class="form-group"> 
-                            <label class="col-md-4 control-label">Region</label>
-                            <div class="col-md-6">
-                            <select id="region" name="region" class="form-control" placeholder="Elegir" required>
-                              <option value=" {{$catastrofe->comuna->provincia->region->id}}">{{$catastrofe->comuna->provincia->region->nombre}}</option>
-                              @foreach($regiones as $region)
-                              <option value=" {{$region->id}}">{{$region->nombre}}</option>
-                              @endforeach 
-                          </select>
-                          </div>
-                        </div>
-                        <div class="form-group"> 
-                            <label class="col-md-4 control-label">Provincia</label>
-                            <div class="col-md-6">
-                            <select id="provincia" name="provincia" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$catastrofe->comuna->provincia->id}}">{{$catastrofe->comuna->provincia->nombre}}</option>
-                              <option value="">Provincia</option>
-                          </select>
-                          </div>
-                        </div>
-                        <div class="form-group"> 
-                          
-                            <label class="col-md-4 control-label">Comuna</label>
-                            <div class="col-md-6">
-                            <select id="comuna" name="comuna" class="form-control" placeholder="Elegir" required>
-                              <option value="{{$catastrofe->comuna->id}}">{{$catastrofe->comuna->nombre}}</option>
-                              <option value="">Comuna</option>
-                          </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
-                            <div class="col-md-6">
-                            <textarea name="descripcion" class="form-control" value="{{ $catastrofe->descripcion }}" required>{{ $catastrofe->descripcion }}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Actualizar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+              </div>
             </div>
-        </div>
+
+            <div class="form-group">
+              <label for="fecha" class="col-md-4 control-label">Fecha de la catastrofe</label>
+
+              <div class="col-md-6">
+                <input id="date" type="date" class="form-control" name="fecha" value="{{ $catastrofe->fecha }}" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tipo" class="col-md-4 control-label">Tipo de catastrofe</label>
+
+              <div class="col-md-6">
+               <select name="tipo" class="form-control" value="{{ $catastrofe->tipo }}" required>
+                <option value=" {{$catastrofe->tipo}}">{{$catastrofe->tipo}}</option>
+                <option value="Aluvion">Aluvion</option>
+                <option value="Erupción volcanica">Erupcion volcanica</option>
+                <option value="Incendio">Incendio</option>
+                <option value="Inundación">Inundación</option>
+                <option value="Terremoto">Terremoto</option>
+                <option value="Tsunami">Tsunami</option>   
+                <option value="Tsunami">Otro</option>     
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="name" class="col-md-4 control-label">Lugar</label>
+
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control" name="lugar" value="{{ $catastrofe->lugar }}" required autofocus>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-md-4 control-label">Latitud</label>
+
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control" name="latitud" value="{{ $catastrofe->latitud }}" required autofocus>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-md-4 control-label">Longitud</label>
+
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control" name="longitud" value="{{ $catastrofe->longitud }}" required autofocus>
+
+              </div>
+            </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Descripcion de la catastrofe</label>
+            <div class="col-md-6">
+              <textarea name="descripcion" class="form-control" value="{{ $catastrofe->descripcion }}" required>{{ $catastrofe->descripcion }}</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <input name="catastrofe" type="hidden" value="{{ $catastrofe->id }}">
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+              <button type="submit" class="btn btn-primary">
+                Actualizar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
 </div>
 @endsection

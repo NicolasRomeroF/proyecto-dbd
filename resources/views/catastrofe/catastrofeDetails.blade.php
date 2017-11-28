@@ -19,19 +19,12 @@
                 <div class="form-group">
                   <label class="col-md-12 control-label">Tipo</label>
                   <p class="col-sm-12 control-label">{{ $catastrofe->tipo }}</p><br>
+                </div><div class="form-group">
+                  <label class="col-md-12 control-label">Lugar</label>
+                  <p class="col-sm-12 control-label">{{ $catastrofe->lugar }}</p><br>
                 </div>
-                <div class="form-group">
-                  <label class="col-md-12 control-label">Region</label>
-                  <p class="col-sm-12 control-label">{{ $region->nombre }}</p><br>
-                </div>
-                <div class="form-group">
-                  <label class="col-md-12 control-label">Provincia</label>
-                  <p class="col-sm-12 control-label">{{ $provincia->nombre }}</p><br>
-                </div>
-                <div class="form-group">
-                  <label class="col-md-12 control-label">Comuna</label>
-                  <p class="col-sm-12 control-label">{{ $comuna->nombre }}</p><br>
-                </div>
+
+                
                 <div class="form-group">
                   <label class="col-md-12 control-label">Descripcion:</label>
                   <p class="col-md-12 control-label">{{ $catastrofe->descripcion }}</p>
